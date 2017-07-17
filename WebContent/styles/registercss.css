@@ -1,0 +1,8 @@
+.inp {
+	position: fixed;
+}
+
+span {
+	color: red;
+	display: none;
+}
