@@ -6,12 +6,12 @@
 <head>
 <meta http-equiv="content-type" content="text/html" charset="utf-8">
 <title>CoolMeeting会议管理系统</title>
-<link rel="stylesheet" href="styles/common.css" />
+<link rel="stylesheet" href="../styles/common.css" />
 </head>
 <body>
 	<div class="page-header">
 		<div class="header-banner">
-			<img src="images/header.png" alt="CoolMeeting" />
+			<img src="../images/header.png" alt="CoolMeeting" />
 		</div>
 		<div class="header-title">欢迎访问Cool-Meeting会议管理系统</div>
 		<div class="header-quicklink">

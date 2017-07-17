@@ -5,52 +5,19 @@
     <head>
 <meta http-equiv="content-type" content="text/html"  charset="utf-8">
         <title>CoolMeeting会议管理系统</title>
-        <link rel="stylesheet" href="styles/common.css"/>
-        <style type="text/css">
-            #divfrom{
-                float:left;
-                width:200px;
-            }
-            #divto{
-                float:left;
-                width:200px;
-            }
-            #divoperator{
-                float:left;
-                width:50px;
-                padding:60px 5px;
-            }
-            #divoperator input[type="button"]{
-                margin:10px 0;
-            }
-            #selDepartments{
-                display:block;
-                width:100%;
-            }
-            #selEmployees{
-                display:block;
-                width:100%;
-                height:200px;
-            }
-            #selSelectedEmployees{
-                display:block;
-                width:100%;
-                height:225px;
-            }
-        </style>
+        <link rel="stylesheet" href="../styles/common.css"/>
     </head>
     <body>
         <div class="page-header">
             <div class="header-banner">
-                <img src="images/header.png" alt="CoolMeeting"/>
+                <img src="../images/header.png" alt="CoolMeeting"/>
             </div>
             <div class="header-title">
                 欢迎访问Cool-Meeting会议管理系统
             </div>
             <div class="header-quicklink">
                 欢迎！<strong>${loginUserName }</strong>
-                <a href="changepassword.jsp">[修改密码]</a>
-                <a href="loginoffaction">[退出登录]</a>
+                <a href="changepassword.jsp">[修改密码]</a><a href="loginoffaction">[退出登录]</a>
             </div>
         </div>
         <div class="page-body">
@@ -58,9 +25,9 @@
                 <div class="sidebar-menugroup">
                     <div class="sidebar-grouptitle">个人中心</div>
                     <ul class="sidebar-menu">
-                        <li class="sidebar-menuitem"><a href="notifications.jsp">最新通知</a></li>
-                        <li class="sidebar-menuitem active"><a href="mybookings.jsp">我的预定</a></li>
-                        <li class="sidebar-menuitem"><a href="mymeetings.jsp">我的会议</a></li>
+                        <li class="sidebar-menuitem"><a href="notificationaction">最新通知</a></li>
+                        <li class="sidebar-menuitem active"><a href="mybookingaction">我的预定</a></li>
+                        <li class="sidebar-menuitem"><a href="meetingparticipantsaction">我的会议</a></li>
                     </ul>
                 </div>
                 <div class="sidebar-menugroup">
@@ -84,55 +51,57 @@
             </div>
             <div class="page-content">
                 <div class="content-nav">
-                    会议预定 > 修改会议预定
+                    会议预定 > 修改会议室信息
                 </div>
-                <form>
+                <form action="editmeetingroomaction"  id ="editmeetingroomform"  method="post"> 
                     <fieldset>
-                        <legend>会议信息</legend>
+                        <legend>会议室信息</legend>
                         <table class="formtable">
                             <tr>
-                                <td>会议名称：</td>
-                                <td>${meeting.getMeetingName()}</td>
-                            </tr>
-                            <tr>
-                                <td>预计参加人数：</td>
-                                <td>${meeting.getNumberofParticipants()}</td>
-                            </tr>
-                            <tr>
-                                <td>预计开始时间：</td>
-                                <td>${meeting.getStartTime()}</td>
-                            </tr>
-                            <tr>
-                                <td>预计结束时间：</td>
-                                <td>${meeting.getEndTime()}</td>
-                            </tr>
-                            <tr>
-                                <td>会议说明：</td>
+                                <td>门牌号:</td>
                                 <td>
-                                    <textarea id="description" rows="5" readonly>${meeting.getDescription()}</textarea>
+                                <input name = "roomid"  type="text"  value = "${meetingroom.getRoomId() }" style="display:none"/>
+                                    <input id="roomnumber"  name="roomnumber"    type="text" value="${meetingroom.getRoomCode() }" maxlength="10"/>
                                 </td>
                             </tr>
                             <tr>
-                                <td>参会人员：</td>
+                                <td>会议室名称:</td>
                                 <td>
-                                    <table class="listtable">
-                                    <tr class="listheader">
-                                            <th>姓名</th>
-                                            <th>联系电话</th>
-                                            <th>电子邮件</th>
-                                        </tr>
-                                    <c:forEach var ="employee" items="${employees }">
-                                    	<tr>
-                                            <td>${employee.getEmployeeName() }</td>
-                                            <td>${employee.getPhone() }</td>
-                                            <td>${employee.getEmail() }</td>
-                                        </tr>
-                                    </c:forEach>
-                                    </table>
+                                    <input id="roomname"  name="roomname"  type="text" value="${meetingroom.getRoomName() }" maxlength="20"/>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="command" colspan="2">
+                                <td>最多容纳人数：</td>
+                                <td>
+                                    <input id="roomcapacity"  name="roomcapacity"   type="text" value="${meetingroom.getRoomCapacity() }"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>当前状态：</td>
+                                <td>
+	                                <c:if test = "${meetingroom.getRoomStatus()  == 0 }">
+	                        			<c:set var = "using" value = "checked='checked'"></c:set>
+	                        		</c:if>
+	                        		<c:if test = "${meetingroom.getRoomStatus()  == 1 }">
+	                        			<c:set var = "stop" value = "checked='checked'"></c:set>
+	                        		</c:if>
+	                        		<c:if test = "${meetingroom.getRoomStatus()  == 2 }">
+	                        			<c:set var = "delete" value = "checked='checked'"></c:set>
+	                        		</c:if>
+                                    <input type="radio" id="status" name="status"  ${using} value="0"/><label for="status">启用</label>
+                                    <input type="radio" id="status" name="status"  ${stop} value="1"/><label for="status">停用</label>
+                                    <input type="radio" id="status" name="status"  ${delete} value="2"/><label for="status" >删除</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>备注：</td>
+                                <td>
+                                    <textarea id="description"  name ="description"  maxlength="200" rows="5" cols="60"  >${meetingroom.getDescription()}</textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="command">
+                                    <input type="submit" value="确认修改" class="clickbutton"/>
                                     <input type="button" class="clickbutton" value="返回" onclick="window.history.back();"/>
                                 </td>
                             </tr>

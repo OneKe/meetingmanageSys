@@ -1,17 +1,48 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
 <html>
     <head>
 <meta http-equiv="content-type" content="text/html"  charset="utf-8">
         <title>CoolMeeting会议管理系统</title>
-        <link rel="stylesheet" href="styles/common.css"/>
-        <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="js/bookmeeting.js"></script>
+        <link rel="stylesheet" href="../styles/common.css"/>
+        <style type="text/css">
+            #divfrom{
+                float:left;
+                width:200px;
+            }
+            #divto{
+                float:left;
+                width:200px;
+            }
+            #divoperator{
+                float:left;
+                width:50px;
+                padding:60px 5px;
+            }
+            #divoperator input[type="button"]{
+                margin:10px 0;
+            }
+            #selDepartments{
+                display:block;
+                width:100%;
+            }
+            #selEmployees{
+                display:block;
+                width:100%;
+                height:200px;
+            }
+            #selSelectedEmployees{
+                display:block;
+                width:100%;
+                height:225px;
+            }
+        </style>
     </head>
     <body>
         <div class="page-header">
             <div class="header-banner">
-                <img src="images/header.png" alt="CoolMeeting"/>
+                <img src="../images/header.png" alt="CoolMeeting"/>
             </div>
             <div class="header-title">
                 欢迎访问Cool-Meeting会议管理系统
@@ -27,9 +58,9 @@
                 <div class="sidebar-menugroup">
                     <div class="sidebar-grouptitle">个人中心</div>
                     <ul class="sidebar-menu">
-                        <li class="sidebar-menuitem"><a href="notificationaction">最新通知</a></li>
-                        <li class="sidebar-menuitem active"><a href="mybookingaction">我的预定</a></li>
-                        <li class="sidebar-menuitem"><a href="meetingparticipantsaction">我的会议</a></li>
+                        <li class="sidebar-menuitem"><a href="notifications.jsp">最新通知</a></li>
+                        <li class="sidebar-menuitem active"><a href="mybookings.jsp">我的预定</a></li>
+                        <li class="sidebar-menuitem"><a href="mymeetings.jsp">我的会议</a></li>
                     </ul>
                 </div>
                 <div class="sidebar-menugroup">
@@ -53,48 +84,56 @@
             </div>
             <div class="page-content">
                 <div class="content-nav">
-                    会议预定 > 添加会议室<span style="float:right;color:red">${message }</span>
+                    会议预定 > 修改会议预定
                 </div>
-                <form action="addmeetingroomaction"  method="post"  id ="addmeetingroomform">
+                <form>
                     <fieldset>
-                        <legend>会议室信息</legend>
+                        <legend>会议信息</legend>
                         <table class="formtable">
                             <tr>
-                                <td>门牌号:</td>
+                                <td>会议名称：</td>
+                                <td>${meeting.getMeetingName()}</td>
+                            </tr>
+                            <tr>
+                                <td>预计参加人数：</td>
+                                <td>${meeting.getNumberofParticipants()}</td>
+                            </tr>
+                            <tr>
+                                <td>预计开始时间：</td>
+                                <td>${meeting.getStartTime()}</td>
+                            </tr>
+                            <tr>
+                                <td>预计结束时间：</td>
+                                <td>${meeting.getEndTime()}</td>
+                            </tr>
+                            <tr>
+                                <td>会议说明：</td>
                                 <td>
-                                    <input id="roomnumber"  name="roomnumber"  type="text" placeholder="例如：201" maxlength="10"/>
+                                    <textarea id="description" rows="5" readonly>${meeting.getDescription()}</textarea>
                                 </td>
                             </tr>
                             <tr>
-                                <td>会议室名称:</td>
+                                <td>参会人员：</td>
                                 <td>
-                                    <input id="roomname"  name="roomname"  type="text" placeholder="例如：第一会议室" maxlength="20"/>
+                                    <table class="listtable">
+                                    <tr class="listheader">
+                                            <th>姓名</th>
+                                            <th>联系电话</th>
+                                            <th>电子邮件</th>
+                                        </tr>
+                                    <c:forEach var ="employee" items="${employees }">
+                                    	<tr>
+                                            <td>${employee.getEmployeeName() }</td>
+                                            <td>${employee.getPhone() }</td>
+                                            <td>${employee.getEmail() }</td>
+                                        </tr>
+                                    </c:forEach>
+                                    </table>
                                 </td>
                             </tr>
                             <tr>
-                                <td>最多容纳人数：</td>
-                                <td>
-                                    <input id="roomcapacity"  name="roomcapacity"  type="number" placeholder="填写一个正整数"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>当前状态：</td>
-                                <td>
-                                    <input type="radio" id="status" name="status" checked="checked" value="0"/><label for="status">启用</label>
-                                    <input type="radio" id="status" name="status"  value="1"/><label for="status" >停用</label>
-                                    <input type="radio" id="status" name="status"  value="2"/><label for="status" >删除</label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>备注：</td>
-                                <td>
-                                    <textarea id="description"  name="description"  maxlength="200" rows="5" cols="60" placeholder="200字以内的文字描述"></textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="command">
-                                    <input type="submit" value="添加" class="clickbutton"/>
-                                    <input type="reset" value="重置" class="clickbutton"/>
+                                <td class="command" colspan="2">
+                                    <input type="button" class="clickbutton" value="返回" onclick="window.history.back();"/>
                                 </td>
                             </tr>
                         </table>
