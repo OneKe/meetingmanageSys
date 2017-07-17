@@ -8,10 +8,6 @@
         <link rel="stylesheet" href="styles/common.css"/>
     </head>
     <body>
-    <%if(null == (String)session.getAttribute("loginUserName")){
-    	request.getRequestDispatcher("login.jsp").forward(request, response);
-    }
-    %>
     
         <div class="page-header">
             <div class="header-banner">
