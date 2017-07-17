@@ -3,17 +3,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-		<meta http-equiv="content-type" content="text/html"  charset="utf-8">
+<meta http-equiv="content-type" content="text/html" charset="utf-8">
         <title>CoolMeeting会议管理系统</title>
-        <link rel="stylesheet" href="styles/common.css"/>
-        <script type="text/javascript"  src ="js/jquery.js"></script>
-        <script type="text/javascript"  src ="js/approveaccounts.js"></script>
+        <link rel="stylesheet" href="../styles/common.css"/>
     </head>
     <body>
-    
         <div class="page-header">
             <div class="header-banner">
-                <img src="images/header.png" alt="CoolMeeting"/>
+                <img src="../images/header.png" alt="CoolMeeting"/>
             </div>
             <div class="header-title">
                 欢迎访问Cool-Meeting会议管理系统
@@ -21,7 +18,6 @@
             <div class="header-quicklink">
                 欢迎！<strong>${loginUserName }</strong>
                 <a href="changepassword.jsp">[修改密码]</a>
-                <a href="loginoffaction">[退出登录]</a>
             </div>
         </div>
         <div class="page-body">
@@ -55,30 +51,33 @@
             </div>
             <div class="page-content">
                 <div class="content-nav">
-                    人员管理 > 注册审批
+                    登录
                 </div>
-                <table class="listtable">
-                    <caption>所有待审批注册信息：<span style="float:right">${message }</span></caption>
-                    <tr class="listheader">
-                        <th>姓名</th>
-                        <th>账号名</th>
-                        <th>联系电话</th>
-                        <th>电子邮件</th>
-                        <th>操作</th>
-                    </tr>
-                    <c:forEach var="employee" items = "${uncheckedEmployeeList }">
-                    	<tr>
-                        <td>${employee.getEmployeeName() }</td>
-                        <td>${employee.getUserName() }</td>
-                        <td>${employee.getPhone() }</td>
-                        <td>${employee.getEmail() }</td>
-                        <td>
-                            <input type="button" class="clickbutton" value="通过"  onclick="check(${employee.getEmployeeId()})"/>
-                            <input type="button" class="clickbutton" value="删除"  onclick="remove(${employee.getEmployeeId()})"/>
-                        </td>
-                    </tr>
-                    </c:forEach>                 
-                </table>
+                <form id="loginform"  method="post"  action="loginaction">
+                    <fieldset>
+                        <legend>登录信息</legend>
+                        <table class="formtable" style="width:50%">
+                            <tr>
+                                <td>账号名:</td>
+                                <td>
+                                    <input id="username"  name="username" type="text" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>密码:</td>
+                                <td>
+                                    <input id="userpwd"  name="userpwd"  type="password" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="command">
+                                    <input type="submit" value="登录" class="clickbutton" onclick="window.location.href='notifiactions.jsp';"/>
+                                    <input type="button" value="返回" class="clickbutton" onclick="window.history.back();"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </form>
             </div>
         </div>
         <div class="page-footer">

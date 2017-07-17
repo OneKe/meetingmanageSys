@@ -1,23 +1,56 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
     <head>
-<meta http-equiv="content-type" content="text/html" charset="utf-8">
+<meta http-equiv="content-type" content="text/html"  charset="utf-8">
         <title>CoolMeeting会议管理系统</title>
-        <link rel="stylesheet" href="styles/common.css"/>
+        <link rel="stylesheet" href="../styles/common.css"/>
+        <style type="text/css">
+            #divfrom{
+                float:left;
+                width:200px;
+            }
+            #divto{
+                float:left;
+                width:200px;
+            }
+            #divoperator{
+                float:left;
+                width:50px;
+                padding:60px 5px;
+            }
+            #divoperator input[type="button"]{
+                margin:10px 0;
+            }
+            #selDepartments{
+                display:block;
+                width:100%;
+            }
+            #selEmployees{
+                display:block;
+                width:100%;
+                height:200px;
+            }
+            #selSelectedEmployees{
+                display:block;
+                width:100%;
+                height:225px;
+            }
+        </style>
     </head>
-    <body>
-    
+    <body onload="body_load()">
+   
         <div class="page-header">
             <div class="header-banner">
-                <img src="images/header.png" alt="CoolMeeting"/>
+                <img src="../images/header.png" alt="CoolMeeting"/>
             </div>
             <div class="header-title">
                 欢迎访问Cool-Meeting会议管理系统
             </div>
             <div class="header-quicklink">
-               欢迎！<strong>${loginUserName }</strong>
+                欢迎！<strong>${loginUserName }</strong>
                 <a href="changepassword.jsp">[修改密码]</a>
                 <a href="loginoffaction">[退出登录]</a>
             </div>
@@ -53,34 +86,29 @@
             </div>
             <div class="page-content">
                 <div class="content-nav">
-                    修改密码
+                    会议预定 > 撤销会议预定
                 </div>
-                <form action="changepasswordaction"  id="changepasswordform"  method="post">
+                <form action="cancelmeetingaction" method="post" id="cancelmeetingform">
                     <fieldset>
-                        <legend>修改密码信息</legend>
-                        <table class="formtable" style="width:50%">
+                        <legend>撤销预定</legend>
+                        <table class="formtable">
                             <tr>
-                                <td>原密码:</td>
-                                <td>
-                                    <input id="originpassword" type="password"  name="originpassword"/>
-                                </td>
+                                <td>会议名称：</td>
+                                <input type="text" style="display:none" value="${meeting.getMeetingID() }" name="meetingid"/>
+                                <td>${meeting.getMeetingName()}</td>
                             </tr>
                             <tr>
-                                <td>新密码:</td>
-                                <td>
-                                    <input id="newpassword "  type="password"  name = "newpassword"/>
-                                </td>
+                                <td>参加人数：</td>
+                                <td>${meeting.getNumberofParticipants()}</td>
                             </tr>
                             <tr>
-                                <td>确认新密码：</td>
-                                <td>
-                                    <input id="confirmpassword" type="password" name="confirmpassword"/>
-                                </td>
+                                <td>撤销理由：</td>
+                                <td> <textarea id="description" name="description" rows="5"></textarea></td>
                             </tr>
                             <tr>
-                                <td colspan="2" class="command">
-                                    <input type="submit" value="确认修改" class="clickbutton"/>
-                                    <input type="button" value="返回" class="clickbutton" onclick="window.history.back();"/>
+                                <td class="command" colspan="2">
+                                    <input type="submit" class="clickbutton" value="确认撤销"/>
+                                    <input type="button" class="clickbutton" value="返回" onclick="window.history.back();"/>
                                 </td>
                             </tr>
                         </table>

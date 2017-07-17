@@ -5,19 +5,21 @@
     <head>
 <meta http-equiv="content-type" content="text/html" charset="utf-8">
         <title>CoolMeeting会议管理系统</title>
-        <link rel="stylesheet" href="styles/common.css"/>
+        <link rel="stylesheet" href="../styles/common.css"/>
     </head>
     <body>
+    
         <div class="page-header">
             <div class="header-banner">
-                <img src="images/header.png" alt="CoolMeeting"/>
+                <img src="../images/header.png" alt="CoolMeeting"/>
             </div>
             <div class="header-title">
                 欢迎访问Cool-Meeting会议管理系统
             </div>
             <div class="header-quicklink">
-                欢迎！<strong>${loginUserName }</strong>
+               欢迎！<strong>${loginUserName }</strong>
                 <a href="changepassword.jsp">[修改密码]</a>
+                <a href="loginoffaction">[退出登录]</a>
             </div>
         </div>
         <div class="page-body">
@@ -51,27 +53,33 @@
             </div>
             <div class="page-content">
                 <div class="content-nav">
-                    登录
+                    修改密码
                 </div>
-                <form id="loginform"  method="post"  action="loginaction">
+                <form action="changepasswordaction"  id="changepasswordform"  method="post">
                     <fieldset>
-                        <legend>登录信息</legend>
+                        <legend>修改密码信息</legend>
                         <table class="formtable" style="width:50%">
                             <tr>
-                                <td>账号名:</td>
+                                <td>原密码:</td>
                                 <td>
-                                    <input id="username"  name="username" type="text" />
+                                    <input id="originpassword" type="password"  name="originpassword"/>
                                 </td>
                             </tr>
                             <tr>
-                                <td>密码:</td>
+                                <td>新密码:</td>
                                 <td>
-                                    <input id="userpwd"  name="userpwd"  type="password" />
+                                    <input id="newpassword "  type="password"  name = "newpassword"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>确认新密码：</td>
+                                <td>
+                                    <input id="confirmpassword" type="password" name="confirmpassword"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="2" class="command">
-                                    <input type="submit" value="登录" class="clickbutton" onclick="window.location.href='notifiactions.jsp';"/>
+                                    <input type="submit" value="确认修改" class="clickbutton"/>
                                     <input type="button" value="返回" class="clickbutton" onclick="window.history.back();"/>
                                 </td>
                             </tr>

@@ -1,50 +1,17 @@
-
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
 <html>
     <head>
 <meta http-equiv="content-type" content="text/html"  charset="utf-8">
         <title>CoolMeeting会议管理系统</title>
-        <link rel="stylesheet" href="styles/common.css"/>
-        <style type="text/css">
-            #divfrom{
-                float:left;
-                width:200px;
-            }
-            #divto{
-                float:left;
-                width:200px;
-            }
-            #divoperator{
-                float:left;
-                width:50px;
-                padding:60px 5px;
-            }
-            #divoperator input[type="button"]{
-                margin:10px 0;
-            }
-            #selDepartments{
-                display:block;
-                width:100%;
-            }
-            #selEmployees{
-                display:block;
-                width:100%;
-                height:200px;
-            }
-            #selSelectedEmployees{
-                display:block;
-                width:100%;
-                height:225px;
-            }
-        </style>
+        <link rel="stylesheet" href="../styles/common.css"/>
+        <script type="text/javascript" src="../js/jquery.js"></script>
+        <script type="text/javascript" src="../js/bookmeeting.js"></script>
     </head>
-    <body onload="body_load()">
-   
+    <body>
         <div class="page-header">
             <div class="header-banner">
-                <img src="images/header.png" alt="CoolMeeting"/>
+                <img src="../images/header.png" alt="CoolMeeting"/>
             </div>
             <div class="header-title">
                 欢迎访问Cool-Meeting会议管理系统
@@ -86,29 +53,48 @@
             </div>
             <div class="page-content">
                 <div class="content-nav">
-                    会议预定 > 撤销会议预定
+                    会议预定 > 添加会议室<span style="float:right;color:red">${message }</span>
                 </div>
-                <form action="cancelmeetingaction" method="post" id="cancelmeetingform">
+                <form action="addmeetingroomaction"  method="post"  id ="addmeetingroomform">
                     <fieldset>
-                        <legend>撤销预定</legend>
+                        <legend>会议室信息</legend>
                         <table class="formtable">
                             <tr>
-                                <td>会议名称：</td>
-                                <input type="text" style="display:none" value="${meeting.getMeetingID() }" name="meetingid"/>
-                                <td>${meeting.getMeetingName()}</td>
+                                <td>门牌号:</td>
+                                <td>
+                                    <input id="roomnumber"  name="roomnumber"  type="text" placeholder="例如：201" maxlength="10"/>
+                                </td>
                             </tr>
                             <tr>
-                                <td>参加人数：</td>
-                                <td>${meeting.getNumberofParticipants()}</td>
+                                <td>会议室名称:</td>
+                                <td>
+                                    <input id="roomname"  name="roomname"  type="text" placeholder="例如：第一会议室" maxlength="20"/>
+                                </td>
                             </tr>
                             <tr>
-                                <td>撤销理由：</td>
-                                <td> <textarea id="description" name="description" rows="5"></textarea></td>
+                                <td>最多容纳人数：</td>
+                                <td>
+                                    <input id="roomcapacity"  name="roomcapacity"  type="number" placeholder="填写一个正整数"/>
+                                </td>
                             </tr>
                             <tr>
-                                <td class="command" colspan="2">
-                                    <input type="submit" class="clickbutton" value="确认撤销"/>
-                                    <input type="button" class="clickbutton" value="返回" onclick="window.history.back();"/>
+                                <td>当前状态：</td>
+                                <td>
+                                    <input type="radio" id="status" name="status" checked="checked" value="0"/><label for="status">启用</label>
+                                    <input type="radio" id="status" name="status"  value="1"/><label for="status" >停用</label>
+                                    <input type="radio" id="status" name="status"  value="2"/><label for="status" >删除</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>备注：</td>
+                                <td>
+                                    <textarea id="description"  name="description"  maxlength="200" rows="5" cols="60" placeholder="200字以内的文字描述"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="command">
+                                    <input type="submit" value="添加" class="clickbutton"/>
+                                    <input type="reset" value="重置" class="clickbutton"/>
                                 </td>
                             </tr>
                         </table>
@@ -119,7 +105,7 @@
         <div class="page-footer">
             <hr/>
             更多问题，欢迎联系<a href="mailto:webmaster@eeg.com">管理员</a>
-            <img src="images/footer.png" alt="CoolMeeting"/>
+            <img src="../images/footer.png" alt="CoolMeeting"/>
         </div>
     </body>
 </html>
