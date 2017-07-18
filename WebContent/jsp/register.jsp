@@ -72,12 +72,12 @@
 				<div class="content-nav">
 					人员管理 > 员工注册
 				</div>
-				<form id = "registerform" action="registeraction" method="post">
+				<form id = "registerform" action="register.action" method="post">
 					<fieldset>
 						<legend>员工信息</legend>
 						<table class="formtable" style="width:50%">
 							<tr>
-								<td>姓名：</td>
+								<td style="width: 100px">姓名：</td>
 								<td class="inp">
 									<input type="text" id="employeename" name="employeename" maxlength="20" />
 									<span id="empnamespan">请输入姓名！</span>
@@ -139,7 +139,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td colspan="6 " class="command ">
+								<td colspan="3" class="command ">
 									<input type="button" class="clickbutton" id="register" value="注册" />
 									<input type="reset" class="clickbutton" value="重置" />
 								</td>
@@ -152,8 +152,7 @@
 		<div class="page-footer ">
 			<hr/> 更多问题，欢迎联系
 			<a href="mailto:webmaster@eeg.com ">管理员</a>
-			<img src="images/footer.png " alt="CoolMeeting " />
+			<img src="../images/footer.png " alt="CoolMeeting " />
 		</div>
 	</body>
-
 </html>
