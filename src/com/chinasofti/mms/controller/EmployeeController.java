@@ -2,7 +2,6 @@ package com.chinasofti.mms.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,16 +17,22 @@ import com.alibaba.fastjson.JSONObject;
 import com.chinasofti.mms.pojo.Department;
 import com.chinasofti.mms.pojo.Employee;
 import com.chinasofti.mms.service.EmployeeService;
+import com.chinasofti.mms.util.TransferUtil;
 
 @Controller
 @RequestMapping("/jsp")
 public class EmployeeController {
 	@Autowired
 	private EmployeeService service;
-
+	
+	TransferUtil tfu=new TransferUtil();
+	
 	@RequestMapping("/register.action")
 	public String register(Employee employee, Model model) {
 		System.out.println(employee);
+		if(employee!=null){
+			employee=new Employee(tfu.getUUID(), employee.getEmployeename(), employee.getUsername(), tfu.getMD5(employee.getUserpwd()), employee.getPhone(), employee.getEmail(), employee.getDepartmentid(), employee.getRoleid(), 0);
+		}
 		return "login";
 	}
 

@@ -10,13 +10,13 @@ import com.chinasofti.mms.pojo.Employee;
 @Component
 public interface EmployeeMapper {
     
-    int deleteByPrimaryKey(Integer employeeid);
+    int deleteByPrimaryKey(String employeeid);
 
     int insert(Employee record);
 
     int insertSelective(Employee record);
 
-    Employee selectByPrimaryKey(Integer employeeid);
+    Employee selectByPrimaryKey(String employeeid);
 
     int updateByPrimaryKeySelective(Employee record);
 

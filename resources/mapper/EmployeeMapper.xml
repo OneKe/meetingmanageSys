@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.chinasofti.mms.dao.EmployeeMapper">
 	<resultMap id="BaseResultMap" type="com.chinasofti.mms.pojo.Employee">
-		<id column="EmployeeId" jdbcType="INTEGER" property="employeeid" />
+		<id column="EmployeeId" jdbcType="VARCHAR" property="employeeid" />
 		<result column="EmployeeName" jdbcType="VARCHAR" property="employeename" />
 		<result column="UserName" jdbcType="VARCHAR" property="username" />
 		<result column="UserPwd" jdbcType="VARCHAR" property="userpwd" />
@@ -18,17 +18,17 @@
 		DepartmentId, Roleid,
 		EmployeeStatus, Remark
 	</sql>
-	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+	<select id="selectByPrimaryKey" parameterType="java.lang.String"
 		resultMap="BaseResultMap">
 		select
 		<include refid="Base_Column_List" />
 		from employee
-		where EmployeeId = #{employeeid,jdbcType=INTEGER}
+		where EmployeeId = #{employeeid,jdbcType=VARCHAR}
 	</select>
-	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
 		delete from
 		employee
-		where EmployeeId = #{employeeid,jdbcType=INTEGER}
+		where EmployeeId = #{employeeid,jdbcType=VARCHAR}
 	</delete>
 	<insert id="insert" parameterType="com.chinasofti.mms.pojo.Employee">
 		insert into employee
@@ -37,7 +37,7 @@
 		DepartmentId, Roleid, EmployeeStatus,
 		Remark)
 		values
-		(#{employeeid,jdbcType=INTEGER}, #{employeename,jdbcType=VARCHAR},
+		(#{employeeid,jdbcType=VARCHAR}, #{employeename,jdbcType=VARCHAR},
 		#{username,jdbcType=VARCHAR},
 		#{userpwd,jdbcType=VARCHAR},
 		#{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
@@ -81,7 +81,7 @@
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			<if test="employeeid != null">
-				#{employeeid,jdbcType=INTEGER},
+				#{employeeid,jdbcType=VARCHAR},
 			</if>
 			<if test="employeename != null">
 				#{employeename,jdbcType=VARCHAR},
