@@ -205,7 +205,7 @@
 	</select>
 	
 	<select id="selectByReservationistID">
-	    select * from meeting where reservationistID=? and meetingstatus=1
+	    select * from meeting where reservationistID=#{reservationistID} and meetingstatus=1
 	</select>
 	
 	<select id="selectByMeetingId">
@@ -220,14 +220,6 @@
 	<select id="selectByMeetingName">
 	    select * from Meeting where MeetingName = #{MeetingName}
 	</select>
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
