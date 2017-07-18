@@ -17,7 +17,7 @@ $("document").ready(function() {
 			$("#usernamespan").hide();
 			$.ajax({
 				type:"post",
-				url:"testusername.action",
+				url:"testusername.action?username="+$("#username").val().trim(),
 				async:true,
 				success:function(data){
 					

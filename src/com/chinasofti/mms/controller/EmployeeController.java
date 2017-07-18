@@ -14,4 +14,12 @@ public class EmployeeController {
 		System.out.println(employee);
 		return "login";
 	}
+	
+	@RequestMapping("/testusername.action")
+	public void testUserName(String username){
+		System.out.println(username);
+		if(null!=username&&!"".equals(username)){
+			
+		}
+	}
 }
