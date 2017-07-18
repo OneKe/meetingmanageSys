@@ -9,6 +9,23 @@ $("document").ready(function() {
 		}
 	});
 	
+	//判断账户名
+	$("#username").blur(function(){
+		if($("#username").val().trim().length==0){
+			$("#usernamespan").show();
+		}else{
+			$("#usernamespan").hide();
+			$.ajax({
+				type:"post",
+				url:"testusername.action",
+				async:true,
+				success:function(data){
+					
+				}
+			});
+		}
+	});
+	
 	//判断密码
 	$("#password").blur(function() {
 		if($("#password").val().trim().length == 0) {
