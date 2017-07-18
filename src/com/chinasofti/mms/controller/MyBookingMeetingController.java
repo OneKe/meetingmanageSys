@@ -17,6 +17,7 @@ public class MyBookingMeetingController {
 		HttpSession session = request.getSession();
 		int id = (int) session.getAttribute("loginEmployeeId");
 		ModelAndView mv=new ModelAndView("mybookings.jsp");
+		System.out.println();
 		return mv;
 	}
 }
