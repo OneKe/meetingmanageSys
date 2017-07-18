@@ -24,7 +24,7 @@ public class LoginController {
 		String UserPwd = request.getParameter("userpwd");
 		Employee employee = null;
 		if(null == UserName ||null == UserPwd || "".equals(UserName) || "".equals(UserPwd)){
-			
+			return new ModelAndView("login");
 		}else{
 			employee = new Employee(UserName,UserPwd);
 		}
@@ -35,12 +35,10 @@ public class LoginController {
 			session.setAttribute("loginUserName", loginEmployee.getUsername());
 			session.setAttribute("loginEmployeeId", loginEmployee.getEmployeeid());
 			request.setAttribute("loginMessage", "登录成功！");
-			
+			return new ModelAndView("notification");
 		}else{
 			request.setAttribute("loginMessage", "登录失败！");
-			
+			return new ModelAndView("login");
 		}
-		
-		return null;
 	}
 }
