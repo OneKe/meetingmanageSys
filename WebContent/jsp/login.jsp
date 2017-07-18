@@ -53,7 +53,7 @@
                 <div class="content-nav">
                     登录
                 </div>
-                <form id="loginform"  method="post"  action="loginaction">
+                <form id="loginform"  method="post"  action="login.action">
                     <fieldset>
                         <legend>登录信息</legend>
                         <table class="formtable" style="width:50%">

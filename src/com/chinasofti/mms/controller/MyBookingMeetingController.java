@@ -20,9 +20,9 @@ public class MyBookingMeetingController {
 	@RequestMapping("mybooking.action")
 	public ModelAndView MyBooking(HttpServletRequest request,HttpServletResponse response){
 		HttpSession session = request.getSession();
-		String username = (String) session.getAttribute("loginUserName");
+		Integer id = (Integer) session.getAttribute("loginEmployeeId");
 		RoleService rs = new RoleService();
-		List<Meeting> mList = rs.selectByEmployeeName(username);
+		List<Meeting> mList = rs.selectByEmployeeName(id);
 		ModelAndView mv=new ModelAndView("mybookings.jsp");
 		mv.addObject("bookinglist", mList);
 		return mv;

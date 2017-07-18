@@ -1,25 +1,25 @@
 package com.chinasofti.mms.pojo;
 
 public class Employee {
-	private Integer employeeid;
+	private Integer employeeid;//员工ID
 
-	private String employeename;
+	private String employeename;//员工姓名
 
-	private String username;
+	private String username;//账号名
 
-	private String userpwd;
+	private String userpwd;//密码
 
-	private String phone;
+	private String phone;//联系电话
 
-	private String email;
+	private String email;//电子邮箱
 
-	private Integer departmentid;
+	private Integer departmentid;//部门ID
 
-	private Integer roleid;
+	private Integer roleid;//员工角色，1表示管理员，2表示普通用户
 
-	private Integer employeestatus;
+	private Integer employeestatus;//员工状态，0表示待审核，1表示已审核，2表示审核未通过，3表示被关闭，默认为待审核
 
-	private String remark;
+	private String remark;//备注
 
 	public Integer getEmployeeid() {
 		return employeeid;
@@ -99,6 +99,30 @@ public class Employee {
 
 	public void setRemark(String remark) {
 		this.remark = remark == null ? null : remark.trim();
+	}
+	
+	//无参构造方法
+	public Employee() {
+		
+	}
+	
+	public Employee(String username, String userpwd) {
+		this.username = username;
+		this.userpwd = userpwd;
+	}
+	
+	public Employee(Integer employeeid, String employeename, String username, String userpwd, String phone,
+			String email, Integer departmentid, Integer roleid, Integer employeestatus, String remark) {
+		this.employeeid = employeeid;
+		this.employeename = employeename;
+		this.username = username;
+		this.userpwd = userpwd;
+		this.phone = phone;
+		this.email = email;
+		this.departmentid = departmentid;
+		this.roleid = roleid;
+		this.employeestatus = employeestatus;
+		this.remark = remark;
 	}
 
 	@Override

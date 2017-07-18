@@ -75,23 +75,15 @@
   </update>
   
   <!-- 
- 	 查询我的预定会议，通过用户名
-   -->
-   <select id="toSelectid">
-   select EmployeeId from employee where username =#{username}
+ 	 查询我的预定会议，通过用户名ID
+   --> 
+   <select id="selectByEmployeeName" parameterType="Integer" resultType="Meeting">
+   select * from meeting where reservationistID=#{id} and meetingstatus=1
    </select>
    
-   <resultMap type="Meeting" id="MeetingSelect">
-   <id column="meetingid" property="meetingid" />
-   <association property="reservationistid" column="reservationistid" 
-   select="toSelectid" javaType="Integer">
-   </association>
-   
-   </resultMap>
-   
-   <select id="selectByEmployeeName" resultMap="MeetingSelect">
-   select * from meeting where reservationistID=#{xxx} and meetingstatus=1
-   </select>
-  
+   <!-- 用户登录 -->
+  	<select id="login" parameterType="Employee" resultType="Employee">
+  	select * from employee where username=#{username} and userpwd=#{
+  	</select>
   
 </mapper>

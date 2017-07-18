@@ -2,6 +2,7 @@ package com.chinasofti.mms.dao;
 
 import java.util.List;
 
+import com.chinasofti.mms.pojo.Employee;
 import com.chinasofti.mms.pojo.Meeting;
 import com.chinasofti.mms.pojo.MeetingParticipants;
 
@@ -36,5 +37,7 @@ public interface MeetingParticipantsMapper {
      */
     int updateByPrimaryKey(MeetingParticipants record);
 
-	List<Meeting> selectByEmployeeName(String username);
+	List<Meeting> selectByEmployeeName(Integer id);
+
+	Employee login(Employee employee);
 }
