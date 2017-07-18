@@ -1,7 +1,7 @@
 package com.chinasofti.mms.pojo;
 
 public class Employee {
-	private Integer employeeid;//员工ID
+	private String employeeid;//员工ID
 
 	private String employeename;//员工姓名
 
@@ -20,12 +20,12 @@ public class Employee {
 	private Integer employeestatus;//员工状态，0表示待审核，1表示已审核，2表示审核未通过，3表示被关闭，默认为待审核
 
 	private String remark;//备注
-
-	public Integer getEmployeeid() {
+	
+	public String getEmployeeid() {
 		return employeeid;
 	}
 
-	public void setEmployeeid(Integer employeeid) {
+	public void setEmployeeid(String employeeid) {
 		this.employeeid = employeeid;
 	}
 
@@ -111,7 +111,20 @@ public class Employee {
 		this.userpwd = userpwd;
 	}
 	
-	public Employee(Integer employeeid, String employeename, String username, String userpwd, String phone,
+	public Employee(String employeeid, String employeename, String username, String userpwd, String phone,
+			String email, Integer departmentid, Integer roleid, Integer employeestatus) {
+		this.employeeid = employeeid;
+		this.employeename = employeename;
+		this.username = username;
+		this.userpwd = userpwd;
+		this.phone = phone;
+		this.email = email;
+		this.departmentid = departmentid;
+		this.roleid = roleid;
+		this.employeestatus = employeestatus;
+	}
+	
+	public Employee(String employeeid, String employeename, String username, String userpwd, String phone,
 			String email, Integer departmentid, Integer roleid, Integer employeestatus, String remark) {
 		this.employeeid = employeeid;
 		this.employeename = employeename;
