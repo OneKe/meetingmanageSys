@@ -15,7 +15,7 @@ public class MeetingController {
     	HttpSession session = request.getSession();
         ModelAndView mav = new ModelAndView("mymeeting.jsp");
         System.out.println("MeetingController -->");
-    	 
-    	 return mav;
+    	
+    	return mav;
      }
 }
