@@ -23,7 +23,7 @@
 				<div class="sidebar-grouptitle">个人中心</div>
 				<ul class="sidebar-menu">
 					<li class="sidebar-menuitem"><a href="notificationaction">最新通知</a></li>
-					<li class="sidebar-menuitem active"><a href="mybookingaction">我的预定</a></li>
+					<li class="sidebar-menuitem active"><a href="mybooking.action">我的预定</a></li>
 					<li class="sidebar-menuitem"><a
 						href="meetingparticipantsaction">我的会议</a></li>
 				</ul>

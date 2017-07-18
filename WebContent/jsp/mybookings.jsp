@@ -17,7 +17,7 @@
 		</div>
 		<div class="header-title">欢迎访问Cool-Meeting会议管理系统</div>
 		<div class="header-quicklink">
-			欢迎！<strong>${loginUserName }</strong> <a href="changepassword.jsp">[修改密码]</a><a href="loginoffaction">[退出登录]</a>
+			欢迎！<strong>${loginUserName }</strong> <a href="changepassword.jsp">[修改密码]</a><a href="loginoff.action">[退出登录]</a>
 		</div>
 	</div>
 	<div class="page-body">
@@ -25,10 +25,10 @@
 			<div class="sidebar-menugroup">
 				<div class="sidebar-grouptitle">个人中心</div>
 				<ul class="sidebar-menu">
-					<li class="sidebar-menuitem"><a href="notificationaction">最新通知</a></li>
+					<li class="sidebar-menuitem"><a href="notification.action">最新通知</a></li>
 					<li class="sidebar-menuitem active"><a href="mybooking.action">我的预定</a></li>
 					<li class="sidebar-menuitem"><a
-						href="meetingparticipantsaction">我的会议</a></li>
+						href="meetingparticipants.action">我的会议</a></li>
 				</ul>
 			</div>
 			<div class="sidebar-menugroup">
@@ -62,7 +62,7 @@
 					<th>会议预定时间</th>
 					<th>操作</th>
 				</tr>
-				<c:forEach var="meeting" items="${mlist}">
+				<c:forEach var="meeting" items="${bookinglist}">
 					<tr>
 						<td>${meeting.getMeetingName() }</td>
 						<td>${meetingRoom.selectByRoomId(meeting.getRoomID()).getRoomName()}</td>
@@ -81,7 +81,7 @@
 	<div class="page-footer">
 		<hr />
 		更多问题，欢迎联系<a href="mailto:webmaster@eeg.com">管理员</a> <img
-			src="images/footer.png" alt="CoolMeeting" />
+			src="../images/footer.png" alt="CoolMeeting" />
 	</div>
 </body>
 </html>
