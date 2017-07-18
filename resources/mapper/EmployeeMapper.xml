@@ -41,7 +41,7 @@
 		#{username,jdbcType=VARCHAR},
 		#{userpwd,jdbcType=VARCHAR},
 		#{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
-		#{departmentid,jdbcType=INTEGER}, #{roleid,jdbcType=INTEGER},
+		#{departmentid,jdbcType=VARCHAR}, #{roleid,jdbcType=VARCHAR},
 		#{employeestatus,jdbcType=INTEGER},
 		#{remark,jdbcType=VARCHAR})
 	</insert>

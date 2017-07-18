@@ -13,9 +13,9 @@ public class Employee {
 
 	private String email;//电子邮箱
 
-	private Integer departmentid;//部门ID
+	private String departmentid;//部门ID
 
-	private Integer roleid;//员工角色，1表示管理员，2表示普通用户
+	private String roleid;//员工角色，1表示管理员，2表示普通用户
 
 	private Integer employeestatus;//员工状态，0表示待审核，1表示已审核，2表示审核未通过，3表示被关闭，默认为待审核
 
@@ -69,19 +69,19 @@ public class Employee {
 		this.email = email == null ? null : email.trim();
 	}
 
-	public Integer getDepartmentid() {
+	public String getDepartmentid() {
 		return departmentid;
 	}
 
-	public void setDepartmentid(Integer departmentid) {
+	public void setDepartmentid(String departmentid) {
 		this.departmentid = departmentid;
 	}
 
-	public Integer getRoleid() {
+	public String getRoleid() {
 		return roleid;
 	}
 
-	public void setRoleid(Integer roleid) {
+	public void setRoleid(String roleid) {
 		this.roleid = roleid;
 	}
 
@@ -112,7 +112,7 @@ public class Employee {
 	}
 	
 	public Employee(String employeeid, String employeename, String username, String userpwd, String phone,
-			String email, Integer departmentid, Integer roleid, Integer employeestatus) {
+			String email, String departmentid, String roleid, Integer employeestatus) {
 		this.employeeid = employeeid;
 		this.employeename = employeename;
 		this.username = username;
@@ -125,7 +125,7 @@ public class Employee {
 	}
 	
 	public Employee(String employeeid, String employeename, String username, String userpwd, String phone,
-			String email, Integer departmentid, Integer roleid, Integer employeestatus, String remark) {
+			String email, String departmentid, String roleid, Integer employeestatus, String remark) {
 		this.employeeid = employeeid;
 		this.employeename = employeename;
 		this.username = username;

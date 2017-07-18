@@ -24,16 +24,27 @@ import com.chinasofti.mms.util.TransferUtil;
 public class EmployeeController {
 	@Autowired
 	private EmployeeService service;
-	
-	TransferUtil tfu=new TransferUtil();
-	
+
+	TransferUtil tfu = new TransferUtil();
+
 	@RequestMapping("/register.action")
 	public String register(Employee employee, Model model) {
-		System.out.println(employee);
-		if(employee!=null){
-			employee=new Employee(tfu.getUUID(), employee.getEmployeename(), employee.getUsername(), tfu.getMD5(employee.getUserpwd()), employee.getPhone(), employee.getEmail(), employee.getDepartmentid(), employee.getRoleid(), 0);
+		if (employee != null) {
+			employee = new Employee(tfu.getUUID(), employee.getEmployeename(), employee.getUsername(),
+					tfu.getMD5(employee.getUserpwd()), employee.getPhone(), employee.getEmail(),
+					employee.getDepartmentid(), employee.getRoleid(), 0);
+			System.out.println(employee);
+			int i=service.insert(employee);
+			if(i>0){
+				model.addAttribute("message", "注册成功");
+				return "login";
+			}else{
+				model.addAttribute("message", "注册失败");
+				return "register";
+			}
 		}
-		return "login";
+		model.addAttribute("message", "注册失败");
+		return "register";
 	}
 
 	@RequestMapping("/testusername.action")
@@ -65,7 +76,6 @@ public class EmployeeController {
 			JSONArray jsonArray = new JSONArray();
 			jsonObject.put("list", list);
 			jsonArray.add(jsonObject);
-			System.out.println(jsonArray);
 			// 获得输出流
 			PrintWriter out = response.getWriter();
 			// 通过 out 对象将 jsonArray 传到前端页面
