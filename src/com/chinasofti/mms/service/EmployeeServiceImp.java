@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.chinasofti.mms.dao.EmployeeMapper;
 import com.chinasofti.mms.pojo.Department;
+import com.chinasofti.mms.pojo.Employee;
 
 /**
 *@autor:yl email:1940927916@qq.com
@@ -35,6 +36,11 @@ public class EmployeeServiceImp implements EmployeeService {
 	@Override
 	public List<Department> selectAllDepart() {
 		return dao.selectAllDepart();
+	}
+
+	@Override
+	public int insert(Employee record) {
+		return dao.insert(record);
 	}
 
 }

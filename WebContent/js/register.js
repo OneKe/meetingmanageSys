@@ -13,6 +13,7 @@ $("document").ready(function() {
 	$("#username").blur(function(){
 		if($("#username").val().trim().length==0){
 			$("#usernamespan").show();
+			$("#usernamemessage").css('display','none')
 		}else{
 			$("#usernamespan").hide();
 			$.ajax({
@@ -42,13 +43,13 @@ $("document").ready(function() {
 	});
 	
 	//判断密码
-	$("#password").blur(function() {
-		if($("#password").val().trim().length == 0) {
+	$("#userpwd").blur(function() {
+		if($("#userpwd").val().trim().length == 0) {
 			$("#passwordspan").show();
 		} else {
 			$("#passwordspan").hide();
 		}
-		if($("#repassword").val().trim() != $("#password").val().trim()) {
+		if($("#repassword").val().trim() != $("#userpwd").val().trim()) {
 			$("#repasswordspan").show();
 		} else {
 			$("#repasswordspan").hide();
@@ -58,7 +59,7 @@ $("document").ready(function() {
 	
 	//判断重复密码
 	$("#repassword").blur(function() {
-		if($("#repassword").val().trim() != $("#password").val().trim()) {
+		if($("#repassword").val().trim() != $("#userpwd").val().trim()) {
 			$("#repasswordspan").show();
 		} else {
 			$("#repasswordspan").hide();
@@ -119,8 +120,8 @@ $("document").ready(function() {
 	//提交判断
 	$("#register").click(function() {
 		if(isUserN==true&&$("#username").val().trim().length != 0
-		&& $("#employeename").val().trim().length != 0 && $("#password").val().trim().length != 0
-		&& $("#password").val().trim() ==  $("#repassword").val().trim() && $("#phone").val().trim().length != 0
+		&& $("#employeename").val().trim().length != 0 && $("#userpwd").val().trim().length != 0
+		&& $("#userpwd").val().trim() ==  $("#repassword").val().trim() && $("#phone").val().trim().length != 0
 		&& $("#repassword").val().trim().length != 0
 		&& $("#departmentid").val()!=null){
 			$("#registerform").submit();
