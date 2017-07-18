@@ -26,7 +26,8 @@ public class EmployeeController {
 	private EmployeeService service;
 
 	TransferUtil tfu = new TransferUtil();
-
+	
+	//员工注册
 	@RequestMapping("/register.action")
 	public String register(Employee employee, Model model) {
 		if (employee != null) {
@@ -47,6 +48,7 @@ public class EmployeeController {
 		return "register";
 	}
 
+	//测试用户名是否合适
 	@RequestMapping("/testusername.action")
 	public void testUserName(String username, HttpServletResponse response, HttpServletRequest request)
 			throws IOException {
@@ -65,7 +67,8 @@ public class EmployeeController {
 			out.close();
 		}
 	}
-
+	
+	//获取所有部门
 	@RequestMapping("/selectdpm.action")
 	public void selectDepart(HttpServletResponse response, HttpServletRequest request) throws IOException {
 		request.setCharacterEncoding("UTF-8");
@@ -82,5 +85,25 @@ public class EmployeeController {
 			out.println(jsonArray.toJSONString());
 			out.close();
 		}
+	}
+	
+	//查询待审批员工
+	@RequestMapping("/searchempbystatus.action")
+	public String selectEmpByStatus(Model model){
+		List<Employee> list=service.selectEmpByStatus();
+		System.out.println(list.size());
+		if(list.size()>0){
+			model.addAttribute("list", list);
+			return "approveaccount";
+		}else{
+			model.addAttribute("message", "没有待审批员工!");
+			return "approveaccount";
+		}
+	}
+	
+	//审批员工
+	public String approveEmployee(Model model){
+		
+		return "approveaccount";
 	}
 }

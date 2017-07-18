@@ -43,4 +43,15 @@ public class EmployeeServiceImp implements EmployeeService {
 		return dao.insert(record);
 	}
 
+	@Override
+	public int approve(String employeeid) {
+		return dao.approve(employeeid);
+	}
+	
+	//查询待审批员工
+	@Override
+	public List<Employee> selectEmpByStatus() {
+		return dao.selectEmpByStatus();
+	}
+
 }

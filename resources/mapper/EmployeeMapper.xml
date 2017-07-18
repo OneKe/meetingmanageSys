@@ -8,8 +8,8 @@
 		<result column="UserPwd" jdbcType="VARCHAR" property="userpwd" />
 		<result column="Phone" jdbcType="VARCHAR" property="phone" />
 		<result column="Email" jdbcType="VARCHAR" property="email" />
-		<result column="DepartmentId" jdbcType="INTEGER" property="departmentid" />
-		<result column="Roleid" jdbcType="INTEGER" property="roleid" />
+		<result column="DepartmentId" jdbcType="VARCHAR" property="departmentid" />
+		<result column="Roleid" jdbcType="VARCHAR" property="roleid" />
 		<result column="EmployeeStatus" jdbcType="INTEGER" property="employeestatus" />
 		<result column="Remark" jdbcType="VARCHAR" property="remark" />
 	</resultMap>
@@ -172,4 +172,14 @@
 	<select id="selectAllDepart" resultType="com.chinasofti.mms.pojo.Department">
 		select * from department
 	</select>
+	
+	<!-- 查询待审批员工 -->
+	<select id="selectEmpByStatus" resultMap="BaseResultMap">
+		select * from employee where EmployeeStatus=0
+	</select>
+	
+	<!-- 员工审批 -->
+	<update id="approve">
+		
+	</update>
 </mapper>
