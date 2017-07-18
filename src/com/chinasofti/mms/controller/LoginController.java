@@ -34,6 +34,9 @@ public class LoginController {
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUserName", loginEmployee.getUsername());
 			session.setAttribute("loginEmployeeId", loginEmployee.getEmployeeid());
+			session.setAttribute("phone", loginEmployee.getPhone());
+			session.setAttribute("email", loginEmployee.getEmail());
+			session.setAttribute("employeestaus", loginEmployee.getEmployeestatus());
 			request.setAttribute("loginMessage", "登录成功！");
 			return new ModelAndView("notification");
 		}else{
