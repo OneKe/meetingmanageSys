@@ -30,9 +30,13 @@ public interface MeetingMapper {
     
     Meeting selectMeeting(int meetingid);
     
+    List<Meeting> selectByReservationistID(int reservationistID);
     
+    Meeting selectByMeetingId(int meetingId);
     
-    
+    boolean inserty(Meeting meeting);
+
+    List<Meeting> selectByRoomIdStartEndTime(int roomId, java.util.Date date, java.util.Date date2);
     
     
     

@@ -200,6 +200,35 @@
         select * from meeting
     </select>
 	
+	<select id="selectMeeting">
+	    select * from meeting where MeetingId = #{MeetingId}
+	</select>
+	
+	<select id="selectByReservationistID">
+	    select * from meeting where reservationistID=? and meetingstatus=1
+	</select>
+	
+	<select id="selectByMeetingId">
+	    select * from Meeting where MeetingId = #{MeetingId}
+	</select>
+	
+	<insert id="inserty">
+	    insert into Meeting (MeetingName,RoomId,ReservationistId,NumOfParticipants,BeginTime,EndTime,ReservationTime,MeetingStatus,Description)
+	    " + "values(#{RoomId},#{ReservationistId},#{NumOfParticipants},#{BeginTime},#{EndTime},#{ReservationTime},sysdate(),#{MeetingStatus},#{Description})
+	</insert>	
+	
+	<select id="selectByMeetingName">
+	    select * from Meeting where MeetingName = #{MeetingName}
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 </mapper>
