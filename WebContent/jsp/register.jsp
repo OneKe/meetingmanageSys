@@ -85,9 +85,9 @@
 							</tr>
 							<tr>
 								<td>账户名：</td>
-								<td class="inp">
+								<td class="inp" style="width: 500px">
 									<input type="text" id="username" name="username" maxlength="20" />
-									<span id="usernamespan">请输入账户名！</span>
+									<span id="usernamespan">请输入账户名！</span><span id="usernamemessage"></span>
 								</td>
 							</tr>
 							<tr>
@@ -108,19 +108,16 @@
 								<td>部门：</td>
 								<td class="inp">
 									<select id = "departmentid" name = "departmentid"  style="width:154px; height:22px">
-										<c:forEach var ="department" items="${departmentlist }">
-											<option value ="${department.getDepartmentId() }">${department.getDepartmentName()}</option>
-										</c:forEach>
+										
 									</select>
+									<span id="departmentidspan">请选择部门！</span>
 								</td>
 							</tr>
 							<tr>
 								<td>角色：</td>
 								<td class="inp">
 									<select id = "roleid" name = "roleid"  style="width:154px; height:22px">
-										<c:forEach var ="role" items="${rolelist }">
-											<option value ="${role.getRoleId() }">${role.getRoleName()}</option>
-										</c:forEach>
+										<option id="rid" value="2">普通用户</option>
 									</select>
 								</td>
 							</tr>

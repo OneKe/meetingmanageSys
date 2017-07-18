@@ -1,153 +1,175 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.chinasofti.mms.dao.EmployeeMapper">
-  <resultMap id="BaseResultMap" type="com.chinasofti.mms.pojo.Employee">
-    <id column="EmployeeId" jdbcType="INTEGER" property="employeeid" />
-    <result column="EmployeeName" jdbcType="VARCHAR" property="employeename" />
-    <result column="UserName" jdbcType="VARCHAR" property="username" />
-    <result column="UserPwd" jdbcType="VARCHAR" property="userpwd" />
-    <result column="Phone" jdbcType="VARCHAR" property="phone" />
-    <result column="Email" jdbcType="VARCHAR" property="email" />
-    <result column="DepartmentId" jdbcType="INTEGER" property="departmentid" />
-    <result column="Roleid" jdbcType="INTEGER" property="roleid" />
-    <result column="EmployeeStatus" jdbcType="INTEGER" property="employeestatus" />
-    <result column="Remark" jdbcType="VARCHAR" property="remark" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    EmployeeId, EmployeeName, UserName, UserPwd, Phone, Email, DepartmentId, Roleid, 
-    EmployeeStatus, Remark
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from employee
-    where EmployeeId = #{employeeid,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from employee
-    where EmployeeId = #{employeeid,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.chinasofti.mms.pojo.Employee">
-    insert into employee (EmployeeId, EmployeeName, UserName, 
-      UserPwd, Phone, Email, 
-      DepartmentId, Roleid, EmployeeStatus, 
-      Remark)
-    values (#{employeeid,jdbcType=INTEGER}, #{employeename,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
-      #{userpwd,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-      #{departmentid,jdbcType=INTEGER}, #{roleid,jdbcType=INTEGER}, #{employeestatus,jdbcType=INTEGER}, 
-      #{remark,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.chinasofti.mms.pojo.Employee">
-    insert into employee
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="employeeid != null">
-        EmployeeId,
-      </if>
-      <if test="employeename != null">
-        EmployeeName,
-      </if>
-      <if test="username != null">
-        UserName,
-      </if>
-      <if test="userpwd != null">
-        UserPwd,
-      </if>
-      <if test="phone != null">
-        Phone,
-      </if>
-      <if test="email != null">
-        Email,
-      </if>
-      <if test="departmentid != null">
-        DepartmentId,
-      </if>
-      <if test="roleid != null">
-        Roleid,
-      </if>
-      <if test="employeestatus != null">
-        EmployeeStatus,
-      </if>
-      <if test="remark != null">
-        Remark,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="employeeid != null">
-        #{employeeid,jdbcType=INTEGER},
-      </if>
-      <if test="employeename != null">
-        #{employeename,jdbcType=VARCHAR},
-      </if>
-      <if test="username != null">
-        #{username,jdbcType=VARCHAR},
-      </if>
-      <if test="userpwd != null">
-        #{userpwd,jdbcType=VARCHAR},
-      </if>
-      <if test="phone != null">
-        #{phone,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null">
-        #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="departmentid != null">
-        #{departmentid,jdbcType=INTEGER},
-      </if>
-      <if test="roleid != null">
-        #{roleid,jdbcType=INTEGER},
-      </if>
-      <if test="employeestatus != null">
-        #{employeestatus,jdbcType=INTEGER},
-      </if>
-      <if test="remark != null">
-        #{remark,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.chinasofti.mms.pojo.Employee">
-    update employee
-    <set>
-      <if test="employeename != null">
-        EmployeeName = #{employeename,jdbcType=VARCHAR},
-      </if>
-      <if test="username != null">
-        UserName = #{username,jdbcType=VARCHAR},
-      </if>
-      <if test="userpwd != null">
-        UserPwd = #{userpwd,jdbcType=VARCHAR},
-      </if>
-      <if test="phone != null">
-        Phone = #{phone,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null">
-        Email = #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="departmentid != null">
-        DepartmentId = #{departmentid,jdbcType=INTEGER},
-      </if>
-      <if test="roleid != null">
-        Roleid = #{roleid,jdbcType=INTEGER},
-      </if>
-      <if test="employeestatus != null">
-        EmployeeStatus = #{employeestatus,jdbcType=INTEGER},
-      </if>
-      <if test="remark != null">
-        Remark = #{remark,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where EmployeeId = #{employeeid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.chinasofti.mms.pojo.Employee">
-    update employee
-    set EmployeeName = #{employeename,jdbcType=VARCHAR},
-      UserName = #{username,jdbcType=VARCHAR},
-      UserPwd = #{userpwd,jdbcType=VARCHAR},
-      Phone = #{phone,jdbcType=VARCHAR},
-      Email = #{email,jdbcType=VARCHAR},
-      DepartmentId = #{departmentid,jdbcType=INTEGER},
-      Roleid = #{roleid,jdbcType=INTEGER},
-      EmployeeStatus = #{employeestatus,jdbcType=INTEGER},
-      Remark = #{remark,jdbcType=VARCHAR}
-    where EmployeeId = #{employeeid,jdbcType=INTEGER}
-  </update>
+	<resultMap id="BaseResultMap" type="com.chinasofti.mms.pojo.Employee">
+		<id column="EmployeeId" jdbcType="INTEGER" property="employeeid" />
+		<result column="EmployeeName" jdbcType="VARCHAR" property="employeename" />
+		<result column="UserName" jdbcType="VARCHAR" property="username" />
+		<result column="UserPwd" jdbcType="VARCHAR" property="userpwd" />
+		<result column="Phone" jdbcType="VARCHAR" property="phone" />
+		<result column="Email" jdbcType="VARCHAR" property="email" />
+		<result column="DepartmentId" jdbcType="INTEGER" property="departmentid" />
+		<result column="Roleid" jdbcType="INTEGER" property="roleid" />
+		<result column="EmployeeStatus" jdbcType="INTEGER" property="employeestatus" />
+		<result column="Remark" jdbcType="VARCHAR" property="remark" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		EmployeeId, EmployeeName, UserName, UserPwd, Phone, Email,
+		DepartmentId, Roleid,
+		EmployeeStatus, Remark
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from employee
+		where EmployeeId = #{employeeid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		employee
+		where EmployeeId = #{employeeid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.chinasofti.mms.pojo.Employee">
+		insert into employee
+		(EmployeeId, EmployeeName, UserName,
+		UserPwd, Phone, Email,
+		DepartmentId, Roleid, EmployeeStatus,
+		Remark)
+		values
+		(#{employeeid,jdbcType=INTEGER}, #{employeename,jdbcType=VARCHAR},
+		#{username,jdbcType=VARCHAR},
+		#{userpwd,jdbcType=VARCHAR},
+		#{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
+		#{departmentid,jdbcType=INTEGER}, #{roleid,jdbcType=INTEGER},
+		#{employeestatus,jdbcType=INTEGER},
+		#{remark,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.chinasofti.mms.pojo.Employee">
+		insert into employee
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="employeeid != null">
+				EmployeeId,
+			</if>
+			<if test="employeename != null">
+				EmployeeName,
+			</if>
+			<if test="username != null">
+				UserName,
+			</if>
+			<if test="userpwd != null">
+				UserPwd,
+			</if>
+			<if test="phone != null">
+				Phone,
+			</if>
+			<if test="email != null">
+				Email,
+			</if>
+			<if test="departmentid != null">
+				DepartmentId,
+			</if>
+			<if test="roleid != null">
+				Roleid,
+			</if>
+			<if test="employeestatus != null">
+				EmployeeStatus,
+			</if>
+			<if test="remark != null">
+				Remark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="employeeid != null">
+				#{employeeid,jdbcType=INTEGER},
+			</if>
+			<if test="employeename != null">
+				#{employeename,jdbcType=VARCHAR},
+			</if>
+			<if test="username != null">
+				#{username,jdbcType=VARCHAR},
+			</if>
+			<if test="userpwd != null">
+				#{userpwd,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				#{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				#{email,jdbcType=VARCHAR},
+			</if>
+			<if test="departmentid != null">
+				#{departmentid,jdbcType=INTEGER},
+			</if>
+			<if test="roleid != null">
+				#{roleid,jdbcType=INTEGER},
+			</if>
+			<if test="employeestatus != null">
+				#{employeestatus,jdbcType=INTEGER},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.chinasofti.mms.pojo.Employee">
+		update employee
+		<set>
+			<if test="employeename != null">
+				EmployeeName = #{employeename,jdbcType=VARCHAR},
+			</if>
+			<if test="username != null">
+				UserName = #{username,jdbcType=VARCHAR},
+			</if>
+			<if test="userpwd != null">
+				UserPwd = #{userpwd,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				Phone = #{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				Email = #{email,jdbcType=VARCHAR},
+			</if>
+			<if test="departmentid != null">
+				DepartmentId = #{departmentid,jdbcType=INTEGER},
+			</if>
+			<if test="roleid != null">
+				Roleid = #{roleid,jdbcType=INTEGER},
+			</if>
+			<if test="employeestatus != null">
+				EmployeeStatus = #{employeestatus,jdbcType=INTEGER},
+			</if>
+			<if test="remark != null">
+				Remark = #{remark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where EmployeeId = #{employeeid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.chinasofti.mms.pojo.Employee">
+		update employee
+		set EmployeeName = #{employeename,jdbcType=VARCHAR},
+		UserName =
+		#{username,jdbcType=VARCHAR},
+		UserPwd = #{userpwd,jdbcType=VARCHAR},
+		Phone = #{phone,jdbcType=VARCHAR},
+		Email = #{email,jdbcType=VARCHAR},
+		DepartmentId = #{departmentid,jdbcType=INTEGER},
+		Roleid =
+		#{roleid,jdbcType=INTEGER},
+		EmployeeStatus =
+		#{employeestatus,jdbcType=INTEGER},
+		Remark = #{remark,jdbcType=VARCHAR}
+		where EmployeeId = #{employeeid,jdbcType=INTEGER}
+	</update>
+	
+	<!-- 验证账户名是否合适 -->
+	<select id="selectEmployeeByUsername" resultType="java.lang.Integer">
+		select count(*) count from employee where
+		<if test="_parameter!=null">username=#{_parameter,jdbcType=VARCHAR}</if>
+	</select>
+	
+	<!-- 查询部门 -->
+	<select id="selectAllDepart" resultType="com.chinasofti.mms.pojo.Department">
+		select * from department
+	</select>
 </mapper>
