@@ -20,7 +20,7 @@ public interface MeetingMapper {
 
     int updateByPrimaryKey(Meeting record);
     
-    
+ 
    	List<Meeting> selectByEmployeeName(Integer id);
    	
     //根据list<Meeting>查处每个会议的预定者id
@@ -39,6 +39,8 @@ public interface MeetingMapper {
 	 */
 	Meeting findMeetingByMeetingId(String meetingid);
     
+    //搜索会议
+    List<Meeting> selectMeeting();
     
     
     

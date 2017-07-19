@@ -1,6 +1,5 @@
 package com.chinasofti.mms.service;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,8 +11,6 @@ import com.chinasofti.mms.pojo.Employee;
 import com.chinasofti.mms.pojo.Meeting;
 import com.chinasofti.mms.pojo.MeetingParticipants;
 import com.chinasofti.mms.pojo.MeetingRoom;
-
-
 
 @Service
 public class MeetingService {
@@ -43,10 +40,8 @@ public class MeetingService {
 		return dao.selectEmployeeByUsername(reservationistid);
 	}
 
-	
-	
-	
-
-
+	public List<Meeting> selectMeeting(){
+		return dao.selectMeeting();
+	}
 	
 }
