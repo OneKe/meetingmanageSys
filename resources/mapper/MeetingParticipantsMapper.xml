@@ -82,8 +82,23 @@
    </select>
    
    <!-- 用户登录 -->
-  	<select id="login" parameterType="Employee" resultType="Employee">
+  	<select id="findlogin" parameterType="Employee" resultType="Employee">
   	select * from employee where username=#{username} and userpwd=#{userpwd};
   	</select>
+  	
+  	<!-- 根据参加会议员工的id查询该员工参加的会议的id -->
+  	<select id="selectMeetingByOrder" resultType="MeetingParticipants">
+  	select * from MeetingParticipants where participantId =#{id}
+  	</select>
+  	<!-- 最新通知中，未来7天我要参加的会议:-->
+  	<select id="selectMeetingByMeetingId" resultType="Meeting">
+  	select * from meeting where meetingstatus=1 and begintime &lt; DATE_SUB(NOW(),INTERVAL -7 DAY) and BeginTime >=NOW() and meetingid =#{meetingid}
+  	</select>
+  	
+  	<select id="selectCancelMeeting" resultType="Meeting">
+  	select * from meeting where meetingstatus=2
+  	</select>
+  	
+  	
   
 </mapper>

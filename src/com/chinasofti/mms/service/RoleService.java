@@ -2,11 +2,16 @@ package com.chinasofti.mms.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.chinasofti.mms.dao.MeetingParticipantsMapper;
 import com.chinasofti.mms.pojo.Employee;
 import com.chinasofti.mms.pojo.Meeting;
-
+import com.chinasofti.mms.pojo.MeetingParticipants;
+@Service
 public class RoleService {
+	@Autowired
 	private MeetingParticipantsMapper dao;
 	
 	public MeetingParticipantsMapper getDao() {
@@ -30,8 +35,26 @@ public class RoleService {
 	 */
 	public Employee login(Employee employee) {
 		
+		System.out.println(employee);
 		
-		return dao.login(employee);
+		Employee em = dao.findlogin(employee);
+		
+		return em;
+	}
+
+	public List<MeetingParticipants> selectMeetingParticipantsByparticipantId(String id) {
+		
+		return dao.selectMeetingByOrder(id);
+	}
+
+	public Meeting comingMeeting(String meetingid) {
+
+		return dao.selectMeetingByMeetingId(meetingid);
+	}
+
+	public List<Meeting> cancelMeeting() {
+
+		return dao.selectCancelMeeting();
 	}
    
 }

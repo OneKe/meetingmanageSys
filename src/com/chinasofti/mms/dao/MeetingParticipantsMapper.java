@@ -2,10 +2,13 @@ package com.chinasofti.mms.dao;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.chinasofti.mms.pojo.Employee;
 import com.chinasofti.mms.pojo.Meeting;
 import com.chinasofti.mms.pojo.MeetingParticipants;
 
+@Repository
 public interface MeetingParticipantsMapper {
     /**
      * @mbggenerated Mon Jul 17 14:35:17 CST 2017
@@ -39,5 +42,11 @@ public interface MeetingParticipantsMapper {
 
 	List<Meeting> selectByEmployeeName(Integer id);
 
-	Employee login(Employee employee);
+	Employee findlogin(Employee employee);
+
+	List<MeetingParticipants> selectMeetingByOrder(String id);
+
+	Meeting selectMeetingByMeetingId(String meetingid);
+
+	List<Meeting> selectCancelMeeting();
 }

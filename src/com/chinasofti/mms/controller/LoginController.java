@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -13,9 +14,20 @@ import com.chinasofti.mms.service.RoleService;
 
 @Controller
 public class LoginController {
-	@RequestMapping("index.action")
-	public ModelAndView index(){
-		return new ModelAndView("login");
+	@Autowired
+	private RoleService employeeService;
+	
+	public RoleService getEmployeeService() {
+		return employeeService;
+	}
+
+	public void setEmployeeService(RoleService employeeService) {
+		this.employeeService = employeeService;
+	}
+
+	@RequestMapping("/index.action")
+	public String index(){
+		return "login";
 	}
 	
 	@RequestMapping("login.action")
@@ -28,9 +40,10 @@ public class LoginController {
 		}else{
 			employee = new Employee(UserName,UserPwd);
 		}
-		RoleService employeeService = new RoleService();
+		
 		Employee loginEmployee = employeeService.login(employee);
-		if(loginEmployee != null){
+		System.out.println(loginEmployee+"查询后的员工信息");
+		if(loginEmployee != null&&1==loginEmployee.getEmployeestatus()){
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUserName", loginEmployee.getUsername());
 			session.setAttribute("loginEmployeeId", loginEmployee.getEmployeeid());
@@ -38,7 +51,7 @@ public class LoginController {
 			session.setAttribute("email", loginEmployee.getEmail());
 			session.setAttribute("employeestaus", loginEmployee.getEmployeestatus());
 			request.setAttribute("loginMessage", "登录成功！");
-			return new ModelAndView("notification");
+			return new ModelAndView(" redirect:notification.action");
 		}else{
 			request.setAttribute("loginMessage", "登录失败！");
 			return new ModelAndView("login");
