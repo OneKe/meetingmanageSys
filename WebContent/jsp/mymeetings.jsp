@@ -77,7 +77,7 @@
                         <td>${meeting.getReservationTime()}</td>
                         <td>${employeeService.selectEmployeeName(meeting.getReservationistID()) }</td>
                         <td>
-                            <a class="clickbutton" href="meetingdetailsaction?meetingid=${meeting.getMeetingID()}">查看详情</a>
+                            <a class="clickbutton" href="meetingdetails.action?meetingid=${meeting.getMeetingID()}">查看详情</a>
                         </td>
                     </tr>
                     </c:forEach>

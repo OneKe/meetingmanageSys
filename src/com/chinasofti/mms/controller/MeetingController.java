@@ -1,5 +1,7 @@
 package com.chinasofti.mms.controller;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +11,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -25,7 +26,7 @@ public class MeetingController {
 	@Autowired
 	private MeetingService mservice;
 	
-	 public MeetingService getMservice() {
+	public MeetingService getMservice() {
 		return mservice;
 	}
 
@@ -62,15 +63,18 @@ public class MeetingController {
      }
 	
 	
-	@RequestMapping("/")
-	public ModelAndView MeetingDetail(HttpServletRequest request,HttpServletResponse response){
+	@RequestMapping("/meetingdetails.action")
+	public ModelAndView MeetingDetail(HttpServletRequest request,HttpServletResponse response) throws IOException{
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("text/html;charset=utf-8");
+		String meetingId = request.getParameter("meetingid");
+		if (null == meetingId || "".equals(meetingId)) {
+			meetingId = "0";
+		}
+		
+		
+		
 		return null;
 		
-	}
-	
-	public String selectMeeting(Model model){
-		List<Meeting> list=mservice.selectMeet();
-		model.addAttribute("list", list);
-		return null;
 	}
 }
