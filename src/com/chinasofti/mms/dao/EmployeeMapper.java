@@ -30,7 +30,7 @@ public interface EmployeeMapper {
 	List<Department> selectAllDepart();
 
 	// 员工审核
-	int approve(String employeeid);
+	int approve(Employee employee);
 	
 	//查询待审批员工
 	List<Employee> selectEmpByStatus();

@@ -161,25 +161,28 @@
 		Remark = #{remark,jdbcType=VARCHAR}
 		where EmployeeId = #{employeeid,jdbcType=INTEGER}
 	</update>
-	
+
 	<!-- 验证账户名是否合适 -->
 	<select id="selectEmployeeByUsername" resultType="java.lang.Integer">
 		select count(*) count from employee where
 		<if test="_parameter!=null">username=#{_parameter,jdbcType=VARCHAR}</if>
 	</select>
-	
+
 	<!-- 查询部门 -->
 	<select id="selectAllDepart" resultType="com.chinasofti.mms.pojo.Department">
 		select * from department
 	</select>
-	
+
 	<!-- 查询待审批员工 -->
 	<select id="selectEmpByStatus" resultMap="BaseResultMap">
-		select * from employee where EmployeeStatus=0
+		select * from employee
+		where EmployeeStatus=0
 	</select>
-	
+
 	<!-- 员工审批 -->
-	<update id="approve">
-		
+	<update id="approve" parameterType="com.chinasofti.mms.pojo.Employee">
+		update employee set
+		employeestatus=${employeestatus} where
+		employeeid=#{employeeid}
 	</update>
 </mapper>

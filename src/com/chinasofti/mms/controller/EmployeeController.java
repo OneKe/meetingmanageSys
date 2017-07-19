@@ -102,8 +102,42 @@ public class EmployeeController {
 	}
 	
 	//审批员工
-	public String approveEmployee(Model model){
-		
-		return "approveaccount";
+	@RequestMapping("/approveaccounts.action")
+	public String approveEmployee(String employeeid,Model model){
+		if(null!=employeeid&&!"".equals(employeeid)){
+			Employee employee=service.selectByPrimaryKey(employeeid);
+			if(null!=employee){
+				employee.setEmployeestatus(1);
+				int i=service.approve(employee);
+				if(i>0){
+					model.addAttribute("message", "审批成功");
+				}else{
+					model.addAttribute("message", "审批失败");
+				}
+			}else{
+				model.addAttribute("message", "该账户不存在");
+			}
+		}
+		return "forward:searchempbystatus.action";
+	}
+	
+	@RequestMapping("/removeaccounts.action")
+	public String refuseEmployee(String employeeid,Model model){
+		if(null!=employeeid&&!"".equals(employeeid)){
+			Employee employee=service.selectByPrimaryKey(employeeid);
+			System.out.println(employee);
+			if(null!=employee){
+				employee.setEmployeestatus(2);
+				int i=service.approve(employee);
+				if(i>0){
+					model.addAttribute("message", "操作成功");
+				}else{
+					model.addAttribute("message", "操作失败");
+				}
+			}else{
+				model.addAttribute("message", "该账户不存在");
+			}
+		}
+		return "forward:searchempbystatus.action";
 	}
 }

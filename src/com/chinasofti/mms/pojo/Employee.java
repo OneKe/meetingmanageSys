@@ -1,26 +1,26 @@
 package com.chinasofti.mms.pojo;
 
 public class Employee {
-	private String employeeid;//员工ID
+	private String employeeid;// 员工ID
 
-	private String employeename;//员工姓名
+	private String employeename;// 员工姓名
 
-	private String username;//账号名
+	private String username;// 账号名
 
-	private String userpwd;//密码
+	private String userpwd;// 密码
 
-	private String phone;//联系电话
+	private String phone;// 联系电话
 
-	private String email;//电子邮箱
+	private String email;// 电子邮箱
 
-	private String departmentid;//部门ID
+	private String departmentid;// 部门ID
 
-	private String roleid;//员工角色，1表示管理员，2表示普通用户
+	private String roleid;// 员工角色，1表示管理员，2表示普通用户
 
-	private Integer employeestatus;//员工状态，0表示待审核，1表示已审核，2表示审核未通过，3表示被关闭，默认为待审核
+	private Integer employeestatus;// 员工状态，0表示待审核，1表示已审核，2表示审核未通过，3表示被关闭，默认为待审核
 
-	private String remark;//备注
-	
+	private String remark;// 备注
+
 	public String getEmployeeid() {
 		return employeeid;
 	}
@@ -100,19 +100,24 @@ public class Employee {
 	public void setRemark(String remark) {
 		this.remark = remark == null ? null : remark.trim();
 	}
-	
-	//无参构造方法
+
+	// 无参构造方法
 	public Employee() {
-		
+
 	}
-	
+
 	public Employee(String username, String userpwd) {
 		this.username = username;
 		this.userpwd = userpwd;
 	}
-	
-	public Employee(String employeeid, String employeename, String username, String userpwd, String phone,
-			String email, String departmentid, String roleid, Integer employeestatus) {
+
+	public Employee(String employeeid, Integer employeestatus) {
+		this.employeeid = employeeid;
+		this.employeestatus = employeestatus;
+	}
+
+	public Employee(String employeeid, String employeename, String username, String userpwd, String phone, String email,
+			String departmentid, String roleid, Integer employeestatus) {
 		this.employeeid = employeeid;
 		this.employeename = employeename;
 		this.username = username;
@@ -123,9 +128,9 @@ public class Employee {
 		this.roleid = roleid;
 		this.employeestatus = employeestatus;
 	}
-	
-	public Employee(String employeeid, String employeename, String username, String userpwd, String phone,
-			String email, String departmentid, String roleid, Integer employeestatus, String remark) {
+
+	public Employee(String employeeid, String employeename, String username, String userpwd, String phone, String email,
+			String departmentid, String roleid, Integer employeestatus, String remark) {
 		this.employeeid = employeeid;
 		this.employeename = employeename;
 		this.username = username;

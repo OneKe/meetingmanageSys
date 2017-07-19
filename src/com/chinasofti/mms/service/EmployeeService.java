@@ -13,6 +13,9 @@ import com.chinasofti.mms.pojo.Employee;
 */
 public interface EmployeeService {
 	
+	//根据id查询员工
+	Employee selectByPrimaryKey(String employeeid);
+	
 	//根据账户名查询员工
 	int selectEmployeeByUsername(String username);
 	
@@ -23,7 +26,7 @@ public interface EmployeeService {
 	int insert(Employee record);
 	
 	//员工审核
-	int approve(String employeeid);
+	int approve(Employee employee);
 	
 	//查询待审批员工
 	List<Employee> selectEmpByStatus();

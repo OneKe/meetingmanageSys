@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="../styles/common.css"/>
         <script type="text/javascript"  src ="../js/jquery.js"></script>
         <script type="text/javascript"  src ="../js/approveaccounts.js"></script>
+        
     </head>
     <body>
     
@@ -58,7 +59,7 @@
                     人员管理 > 注册审批
                 </div>
                 <table class="listtable">
-                    <caption>所有待审批注册信息：<span style="float:right">${message }</span></caption>
+                    <caption>所有待审批注册信息：<span style="float:right;color:red">${message }</span></caption>
                     <tr class="listheader">
                         <th>姓名</th>
                         <th>账号名</th>
@@ -73,8 +74,8 @@
                         <td>${list.getPhone() }</td>
                         <td>${list.getEmail() }</td>
                         <td>
-                            <input type="button" class="clickbutton" value="通过"  onclick="check(${list.getEmployeeid()})"/>
-                            <input type="button" class="clickbutton" value="删除"  onclick="remove(${list.getEmployeeid()})"/>
+                            <input type="button" class="clickbutton" value="通过"  onclick="check('${list.getEmployeeid()}')"/>
+                            <input type="button" class="clickbutton" value="删除"  onclick="remove('${list.getEmployeeid()}')"/>
                         </td>
                     </tr>
                     </c:forEach>                 
