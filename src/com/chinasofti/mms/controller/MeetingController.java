@@ -1,5 +1,7 @@
 package com.chinasofti.mms.controller;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,8 +62,17 @@ public class MeetingController {
      }
 	
 	
-	@RequestMapping("/")
-	public ModelAndView MeetingDetail(HttpServletRequest request,HttpServletResponse response){
+	@RequestMapping("/meetingdetails.action")
+	public ModelAndView MeetingDetail(HttpServletRequest request,HttpServletResponse response) throws IOException{
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("text/html;charset=utf-8");
+		String meetingId = request.getParameter("meetingid");
+		if (null == meetingId || "".equals(meetingId)) {
+			meetingId = "0";
+		}
+		
+		
+		
 		return null;
 		
 	}

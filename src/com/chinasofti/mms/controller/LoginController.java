@@ -51,7 +51,7 @@ public class LoginController {
 			session.setAttribute("email", loginEmployee.getEmail());
 			session.setAttribute("employeestaus", loginEmployee.getEmployeestatus());
 			request.setAttribute("loginMessage", "登录成功！");
-			return new ModelAndView(" redirect:notification.action");
+			return new ModelAndView("forward:notification.action");
 		}else{
 			request.setAttribute("loginMessage", "登录失败！");
 			return new ModelAndView("login");
