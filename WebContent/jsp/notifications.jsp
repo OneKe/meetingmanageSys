@@ -1,4 +1,5 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
@@ -23,8 +24,8 @@
 			<div class="sidebar-menugroup">
 				<div class="sidebar-grouptitle">个人中心</div>
 				<ul class="sidebar-menu">
-					<li class="sidebar-menuitem"><a href="notificationaction">最新通知</a></li>
-					<li class="sidebar-menuitem active"><a href="mybookingaction">我的预定</a></li>
+					<li class="sidebar-menuitem"><a href="notification.action">最新通知</a></li>
+					<li class="sidebar-menuitem active"><a href="mybooking.action">我的预定</a></li>
 					<li class="sidebar-menuitem"><a
 						href="meetingparticipantsaction">我的会议</a></li>
 				</ul>
@@ -32,25 +33,25 @@
 			<div class="sidebar-menugroup">
 				<div class="sidebar-grouptitle">人员管理</div>
 				<ul class="sidebar-menu">
-					<li class="sidebar-menuitem"><a href="departments.jsp">部门管理</a></li>
-					<li class="sidebar-menuitem"><a href="register.jsp">员工注册</a></li>
-					<li class="sidebar-menuitem"><a href="approveaccount.jsp">注册审批</a></li>
-					<li class="sidebar-menuitem"><a href="searchemployees.jsp">搜索员工</a></li>
+					<li class="sidebar-menuitem"><a href="jsp/departments.jsp">部门管理</a></li>
+					<li class="sidebar-menuitem"><a href="jsp/register.jsp">员工注册</a></li>
+					<li class="sidebar-menuitem"><a href="jsp/approveaccount.jsp">注册审批</a></li>
+					<li class="sidebar-menuitem"><a href="jsp/searchemployees.jsp">搜索员工</a></li>
 				</ul>
 			</div>
 			<div class="sidebar-menugroup">
 				<div class="sidebar-grouptitle">会议预定</div>
 				<ul class="sidebar-menu">
-					<li class="sidebar-menuitem"><a href="addmeetingroom.jsp">添加会议室</a></li>
-					<li class="sidebar-menuitem"><a href="meetingrooms.jsp">查看会议室</a></li>
-					<li class="sidebar-menuitem"><a href="bookmeeting.jsp">预定会议</a></li>
-					<li class="sidebar-menuitem"><a href="searchmeetings.jsp">搜索会议</a></li>
+					<li class="sidebar-menuitem"><a href="jsp/addmeetingroom.jsp">添加会议室</a></li>
+					<li class="sidebar-menuitem"><a href="jsp/meetingrooms.jsp">查看会议室</a></li>
+					<li class="sidebar-menuitem"><a href="jsp/bookmeeting.jsp">预定会议</a></li>
+					<li class="sidebar-menuitem"><a href="jsp/searchmeetings.jsp">搜索会议</a></li>
 				</ul>
 			</div>
 		</div>
 		<div class="page-content">
 			<div class="content-nav">
-				个人中心 > <a href="notifications">最新通知</a>
+				个人中心 > <a href="notification.action">最新通知</a>
 			</div>
 			<table class="listtable">
 				<caption>未来7天我要参加的会议:</caption>
@@ -61,18 +62,21 @@
 					<th>结束时间</th>
 					<th style="width: 100px">操作</th>
 				</tr>
+						<%
+						int j = 0;
+						ArrayList lists = (ArrayList)request.getAttribute("ur");
+						%>
 				<c:forEach var="comemeeting" items="${meetinglist}">
 					<tr>
 						<td>${comemeeting.getMeetingname()}</td>
-						<td>${ur}</td>
+						<td><%=lists.get(j) %></td>
+						<% j++; %>
 						<td>${comemeeting.getBegintime()}</td>
 						<td>${comemeeting.getEndtime()}</td>
-						<td><a class="clickbutton" href="meetingdetailsaction?meetingid=${meeting.getMeetingid()}">查看详情</a>
+						<td><a class="clickbutton" href="meetingdetails.action?meetingid=${meeting.getMeetingid()}">查看详情</a>
 						</td>
 					</tr>
 				</c:forEach>
-
-
 
 			</table>
 			<table class="listtable">
@@ -85,19 +89,22 @@
 					<th>取消原因</th>
 					<th style="width: 100px">操作</th>
 				</tr>
+						<%
+						int i = 0;
+						ArrayList list = (ArrayList)request.getAttribute("cr");
+						%>
 				<c:forEach var="cancelmeeting" items="${cancellist}">
 					<tr>
 						<td>${cancelmeeting.getMeetingname()}</td>
-						<td>${cr}</td>
+						<td><%=list.get(i) %></td>
+						<% i++; %>
 						<td>${cancelmeeting.getBegintime()}</td>
 						<td>${cancelmeeting.getEndtime()}</td>
 						<td>${cancelmeeting.getDescription()}</td>
-						<td><a class="clickbutton" href="meetingdetails.jsp">查看详情</a>
+						<td><a class="clickbutton" href="jsp/meetingdetails.jsp">查看详情</a>
 						</td>
 					</tr>
 				</c:forEach>
-
-
 
 			</table>
 		</div>

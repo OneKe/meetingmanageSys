@@ -70,8 +70,10 @@ public class NotificationController {
 		} else {
 			mv.addObject("meetingmessage", "未来7天没有要参加的会议!");
 		}
+		System.out.println(cr+"********************");
 		mv.addObject("ur", ur);
 		mv.addObject("cr", cr);
+		
 		
 		return mv;
 	}
