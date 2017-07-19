@@ -175,52 +175,19 @@
 		Description = #{description,jdbcType=VARCHAR}
 		where MeetingId = #{meetingid,jdbcType=INTEGER}
 	</update>
+	<!--  通过参加会议的员工的id查找员工与会议关系的对象 -->
+	<select id="selectListsById" resultType="MeetingParticipants" parameterType="com.chinasofti.mms.pojo.Meeting">
+	select * from meetingparticipants where ParticipantId=#{id}
+	</select>
+	
+	<!-- 通过员工与会议关系的对象拿到会议id，通过会议id查询该会议 -->
+	<select id="findMeetingByMeetingId" resultType="Meeting" parameterType="com.chinasofti.mms.pojo.Meeting">
+	select * from meeting where meetingid = #{meetingid}
+	</select>
 
-	<select id="cancelMeeting" resultMap="BaseResultMap"> select * from meeting
-		where meetingstatus=2 </select>
-
-	<select id="comingMeeting" parameterType="com.chinasofti.mms.pojo.Meeting"
-		resultMap="BaseResultMap">
-
-		select * from meeting where meetingstatus=1 and begintime &lt;
-		DATE_SUB(NOW(),INTERVAL -7 DAY) and BeginTime >=NOW() and meetingid
-		=#{meetingid}
-
+	<select id="findUserIdByMeetingId" resultType="java.lang.String" parameterType="com.chinasofti.mms.pojo.Meeting">
+	 select employeename from employee where ParticipantId=#{id}
 	</select>
-	
-	<update id="alterMeeting" parameterType="com.chinasofti.mms.pojo.Meeting" >
-	    update meeting set description = #{description} where meetingid=#{meetingid}
-	</update>
-	
-	<update id="alterMeetingStatus" parameterType="com.chinasofti.mms.pojo.Meeting">
-        update meeting set meetingStatus = 2 , description = #{description} where meetingid=#{meetingid} 
-    </update>
-   
-    <select id="selectAllMeeting">
-        select * from meeting
-    </select>
-	
-	<select id="selectMeeting">
-	    select * from meeting where MeetingId = #{MeetingId}
-	</select>
-	
-	<select id="selectByReservationistID">
-	    select * from meeting where reservationistID=#{reservationistID} and meetingstatus=1
-	</select>
-	
-	<select id="selectByMeetingId">
-	    select * from Meeting where MeetingId = #{MeetingId}
-	</select>
-	
-	<insert id="inserty">
-	    insert into Meeting (MeetingName,RoomId,ReservationistId,NumOfParticipants,BeginTime,EndTime,ReservationTime,MeetingStatus,Description)
-	    " + "values(#{RoomId},#{ReservationistId},#{NumOfParticipants},#{BeginTime},#{EndTime},#{ReservationTime},sysdate(),#{MeetingStatus},#{Description})
-	</insert>	
-	
-	<select id="selectByMeetingName">
-	    select * from Meeting where MeetingName = #{MeetingName}
-	</select>
-	
 	
 	
 </mapper>

@@ -3,6 +3,7 @@ package com.chinasofti.mms.dao;
 import java.util.List;
 
 import com.chinasofti.mms.pojo.Meeting;
+import com.chinasofti.mms.pojo.MeetingParticipants;
 
 public interface MeetingMapper {
     
@@ -18,26 +19,24 @@ public interface MeetingMapper {
 
     int updateByPrimaryKey(Meeting record);
     
-    List<Meeting> cancelMeeting();
     
-    Meeting comingMeeting(int id);
+   	List<Meeting> selectByEmployeeName(Integer id);
+   	
+    //根据list<Meeting>查处每个会议的预定者id
+	Meeting findUserIdByMeetingId(String id);
+	
+	
+    String selectEmployeeByUsername(String id);
     
-    boolean alterMeeting(Meeting meeting);
-    
-    boolean alterMeetingStatus(int meetingid, String de);
-    
-    List<Meeting> selectAllMeeting();
-    
-    Meeting selectMeeting(int meetingid);
-    
-    List<Meeting> selectByReservationistID(int reservationistID);
-    
-    Meeting selectByMeetingId(int meetingId);
-    
-    boolean inserty(Meeting meeting);
-
-    List<Meeting> selectByRoomIdStartEndTime(int roomId, java.util.Date date, java.util.Date date2);
-    
+    /*
+     * 通过参加会议的员工的id查找员工与会议关系的对象
+     */
+	List<MeetingParticipants> selectListsById(String id);
+	
+	/*
+	 * 通过员工与会议关系的对象拿到会议id，通过会议id查询该会议
+	 */
+	Meeting findMeetingByMeetingId(String meetingid);
     
     
     

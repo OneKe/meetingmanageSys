@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.chinasofti.mms.dao.MeetingMapper;
 import com.chinasofti.mms.pojo.Employee;
 import com.chinasofti.mms.pojo.Meeting;
+import com.chinasofti.mms.pojo.MeetingParticipants;
 import com.chinasofti.mms.pojo.MeetingRoom;
 
 
@@ -27,37 +28,24 @@ public class MeetingService {
 		this.dao = dao;
 	}
     
-	public List<Meeting> cancelMeeting() {
-		return dao.cancelMeeting();
+	public List<MeetingParticipants> selectMeetingParticipantsByparticipantId(String id) {
+		
+		return dao.selectListsById(id);
 	}
+
+	public Meeting findMeetingByMeetingId(String meetingid) {
+		
+		return dao.findMeetingByMeetingId(meetingid);
+	}
+
+	public String findUserIdByMeetingId(String reservationistid) {
+		
+		return dao.selectEmployeeByUsername(reservationistid);
+	}
+
 	
-	public Meeting comingMeeting(int id) {
-		return dao.comingMeeting(id);
-	}
-
-	public boolean alterMeeting(Meeting meeting) {
-		return dao.alterMeeting(meeting);
-	}
-
-	public boolean alterMeetingStatus(int meetingid,String de) {
-		return dao.alterMeetingStatus(meetingid,de);
-	}
-
-	public List<Meeting> selectAllMeeting() {
-		return dao.selectAllMeeting();
-	}
-
-	public Meeting selectMeeting(int meetingid) {
-		return dao.selectMeeting(meetingid);
-	}
-
-	public List<Meeting> selectByReservationistID(int reservationistID) {
-		return dao.selectByReservationistID(reservationistID);
-	}
-
-	public Meeting selectByMeetingId(int meetingId) {
-		return dao.selectByMeetingId(meetingId);
-	}
+	
+	
 
 
 	

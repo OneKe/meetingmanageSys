@@ -5,7 +5,7 @@
     <head>
 <meta http-equiv="content-type" content="text/html" charset="utf-8">
         <title>CoolMeeting会议管理系统</title>
-        <link rel="stylesheet" href="../styles/common.css"/>
+        <link rel="stylesheet" href="styles/common.css"/>
         <style type="text/css">
             
         </style>
@@ -13,7 +13,7 @@
     <body>
         <div class="page-header">
             <div class="header-banner">
-                <img src="../images/header.png" alt="CoolMeeting"/>
+                <img src="images/header.png" alt="CoolMeeting"/>
             </div>
             <div class="header-title">
                 欢迎访问Cool-Meeting会议管理系统
@@ -31,7 +31,7 @@
                     <ul class="sidebar-menu">
                         <li class="sidebar-menuitem"><a href="notification.action">最新通知</a></li>
                         <li class="sidebar-menuitem active"><a href="mybooking.action">我的预定</a></li>
-                        <li class="sidebar-menuitem"><a href="meetingparticipants.action">我的会议</a></li>
+                        <li class="sidebar-menuitem"><a href="mymeeting.action">我的会议</a></li>
                     </ul>
                 </div>
                 <div class="sidebar-menugroup">
