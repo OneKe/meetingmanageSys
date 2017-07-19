@@ -26,7 +26,7 @@ public class MeetingController {
 	@Autowired
 	private MeetingService mservice;
 	
-	 public MeetingService getMservice() {
+	public MeetingService getMservice() {
 		return mservice;
 	}
 
@@ -71,7 +71,6 @@ public class MeetingController {
 		if (null == meetingId || "".equals(meetingId)) {
 			meetingId = "0";
 		}
-		
 		
 		
 		

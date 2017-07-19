@@ -300,7 +300,7 @@
 	 select * from employee where ParticipantId=#{id}
 	</select>
 	
-	<select id="selectMeeting" resultMap="Relevance">
+	<select id="selectMeet" resultMap="Relevance">
 		SELECT
 		m.MeetingName,mr.RoomName,m.BeginTime,m.EndTime,m.ReservationTime,e.EmployeeName
 		FROM meeting m,meetingroom mr,employee e WHERE m.RoomId=mr.RoomId AND

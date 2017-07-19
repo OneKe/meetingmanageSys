@@ -40,7 +40,7 @@ public class MeetingService {
 		return dao.selectEmployeeByUsername(reservationistid);
 	}
 
-	public List<Meeting> selectMeeting(){
+	public List<Meeting> selectMeet(){
 		return dao.selectMeeting();
 	}
 
