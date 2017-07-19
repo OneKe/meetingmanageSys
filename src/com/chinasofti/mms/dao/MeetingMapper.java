@@ -38,7 +38,8 @@ public interface MeetingMapper {
 
     List<Meeting> selectByRoomIdStartEndTime(int roomId, java.util.Date date, java.util.Date date2);
     
-    
+    //搜索会议
+    List<Meeting> selectMeeting();
     
     
     

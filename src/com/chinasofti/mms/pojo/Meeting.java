@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Meeting {
     
-    private Integer meetingid;
+    private String meetingid;
 
     private String meetingname;
 
@@ -25,12 +25,32 @@ public class Meeting {
     private String meetingstatus;
 
     private String description;
+    
+    private MeetingRoom meetingRoom;
+    
+    private Employee employee;
 
-	public Integer getMeetingid() {
+	public MeetingRoom getMeetingRoom() {
+		return meetingRoom;
+	}
+
+	public void setMeetingRoom(MeetingRoom meetingRoom) {
+		this.meetingRoom = meetingRoom;
+	}
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+
+	public String getMeetingid() {
 		return meetingid;
 	}
 
-	public void setMeetingid(Integer meetingid) {
+	public void setMeetingid(String meetingid) {
 		this.meetingid = meetingid;
 	}
 
@@ -117,7 +137,7 @@ public class Meeting {
 	public Meeting() {
 	}
 	
-	public Meeting(Integer meetingid, String meetingname, String roomid, String reservationistid,
+	public Meeting(String meetingid, String meetingname, String roomid, String reservationistid,
 			Integer numofparticipants, Date begintime, Date endtime, Date reservationtime, Date canceledtime,
 			String meetingstatus, String description) {
 		this.meetingid = meetingid;
