@@ -43,5 +43,7 @@ public class MeetingService {
 	public List<Meeting> selectMeeting(){
 		return dao.selectMeeting();
 	}
+
+	
 	
 }
