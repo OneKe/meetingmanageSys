@@ -2,7 +2,7 @@ package com.chinasofti.mms.pojo;
 
 public class MeetingRoom {
     
-    private Integer roomid;
+    private String roomid;
 
     private String roomcode;
 
@@ -14,11 +14,11 @@ public class MeetingRoom {
 
     private String description;
 
-	public Integer getRoomid() {
+	public String getRoomid() {
 		return roomid;
 	}
 
-	public void setRoomid(Integer roomid) {
+	public void setRoomid(String roomid) {
 		this.roomid = roomid;
 	}
 
@@ -120,7 +120,7 @@ public class MeetingRoom {
 	public MeetingRoom() {
 	}
 	
-	public MeetingRoom(Integer roomid, String roomcode, String roomname, Integer roomcapacity, Integer roomstatus,
+	public MeetingRoom(String roomid, String roomcode, String roomname, Integer roomcapacity, Integer roomstatus,
 			String description) {
 		this.roomid = roomid;
 		this.roomcode = roomcode;

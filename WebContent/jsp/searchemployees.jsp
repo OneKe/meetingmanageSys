@@ -56,7 +56,7 @@
                 <div class="content-nav">
                     会议预定 > 搜索员工
                 </div>
-                <form action = "searchemployeesaction"  method ="post"  id="searchform">
+                <form action = "searchemployees.action"  method ="post"  id="searchform">
                     <fieldset>
                         <legend>搜索会议</legend>
                         
@@ -129,7 +129,7 @@
         <div class="page-footer">
             <hr/>
             更多问题，欢迎联系<a href="mailto:webmaster@eeg.com">管理员</a>
-            <img src="images/footer.png" alt="CoolMeeting"/>
+            <img src="../images/footer.png" alt="CoolMeeting"/>
         </div>
     </body>
 </html>
