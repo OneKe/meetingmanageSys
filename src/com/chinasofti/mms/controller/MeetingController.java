@@ -18,8 +18,6 @@ import com.chinasofti.mms.pojo.Meeting;
 import com.chinasofti.mms.pojo.MeetingParticipants;
 import com.chinasofti.mms.service.MeetingService;
 
-import sun.print.resources.serviceui;
-
 @Controller
 public class MeetingController {
 	@Autowired
@@ -68,9 +66,13 @@ public class MeetingController {
 		
 	}
 	
+	@RequestMapping("/jsp/searchmeeting.action")
 	public String selectMeeting(Model model){
 		List<Meeting> list=mservice.selectMeet();
+		for (Meeting meeting : list) {
+			System.out.println(meeting);
+		}
 		model.addAttribute("list", list);
-		return null;
+		return "searchmeetings";
 	}
 }

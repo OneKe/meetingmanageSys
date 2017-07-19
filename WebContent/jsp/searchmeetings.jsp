@@ -57,7 +57,7 @@
                 <div class="content-nav">
                     会议预定 > 搜索会议
                 </div>
-                <form action="searchmeetingaction"  method="post"  id="searchmeetingform">
+                <form action="searchmeeting.action"  method="post"  id="searchmeetingform">
                     <fieldset>
                         <legend>搜索会议</legend>
                         <table class="formtable">
@@ -126,16 +126,11 @@
                         <th>预定者</th>
                         <th>操作</th>
                     </tr>
-                    <c:forEach var="meeting" items = "${meetinglist }">
+                    <c:forEach var="meeting" items = "${list }">
                     	<tr>
-                        <td>${meeting.getMeetingName() }</td>
-                        <td>${meetingRoomService.selectByRoomId(meeting.getRoomID()).getRoomName()}</td>
-                        <td>${meeting.getStartTime() }</td>
-                        <td>${meeting.getEndTime() }</td>
-                        <td>${meeting.getReservationTime()}</td>
-                        <td>${employeeService.selectByEmployeeId(meeting.getReservationistID()).getEmployeeName()}</td>
+                        <td>${meeting.getMeetingname() }</td>
                         <td>
-                            <a class="clickbutton" href="meetingdetailsaction?meetingid=${meeting.getMeetingID()}">查看详情</a>
+                            <a class="clickbutton" href="meetingdetailsaction">查看详情</a>
                         </td>
                     </tr>
                     </c:forEach>

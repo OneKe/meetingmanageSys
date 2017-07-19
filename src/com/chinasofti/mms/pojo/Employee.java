@@ -20,7 +20,7 @@ public class Employee {
 	private Integer employeestatus;// 员工状态，0表示待审核，1表示已审核，2表示审核未通过，3表示被关闭，默认为待审核
 
 	private String remark;// 备注
-
+	
 	public String getEmployeeid() {
 		return employeeid;
 	}

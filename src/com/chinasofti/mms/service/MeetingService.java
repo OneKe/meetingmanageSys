@@ -1,6 +1,5 @@
 package com.chinasofti.mms.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import com.chinasofti.mms.dao.MeetingMapper;
 import com.chinasofti.mms.pojo.Employee;
 import com.chinasofti.mms.pojo.Meeting;
 import com.chinasofti.mms.pojo.MeetingParticipants;
-import com.chinasofti.mms.pojo.MeetingRoom;
 
 @Service
 public class MeetingService {
@@ -41,7 +39,7 @@ public class MeetingService {
 	}
 
 	public List<Meeting> selectMeet(){
-		return dao.selectMeeting();
+		return dao.selectMeet();
 	}
 	
 }

@@ -17,37 +17,18 @@
 
 	<resultMap type="com.chinasofti.mms.pojo.Meeting" id="Relevance">
 		<id column="MeetingId" jdbcType="VARCHAR" property="meetingid" />
-		<result column="MeetingName" jdbcType="VARCHAR" property="meetingname" />
-		<result column="RoomId" jdbcType="VARCHAR" property="roomid" />
-		<result column="ReservationistId" jdbcType="VARCHAR" property="reservationistid" />
-		<result column="NumOfParticipants" jdbcType="INTEGER" property="numofparticipants" />
-		<result column="BeginTime" jdbcType="TIMESTAMP" property="begintime" />
-		<result column="EndTime" jdbcType="TIMESTAMP" property="endtime" />
-		<result column="ReservationTime" jdbcType="TIMESTAMP" property="reservationtime" />
-		<result column="CanceledTime" jdbcType="TIMESTAMP" property="canceledtime" />
-		<result column="MeetingStatus" jdbcType="VARCHAR" property="meetingstatus" />
-		<result column="Description" jdbcType="VARCHAR" property="description" />
-		<association property="mtr"
-			javaType="com.chinasofti.mms.pojo.MeetingRoom">
+		<result column="MeetingRoom" jdbcType="VARCHAR" property="meetingroom" />
+		<result column="BeginTime" jdbcType="DATE" property="begintime" />
+		<result column="EndTime" jdbcType="DATE" property="endtime" />
+		<result column="ReservationTime" jdbcType="DATE" property="reservationtime" />
+		<collection property="MeetingRoom" javaType="com.chinasofti.mms.pojo.MeetingRoom">
 			<id column="RoomId" jdbcType="VARCHAR" property="roomid" />
-			<result column="RoomCode" jdbcType="VARCHAR" property="roomcode" />
 			<result column="RoomName" jdbcType="VARCHAR" property="roomname" />
-			<result column="RoomCapacity" jdbcType="INTEGER" property="roomcapacity" />
-			<result column="RoomStatus" jdbcType="INTEGER" property="roomstatus" />
-			<result column="Description" jdbcType="VARCHAR" property="description" />
-		</association>
-		<association property="ely" javaType="com.chinasofti.mms.pojo.Employee">
+		</collection>
+		<collection property="Employee" javaType="com.chinasofti.mms.pojo.Employee">
 			<id column="EmployeeId" jdbcType="VARCHAR" property="employeeid" />
 			<result column="EmployeeName" jdbcType="VARCHAR" property="employeename" />
-			<result column="UserName" jdbcType="VARCHAR" property="username" />
-			<result column="UserPwd" jdbcType="VARCHAR" property="userpwd" />
-			<result column="Phone" jdbcType="VARCHAR" property="phone" />
-			<result column="Email" jdbcType="VARCHAR" property="email" />
-			<result column="DepartmentId" jdbcType="VARCHAR" property="departmentid" />
-			<result column="Roleid" jdbcType="INTEGER" property="roleid" />
-			<result column="EmployeeStatus" jdbcType="INTEGER" property="employeestatus" />
-			<result column="Remark" jdbcType="VARCHAR" property="remark" />
-		</association>
+		</collection>
 	</resultMap>
 
 	<sql id="Base_Column_List">
@@ -249,12 +230,14 @@
 	</select>
 
 	<update id="alterMeeting" parameterType="com.chinasofti.mms.pojo.Meeting">
-		update meeting set description = #{description} where
+		update meeting set
+		description = #{description} where
 		meetingid=#{meetingid}
 	</update>
 
 	<update id="alterMeetingStatus" parameterType="com.chinasofti.mms.pojo.Meeting">
-		update meeting set meetingStatus = 2 , description = #{description} where
+		update meeting set
+		meetingStatus = 2 , description = #{description} where
 		meetingid=#{meetingid}
 	</update>
 
@@ -267,7 +250,8 @@
 	</select>
 
 	<select id="selectByReservationistID">
-		select * from meeting where reservationistID=#{reservationistID} and
+		select * from meeting where
+		reservationistID=#{reservationistID} and
 		meetingstatus=1
 	</select>
 
@@ -283,29 +267,34 @@
 	</insert>
 
 	<select id="selectByMeetingName">
-		select * from Meeting where MeetingName = #{MeetingName}
-	</select>
-	
-		<!--  通过参加会议的员工的id查找员工与会议关系的对象 -->
-	<select id="selectListsById" resultType="MeetingParticipants" parameterType="java.lang.String">
-	select * from meetingparticipants where ParticipantId=#{id}
-	</select>
-	
-	<!-- 通过员工与会议关系的对象拿到会议id，通过会议id查询该会议 -->
-	<select id="findMeetingByMeetingId" resultType="Meeting" parameterType="java.lang.String">
-	select * from meeting where meetingid = #{meetingid}
+		select * from Meeting where MeetingName =
+		#{MeetingName}
 	</select>
 
-	<select id="selectEmployeeByUsername" resultType="Employee" parameterType="java.lang.String">
-	 select * from employee where ParticipantId=#{id}
+	<!-- 通过参加会议的员工的id查找员工与会议关系的对象 -->
+	<select id="selectListsById" resultType="MeetingParticipants"
+		parameterType="java.lang.String">
+		select * from meetingparticipants where
+		ParticipantId=#{id}
 	</select>
-	
+
+	<!-- 通过员工与会议关系的对象拿到会议id，通过会议id查询该会议 -->
+	<select id="findMeetingByMeetingId" resultType="Meeting"
+		parameterType="java.lang.String">
+		select * from meeting where meetingid = #{meetingid}
+	</select>
+
+	<select id="selectEmployeeByUsername" resultType="Employee"
+		parameterType="java.lang.String">
+		select * from employee where ParticipantId=#{id}
+	</select>
+
 	<select id="selectMeet" resultMap="Relevance">
 		SELECT
 		m.MeetingName,mr.RoomName,m.BeginTime,m.EndTime,m.ReservationTime,e.EmployeeName
 		FROM meeting m,meetingroom mr,employee e WHERE m.RoomId=mr.RoomId AND
 		m.ReservationistId=e.EmployeeId
 	</select>
-	
-	
+
+
 </mapper>

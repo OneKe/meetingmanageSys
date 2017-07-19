@@ -13,7 +13,7 @@ public class MeetingRoom {
     private Integer roomstatus;
 
     private String description;
-
+    
 	public String getRoomid() {
 		return roomid;
 	}

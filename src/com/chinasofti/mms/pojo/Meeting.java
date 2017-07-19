@@ -26,24 +26,24 @@ public class Meeting {
 
     private String description;
     
-    private MeetingRoom meetingRoom;
+    private MeetingRoom MeetingRoom;
     
-    private Employee employee;
+    private Employee Employee;
 
 	public MeetingRoom getMeetingRoom() {
-		return meetingRoom;
+		return MeetingRoom;
 	}
 
 	public void setMeetingRoom(MeetingRoom meetingRoom) {
-		this.meetingRoom = meetingRoom;
+		MeetingRoom = meetingRoom;
 	}
 
 	public Employee getEmployee() {
-		return employee;
+		return Employee;
 	}
 
 	public void setEmployee(Employee employee) {
-		this.employee = employee;
+		Employee = employee;
 	}
 
 	public String getMeetingid() {
@@ -158,9 +158,8 @@ public class Meeting {
 		return "Meeting [meetingid=" + meetingid + ", meetingname=" + meetingname + ", roomid=" + roomid
 				+ ", reservationistid=" + reservationistid + ", numofparticipants=" + numofparticipants + ", begintime="
 				+ begintime + ", endtime=" + endtime + ", reservationtime=" + reservationtime + ", canceledtime="
-				+ canceledtime + ", meetingstatus=" + meetingstatus + ", description=" + description + "]";
+				+ canceledtime + ", meetingstatus=" + meetingstatus + ", description=" + description + ", MeetingRoom="
+				+ MeetingRoom + ", Employee=" + Employee + "]";
 	}
 
-    
-   
 }

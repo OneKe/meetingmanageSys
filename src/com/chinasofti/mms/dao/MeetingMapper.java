@@ -40,7 +40,7 @@ public interface MeetingMapper {
 	Meeting findMeetingByMeetingId(String meetingid);
     
     //搜索会议
-    List<Meeting> selectMeeting();
+    List<Meeting> selectMeet();
     
     
     

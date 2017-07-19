@@ -11,7 +11,7 @@ $("document").ready(function() {
 	
 	//判断账户名
 	$("#username").blur(function(){
-		if($("#username").val().trim().length==0){
+		if($("#username").val().trim().length==0){ 
 			$("#usernamespan").show();
 			$("#usernamemessage").css('display','none')
 		}else{
