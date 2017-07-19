@@ -9,22 +9,29 @@ import com.chinasofti.mms.pojo.Employee;
 
 @Component
 public interface EmployeeMapper {
-    
-    int deleteByPrimaryKey(String employeeid);
 
-    int insert(Employee record);
+	int deleteByPrimaryKey(String employeeid);
 
-    int insertSelective(Employee record);
+	// 员工注册
+	int insert(Employee record);
 
-    Employee selectByPrimaryKey(String employeeid);
+	int insertSelective(Employee record);
 
-    int updateByPrimaryKeySelective(Employee record);
+	Employee selectByPrimaryKey(String employeeid);
 
-    int updateByPrimaryKey(Employee record);
-    
-    //验证账户名是否合适
-    int selectEmployeeByUsername(String username);
-    
-    //查询部门
-    List<Department> selectAllDepart();
+	int updateByPrimaryKeySelective(Employee record);
+
+	int updateByPrimaryKey(Employee record);
+
+	// 验证账户名是否合适
+	int selectEmployeeByUsername(String username);
+
+	// 查询部门
+	List<Department> selectAllDepart();
+
+	// 员工审核
+	int approve(Employee employee);
+	
+	//查询待审批员工
+	List<Employee> selectEmpByStatus();
 }

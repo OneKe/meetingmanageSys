@@ -13,6 +13,7 @@ public class MeetingController {
 	 @RequestMapping("/mymeeting.action")
      public ModelAndView MyMeeting(HttpServletRequest request,HttpServletResponse response){
     	HttpSession session = request.getSession();
+    	int id = (int) session.getAttribute("loginEmployeeId");
         ModelAndView mav = new ModelAndView("mymeeting.jsp");
         System.out.println("MeetingController -->");
     	

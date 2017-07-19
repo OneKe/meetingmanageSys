@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="../styles/common.css"/>
         <script type="text/javascript"  src ="../js/jquery.js"></script>
         <script type="text/javascript"  src ="../js/approveaccounts.js"></script>
+        
     </head>
     <body>
     
@@ -39,7 +40,7 @@
                     <ul class="sidebar-menu">
                         <li class="sidebar-menuitem"><a href="departments.jsp">部门管理</a></li>
                         <li class="sidebar-menuitem"><a href="register.jsp">员工注册</a></li>
-                        <li class="sidebar-menuitem"><a href="approveaccount.jsp">注册审批</a></li>
+                        <li class="sidebar-menuitem"><a href="searchempbystatus.action">注册审批</a></li>
                         <li class="sidebar-menuitem"><a href="searchemployees.jsp">搜索员工</a></li>
                     </ul>
                 </div>
@@ -58,7 +59,7 @@
                     人员管理 > 注册审批
                 </div>
                 <table class="listtable">
-                    <caption>所有待审批注册信息：<span style="float:right">${message }</span></caption>
+                    <caption>所有待审批注册信息：<span style="float:right;color:red">${message }</span></caption>
                     <tr class="listheader">
                         <th>姓名</th>
                         <th>账号名</th>
@@ -66,15 +67,15 @@
                         <th>电子邮件</th>
                         <th>操作</th>
                     </tr>
-                    <c:forEach var="employee" items = "${uncheckedEmployeeList }">
+                    <c:forEach var="list" items = "${list }">
                     	<tr>
-                        <td>${employee.getEmployeeName() }</td>
-                        <td>${employee.getUserName() }</td>
-                        <td>${employee.getPhone() }</td>
-                        <td>${employee.getEmail() }</td>
+                        <td>${list.getEmployeename() }</td>
+                        <td>${list.getUsername() }</td>
+                        <td>${list.getPhone() }</td>
+                        <td>${list.getEmail() }</td>
                         <td>
-                            <input type="button" class="clickbutton" value="通过"  onclick="check(${employee.getEmployeeId()})"/>
-                            <input type="button" class="clickbutton" value="删除"  onclick="remove(${employee.getEmployeeId()})"/>
+                            <input type="button" class="clickbutton" value="通过"  onclick="check('${list.getEmployeeid()}')"/>
+                            <input type="button" class="clickbutton" value="删除"  onclick="remove('${list.getEmployeeid()}')"/>
                         </td>
                     </tr>
                     </c:forEach>                 
@@ -84,7 +85,7 @@
         <div class="page-footer">
             <hr/>
             更多问题，欢迎联系<a href="mailto:webmaster@eeg.com">管理员</a>
-            <img src="images/footer.png" alt="CoolMeeting"/>
+            <img src="../images/footer.png" alt="CoolMeeting"/>
         </div>
     </body>
 </html>
