@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.chinasofti.mms.pojo.Employee;
 import com.chinasofti.mms.pojo.Meeting;
 import com.chinasofti.mms.pojo.MeetingParticipants;
 import com.chinasofti.mms.service.MeetingService;
@@ -38,7 +39,7 @@ public class MeetingController {
     	List<MeetingParticipants> lists = mservice.selectMeetingParticipantsByparticipantId(id);
     	List<Meeting> mList =new ArrayList<Meeting>();
     	List<String> namelist= new ArrayList<String>();
-    	String name=null;
+    	Employee employee;
     	if (lists!=null) {
 			for (MeetingParticipants mps : lists) {
 				Meeting meet = mservice.findMeetingByMeetingId(mps.getMeetingid());
@@ -48,9 +49,9 @@ public class MeetingController {
 			}
 		}
     	for (Meeting meeting : mList) {
-    		name= mservice.findUserIdByMeetingId(meeting.getReservationistid());
-    		if(name!=null){
-    			namelist.add(name);
+    		employee= mservice.selectEmployeeByUsername(meeting.getReservationistid());
+    		if(employee!=null){
+    			namelist.add(employee.getUsername());
     		}
 		}
         ModelAndView mav = new ModelAndView("mymeeting.jsp");

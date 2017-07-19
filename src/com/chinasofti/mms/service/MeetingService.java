@@ -38,7 +38,7 @@ public class MeetingService {
 		return dao.findMeetingByMeetingId(meetingid);
 	}
 
-	public String findUserIdByMeetingId(String reservationistid) {
+	public Employee selectEmployeeByUsername(String reservationistid) {
 		
 		return dao.selectEmployeeByUsername(reservationistid);
 	}

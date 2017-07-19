@@ -2,6 +2,7 @@ package com.chinasofti.mms.dao;
 
 import java.util.List;
 
+import com.chinasofti.mms.pojo.Employee;
 import com.chinasofti.mms.pojo.Meeting;
 import com.chinasofti.mms.pojo.MeetingParticipants;
 
@@ -26,7 +27,7 @@ public interface MeetingMapper {
 	Meeting findUserIdByMeetingId(String id);
 	
 	
-    String selectEmployeeByUsername(String id);
+	Employee selectEmployeeByUsername(String id);
     
     /*
      * 通过参加会议的员工的id查找员工与会议关系的对象
