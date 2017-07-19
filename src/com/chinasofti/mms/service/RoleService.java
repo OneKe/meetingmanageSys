@@ -56,5 +56,10 @@ public class RoleService {
 
 		return dao.selectCancelMeeting();
 	}
+
+	public 	String selectRoomNameByid(String roomid) {
+
+		return dao.selectRoomNameByid(roomid);
+	}
    
 }

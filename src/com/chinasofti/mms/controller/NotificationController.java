@@ -34,32 +34,44 @@ public class NotificationController {
 	public ModelAndView notification(HttpServletRequest request,HttpServletResponse response){
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("loginEmployeeId");
-		
+		ModelAndView mv =new ModelAndView("notifications");
 		List<MeetingParticipants> mpList = new ArrayList<MeetingParticipants>();
 		mpList = service.selectMeetingParticipantsByparticipantId(id);
 		List<Meeting> mList = new ArrayList<Meeting>();
+		List<String> ur = new ArrayList<String>();
+		List<String> cr = new ArrayList<String>();
+		
 		if (mpList != null) {
 			for (MeetingParticipants meetingParticipants : mpList) {
 				Meeting m = service.comingMeeting(meetingParticipants.getMeetingid());
+				
 				if (m != null) {
 					mList.add(m);
+					String roomname=service.selectRoomNameByid(m.getRoomid());
+					ur.add(roomname);
 				}
 			}
 		}
-
+		
+		
 		List<Meeting> cancellist = new ArrayList<Meeting>();
 		cancellist = service.cancelMeeting();
+		for (Meeting meet : cancellist) {
+			String cancelroom=service.selectRoomNameByid(meet.getRoomid());
+			cr.add(cancelroom);
+		}
 		if (cancellist.size() > 0) {
-			request.setAttribute("cancellist", cancellist);
+			mv.addObject("cancellist", cancellist);
 		} else {
-			request.setAttribute("cancelmessage", "没有取消的会议!");
+			mv.addObject("cancelmessage", "没有取消的会议!");
 		}
 		if (mList.size() > 0) {
-			request.setAttribute("meetinglist", mList);
+			mv.addObject("meetinglist", mList);
 		} else {
-			request.setAttribute("meetingmessage", "未来7天没有要参加的会议!");
+			mv.addObject("meetingmessage", "未来7天没有要参加的会议!");
 		}
-		ModelAndView mv =new ModelAndView("notifications");
+		mv.addObject("ur", ur);
+		mv.addObject("cr", cr);
 		
 		return mv;
 	}

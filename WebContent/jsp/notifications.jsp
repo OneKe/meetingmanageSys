@@ -6,12 +6,12 @@
 <head>
 <meta http-equiv="content-type" content="text/html" charset="utf-8">
 <title>CoolMeeting会议管理系统</title>
-<link rel="stylesheet" href="../styles/common.css" />
+<link rel="stylesheet" href="styles/common.css" />
 </head>
 <body>
 	<div class="page-header">
 		<div class="header-banner">
-			<img src="../images/header.png" alt="CoolMeeting" />
+			<img src="images/header.png" alt="CoolMeeting" />
 		</div>
 		<div class="header-title">欢迎访问Cool-Meeting会议管理系统</div>
 		<div class="header-quicklink">
@@ -63,11 +63,11 @@
 				</tr>
 				<c:forEach var="comemeeting" items="${meetinglist}">
 					<tr>
-						<td>${comemeeting.getMeetingName()}</td>
-						<td>${meetingRoom.selectByRoomId(comemeeting.getRoomID()).getRoomName()}</td>
-						<td>${comemeeting.getStartTime()}</td>
-						<td>${comemeeting.getEndTime()}</td>
-						<td><a class="clickbutton" href="meetingdetailsaction?meetingid=${meeting.getMeetingID()}">查看详情</a>
+						<td>${comemeeting.getMeetingname()}</td>
+						<td>${ur}</td>
+						<td>${comemeeting.getBegintime()}</td>
+						<td>${comemeeting.getEndtime()}</td>
+						<td><a class="clickbutton" href="meetingdetailsaction?meetingid=${meeting.getMeetingid()}">查看详情</a>
 						</td>
 					</tr>
 				</c:forEach>
@@ -87,10 +87,10 @@
 				</tr>
 				<c:forEach var="cancelmeeting" items="${cancellist}">
 					<tr>
-						<td>${cancelmeeting.getMeetingName()}</td>
-						<td>${meetingRoom.selectByRoomId(cancelmeeting.getRoomID()).getRoomName()}</td>
-						<td>${cancelmeeting.getStartTime()}</td>
-						<td>${cancelmeeting.getEndTime()}</td>
+						<td>${cancelmeeting.getMeetingname()}</td>
+						<td>${cr}</td>
+						<td>${cancelmeeting.getBegintime()}</td>
+						<td>${cancelmeeting.getEndtime()}</td>
 						<td>${cancelmeeting.getDescription()}</td>
 						<td><a class="clickbutton" href="meetingdetails.jsp">查看详情</a>
 						</td>

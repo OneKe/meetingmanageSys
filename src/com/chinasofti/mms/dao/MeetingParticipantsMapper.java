@@ -32,4 +32,7 @@ public interface MeetingParticipantsMapper {
 	Meeting selectMeetingByMeetingId(String meetingid);
 
 	List<Meeting> selectCancelMeeting();
+
+	String selectRoomNameByid(String roomid);
+
 }
