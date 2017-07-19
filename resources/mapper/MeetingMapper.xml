@@ -285,6 +285,20 @@
 	<select id="selectByMeetingName">
 		select * from Meeting where MeetingName = #{MeetingName}
 	</select>
+	
+		<!--  通过参加会议的员工的id查找员工与会议关系的对象 -->
+	<select id="selectListsById" resultType="MeetingParticipants" parameterType="com.chinasofti.mms.pojo.Meeting">
+	select * from meetingparticipants where ParticipantId=#{id}
+	</select>
+	
+	<!-- 通过员工与会议关系的对象拿到会议id，通过会议id查询该会议 -->
+	<select id="findMeetingByMeetingId" resultType="Meeting" parameterType="com.chinasofti.mms.pojo.Meeting">
+	select * from meeting where meetingid = #{meetingid}
+	</select>
+
+	<select id="findUserIdByMeetingId" resultType="java.lang.String" parameterType="com.chinasofti.mms.pojo.Meeting">
+	 select employeename from employee where ParticipantId=#{id}
+	</select>
 
 	<select id="selectMeeting" resultMap="Relevance">
 		SELECT
