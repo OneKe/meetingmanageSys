@@ -29,6 +29,9 @@ public interface DepartmentMapper {
 
 
 	boolean update(Department department);
+
+
+	String testDepartmentName(String departmentName);
     
     
     
