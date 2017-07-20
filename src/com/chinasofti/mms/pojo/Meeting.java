@@ -1,6 +1,7 @@
 package com.chinasofti.mms.pojo;
 
 import java.util.Date;
+import java.util.List;
 
 public class Meeting {
     
@@ -28,7 +29,7 @@ public class Meeting {
     
     private MeetingRoom MeetingRoom;
     
-    private Employee Employee;
+    private List<Employee> Employee;
 
 	public MeetingRoom getMeetingRoom() {
 		return MeetingRoom;
@@ -38,11 +39,11 @@ public class Meeting {
 		MeetingRoom = meetingRoom;
 	}
 
-	public Employee getEmployee() {
+	public List<Employee> getEmployee() {
 		return Employee;
 	}
 
-	public void setEmployee(Employee employee) {
+	public void setEmployee(List<Employee> employee) {
 		Employee = employee;
 	}
 

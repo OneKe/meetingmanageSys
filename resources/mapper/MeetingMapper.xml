@@ -16,18 +16,12 @@
 	</resultMap>
 
 	<resultMap type="com.chinasofti.mms.pojo.Meeting" id="Relevance">
-		<id column="MeetingId" jdbcType="VARCHAR" property="meetingid" />
-		<result column="MeetingRoom" jdbcType="VARCHAR" property="meetingroom" />
-		<result column="BeginTime" jdbcType="DATE" property="begintime" />
-		<result column="EndTime" jdbcType="DATE" property="endtime" />
-		<result column="ReservationTime" jdbcType="DATE" property="reservationtime" />
-		<collection property="MeetingRoom" javaType="com.chinasofti.mms.pojo.MeetingRoom">
-			<id column="RoomId" jdbcType="VARCHAR" property="roomid" />
-			<result column="RoomName" jdbcType="VARCHAR" property="roomname" />
+		
+		<collection property="MeetingRoom" ofType="com.chinasofti.mms.pojo.MeetingRoom">
+			
 		</collection>
-		<collection property="Employee" javaType="com.chinasofti.mms.pojo.Employee">
-			<id column="EmployeeId" jdbcType="VARCHAR" property="employeeid" />
-			<result column="EmployeeName" jdbcType="VARCHAR" property="employeename" />
+		<collection property="Employee" ofType="com.chinasofti.mms.pojo.Employee">
+			
 		</collection>
 	</resultMap>
 
