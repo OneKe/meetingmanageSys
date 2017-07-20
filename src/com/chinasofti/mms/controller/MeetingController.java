@@ -1,6 +1,7 @@
 package com.chinasofti.mms.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,6 +18,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.chinasofti.mms.pojo.Employee;
 import com.chinasofti.mms.pojo.Meeting;
 import com.chinasofti.mms.pojo.MeetingParticipants;
@@ -76,11 +79,13 @@ public class MeetingController {
 		return null;
 
 	}
-
+	
 	@RequestMapping("/searchmeeting.action")
-	public String selectMeeting(String meetingname, String roomname, String reservername, String reservefromdate,
-			String reservetodate, String meetingfromdate, String meetingtodate, Model model) {
-		Map<Object, Object> map=new HashMap<>();
+	public void selectMeeting(String meetingname, String roomname, String reservername, String reservefromdate,
+			String reservetodate, String meetingfromdate, String meetingtodate,HttpServletRequest request,HttpServletResponse response) throws IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		Map<Object, Object> map = new HashMap<>();
 		map.put("meetingname", meetingname);
 		map.put("roomname", roomname);
 		map.put("reservername", reservername);
@@ -88,9 +93,16 @@ public class MeetingController {
 		map.put("reservetodate", reservetodate);
 		map.put("meetingfromdate", meetingfromdate);
 		map.put("meetingtodate", meetingtodate);
-		System.out.println("meetingname:"+meetingname);
-		List<Map<String, Object>> list=mservice.selectMeet(map);
-		model.addAttribute("list", list);
-		return "searchmeetings";
+		List<Map<String, Object>> list = mservice.selectMeet(map);
+		JSONObject jsonObject = new JSONObject();
+		JSONArray jsonArray = new JSONArray();
+		jsonObject.put("list", list);
+		jsonArray.add(jsonObject);
+		System.out.println(jsonArray);
+		// 获得输出流
+		PrintWriter out = response.getWriter();
+		// 通过 out 对象将 jsonArray 传到前端页面
+		out.println(jsonArray.toJSONString());
+		out.close();
 	}
 }
