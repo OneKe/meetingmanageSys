@@ -2,6 +2,7 @@ package com.chinasofti.mms.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,48 +36,24 @@ public class NotificationController {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("loginEmployeeId");
 		ModelAndView mv =new ModelAndView("notifications");
-		List<MeetingParticipants> mpList = new ArrayList<MeetingParticipants>();
+		List<Map<String,Object>> mpList = new ArrayList<Map<String,Object>>();
 		mpList = service.selectMeetingParticipantsByparticipantId(id);
-		List<Meeting> mList = new ArrayList<Meeting>();
-		List<String> ur = new ArrayList<String>();
-		List<String> cr = new ArrayList<String>();
+
+		List<Map<String,Object>> cancellists = new ArrayList<Map<String,Object>>();
+		cancellists = service.cancelMeetingMap();
 		
-		if (mpList != null) {
-			for (MeetingParticipants meetingParticipants : mpList) {
-				Meeting m = service.comingMeeting(meetingParticipants.getMeetingid());
-				
-				if (m != null) {
-					mList.add(m);
-					String roomname=service.selectRoomNameByid(m.getRoomid());
-					ur.add(roomname);
-				}
-			}
-		}
-		
-		
-		List<Meeting> cancellist = new ArrayList<Meeting>();
-		cancellist = service.cancelMeeting();
-		for (Meeting meet : cancellist) {
-			String cancelroom=service.selectRoomNameByid(meet.getRoomid());
-			cr.add(cancelroom);
-		}
-		if (cancellist.size() > 0) {
-			mv.addObject("cancellist", cancellist);
+		if (cancellists.size() > 0) {
+			mv.addObject("cancellist", cancellists);
 		} else {
 			mv.addObject("cancelmessage", "没有取消的会议!");
 		}
-		if (mList.size() > 0) {
-			mv.addObject("meetinglist", mList);
+		if (mpList.size() > 0) {
+			mv.addObject("meetinglist", mpList);
 		} else {
 			mv.addObject("meetingmessage", "未来7天没有要参加的会议!");
 		}
-		System.out.println(cr+"********************");
-		mv.addObject("ur", ur);
-		mv.addObject("cr", cr);
-		
-		
+
 		return mv;
 	}
 	
-
 }

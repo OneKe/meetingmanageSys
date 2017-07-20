@@ -88,6 +88,7 @@
                 </form>
             </div>
         </div>
+        <p style="color:red;">${message}</p>
         <div class="page-footer">
             <hr/>
             更多问题，欢迎联系<a href="mailto:webmaster@eeg.com">管理员</a>

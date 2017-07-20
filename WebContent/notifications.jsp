@@ -16,7 +16,7 @@
 		</div>
 		<div class="header-title">欢迎访问Cool-Meeting会议管理系统</div>
 		<div class="header-quicklink">
-			欢迎！<strong>${loginUserName }</strong> <a href="changepassword.jsp">[修改密码]</a><a href="loginoffaction">[退出登录]</a>
+			欢迎！<strong>${loginUserName }</strong> <a href="changepassword.jsp">[修改密码]</a><a href="loginoff.action">[退出登录]</a>
 		</div>
 	</div>
 	<div class="page-body">
@@ -61,18 +61,14 @@
 					<th>结束时间</th>
 					<th style="width: 100px">操作</th>
 				</tr>
-						<%
-						int j = 0;
-						ArrayList lists = (ArrayList)request.getAttribute("ur");
-						%>
+
 				<c:forEach var="comemeeting" items="${meetinglist}">
 					<tr>
-						<td>${comemeeting.getMeetingname()}</td>
-						<td><%=lists.get(j) %></td>
-						<% j++; %>
-						<td>${comemeeting.getBegintime()}</td>
-						<td>${comemeeting.getEndtime()}</td>
-						<td><a class="clickbutton" href="meetingdetails.action?meetingid=${meeting.getMeetingid()}">查看详情</a>
+						<td>${comemeeting.get("MeetingName")}</td>
+						<td>${comemeeting.get("RoomName")}</td>
+						<td>${comemeeting.get("BeginTime")}</td>
+						<td>${comemeeting.get("EndTime")}</td>
+						<td><a class="clickbutton" href="meetingdetails.action?meetingid=${comemeeting.get("MeetingId")}">查看详情</a>
 						</td>
 					</tr>
 				</c:forEach>
@@ -88,19 +84,14 @@
 					<th>取消原因</th>
 					<th style="width: 100px">操作</th>
 				</tr>
-						<%
-						int i = 0;
-						ArrayList list = (ArrayList)request.getAttribute("cr");
-						%>
 				<c:forEach var="cancelmeeting" items="${cancellist}">
 					<tr>
-						<td>${cancelmeeting.getMeetingname()}</td>
-						<td><%=list.get(i) %></td>
-						<% i++; %>
-						<td>${cancelmeeting.getBegintime()}</td>
-						<td>${cancelmeeting.getEndtime()}</td>
-						<td>${cancelmeeting.getDescription()}</td>
-						<td><a class="clickbutton" href="jsp/meetingdetails.jsp">查看详情</a>
+						<td>${cancelmeeting.get("MeetingName")}</td>
+						<td>${cancelmeeting.get("RoomName")}</td>
+						<td>${cancelmeeting.get("BeginTime")}</td>
+						<td>${cancelmeeting.get("EndTime")}</td>
+						<td>${cancelmeeting.get("Description")}</td>
+						<td><a class="clickbutton" href="meetingdetails.jsp">查看详情</a>
 						</td>
 					</tr>
 				</c:forEach>
