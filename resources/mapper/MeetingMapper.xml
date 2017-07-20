@@ -14,15 +14,17 @@
 		<result column="MeetingStatus" jdbcType="VARCHAR" property="meetingstatus" />
 		<result column="Description" jdbcType="VARCHAR" property="description" />
 	</resultMap>
-
+	
 	<resultMap type="com.chinasofti.mms.pojo.Meeting" id="Relevance">
-		
-		<collection property="MeetingRoom" ofType="com.chinasofti.mms.pojo.MeetingRoom">
-			
-		</collection>
-		<collection property="Employee" ofType="com.chinasofti.mms.pojo.Employee">
-			
-		</collection>
+		<id column="MeetingId" property="meetingid"/>
+		<result column="MeetingName" property="meetingname"/>
+		<result column="BeginTime" property="begintime"/>
+		<result column="EndTime" property="endtime"/>
+		<result column="ReservationTime" property="reservationtime"/>
+		<association property="employee" javaType="com.chinasofti.mms.pojo.Employee">
+			<id column="ReservationistId" property="employeeid"/>
+			<result column="EmployeeName" property="employeename"/>
+		</association>
 	</resultMap>
 
 	<sql id="Base_Column_List">
@@ -283,7 +285,7 @@
 		select * from employee where ParticipantId=#{id}
 	</select>
 
-	<select id="selectMeet" resultMap="Relevance">
+	<select id="selectMeet" resultType="Map">
 		SELECT
 		m.MeetingName,mr.RoomName,m.BeginTime,m.EndTime,m.ReservationTime,e.EmployeeName
 		FROM meeting m,meetingroom mr,employee e WHERE m.RoomId=mr.RoomId AND

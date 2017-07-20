@@ -1,6 +1,7 @@
 package com.chinasofti.mms.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.chinasofti.mms.pojo.Employee;
 import com.chinasofti.mms.pojo.Meeting;
@@ -40,7 +41,7 @@ public interface MeetingMapper {
 	Meeting findMeetingByMeetingId(String meetingid);
     
     //搜索会议
-    List<Meeting> selectMeet();
+    List<Map<String, Object>> selectMeet();
     
     
     

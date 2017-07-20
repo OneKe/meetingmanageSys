@@ -1,50 +1,59 @@
 package com.chinasofti.mms.pojo;
 
 import java.util.Date;
-import java.util.List;
 
 public class Meeting {
-    
-    private String meetingid;
 
-    private String meetingname;
+	private String meetingid;
 
-    private String roomid;
+	private String meetingname;
 
-    private String reservationistid;
+	private String roomid;
 
-    private Integer numofparticipants;
+	private String reservationistid;
 
-    private Date begintime;
+	private Integer numofparticipants;
 
-    private Date endtime;
+	private Date begintime;
 
-    private Date reservationtime;
+	private Date endtime;
 
-    private Date canceledtime;
+	private Date reservationtime;
 
-    private String meetingstatus;
+	private Date canceledtime;
 
-    private String description;
-    
-    private MeetingRoom MeetingRoom;
-    
-    private List<Employee> Employee;
+	private String meetingstatus;
+
+	private String description;
+	
+	private String CanceledReson;
+	
+	private Employee employee;
+	
+	private MeetingRoom meetingRoom;
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
 
 	public MeetingRoom getMeetingRoom() {
-		return MeetingRoom;
+		return meetingRoom;
 	}
 
 	public void setMeetingRoom(MeetingRoom meetingRoom) {
-		MeetingRoom = meetingRoom;
+		this.meetingRoom = meetingRoom;
 	}
 
-	public List<Employee> getEmployee() {
-		return Employee;
+	public String getCanceledReson() {
+		return CanceledReson;
 	}
 
-	public void setEmployee(List<Employee> employee) {
-		Employee = employee;
+	public void setCanceledReson(String canceledReson) {
+		CanceledReson = canceledReson;
 	}
 
 	public String getMeetingid() {
@@ -137,7 +146,7 @@ public class Meeting {
 
 	public Meeting() {
 	}
-	
+
 	public Meeting(String meetingid, String meetingname, String roomid, String reservationistid,
 			Integer numofparticipants, Date begintime, Date endtime, Date reservationtime, Date canceledtime,
 			String meetingstatus, String description) {
@@ -159,8 +168,8 @@ public class Meeting {
 		return "Meeting [meetingid=" + meetingid + ", meetingname=" + meetingname + ", roomid=" + roomid
 				+ ", reservationistid=" + reservationistid + ", numofparticipants=" + numofparticipants + ", begintime="
 				+ begintime + ", endtime=" + endtime + ", reservationtime=" + reservationtime + ", canceledtime="
-				+ canceledtime + ", meetingstatus=" + meetingstatus + ", description=" + description + ", MeetingRoom="
-				+ MeetingRoom + ", Employee=" + Employee + "]";
+				+ canceledtime + ", meetingstatus=" + meetingstatus + ", description=" + description
+				+ ", CanceledReson=" + CanceledReson + ", employee=" + employee + ", meetingRoom=" + meetingRoom + "]";
 	}
 
 }

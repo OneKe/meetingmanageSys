@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -77,12 +78,9 @@ public class MeetingController {
 		
 	}
 	
-	@RequestMapping("/jsp/searchmeeting.action")
+	@RequestMapping("/searchmeeting.action")
 	public String selectMeeting(Model model){
-		List<Meeting> list=mservice.selectMeet();
-		for (Meeting meeting : list) {
-			System.out.println(meeting);
-		}
+		List<Map<String, Object>> list=mservice.selectMeet();
 		model.addAttribute("list", list);
 		return "searchmeetings";
 	}
