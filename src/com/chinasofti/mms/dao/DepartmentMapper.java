@@ -1,5 +1,7 @@
 package com.chinasofti.mms.dao;
 
+import java.util.List;
+
 import com.chinasofti.mms.pojo.Department;
 
 public interface DepartmentMapper {
@@ -32,6 +34,9 @@ public interface DepartmentMapper {
 
 
 	String testDepartmentName(String departmentName);
+
+
+	List<Department> selectAll();
     
     
     

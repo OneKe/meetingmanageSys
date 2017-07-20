@@ -2,6 +2,7 @@ package com.chinasofti.mms.controller;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -53,10 +54,14 @@ public class DepartmentController {
 		}else{
 			boolean isAdded = dservice.addDepartment(departmentName);
 			if(isAdded){
+				List<Department> departmentList = dservice.selectAll();
+				mav.addObject("departmentlist" , departmentList);
 				request.setAttribute("message", "添加部门成功！");
 				mav.setViewName("departments");
 				return mav;
 			}else{
+				List<Department> departmentList = dservice.selectAll();
+				mav.addObject("departmentlist" , departmentList);
 				request.setAttribute("message", "添加部门失败！");
 				mav.setViewName("departments");
 				return mav;
@@ -90,6 +95,8 @@ public class DepartmentController {
 		}
 		request.setAttribute("message", message);
 		mav.setViewName("departments");
+		List<Department> departmentList = dservice.selectAll();
+		mav.addObject("departmentlist" , departmentList);
 		return mav;
 	}
 	/**
@@ -113,6 +120,8 @@ public class DepartmentController {
 			request.setAttribute("message", "删除失败！");
 		}
 		mav.setViewName("departments");
+		List<Department> departmentList = dservice.selectAll();
+		mav.addObject("departmentlist" , departmentList);
 		return mav;
 	}
 }
