@@ -78,7 +78,7 @@
                         <th>操作</th>
                     </tr>
                     <c:forEach var = "department" items = "${departmentlist}">
-                   	<form id = "${department.getDepartmentId()}form" method="post"  action="editdepartmentaction">
+                   	<form id = "${department.getDepartmentId()}form" method="post"  action="editdepartment.action">
                    	<tr>
                         <td>
                         	<span>${department.getDepartmentId()}</span>
@@ -96,7 +96,7 @@
                             <input type="button"  class="clickbutton" onclick="editconfirmclick(${department.getDepartmentId()})" name= "editconfirmbtn"  id = "${department.getDepartmentId()}editconfirmbtn" style="display:none" value="确认">
                             <input type="button"  class="clickbutton" onclick="editcancelclick(${department.getDepartmentId()})" name= "editcancelbtn" id = "${department.getDepartmentId()}editcancelbtn" style="display:none" value="取消">
                             <input type="button"  class="clickbutton" onclick="deleteclick(${department.getDepartmentId()})"  name="deletebtn" id = "${department.getDepartmentId()}deletebtn" value="删除">
-                            <a class="clickbutton"  style ="display:none;background-color: rgb(221,221,221);color: black;"  href="/mms/removedepartmentaction?departmentid=${department.getDepartmentId()}"  style="display:none"  id = "${department.getDepartmentId()}deleteconfirmbtn">确认</a>
+                            <a class="clickbutton"  style ="display:none;background-color: rgb(221,221,221);color: black;"  href="/mms/removedepartment.action?departmentid=${department.getDepartmentId()}"  style="display:none"  id = "${department.getDepartmentId()}deleteconfirmbtn">确认</a>
                             <input type="button"  class="clickbutton" onclick="deletecancelclick(${department.getDepartmentId()})" name="deletecancelbtn" id = "${department.getDepartmentId()}deletecancelbtn" style="display:none" value="取消">
                         </td>
                         </tr>
