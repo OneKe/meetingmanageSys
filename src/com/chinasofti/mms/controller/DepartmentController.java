@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -18,6 +19,7 @@ import com.chinasofti.mms.service.DepartmentService;
 
 @Controller
 public class DepartmentController {
+	@Autowired
     private DepartmentService dservice;
     
 	public DepartmentService getDservice() {
@@ -42,8 +44,9 @@ public class DepartmentController {
 			mav.setViewName("departments");
 			return mav;
 		}
-		boolean isUsed = dservice.testDepartmentName(departmentName);
-		if(isUsed == true){
+		System.out.println("*********"+departmentName);
+		String isUsed = dservice.testDepartmentName(departmentName);
+		if(isUsed == departmentName){
 			request.setAttribute("message", "部门名重复！");
 			mav.setViewName("departments");
 			return mav;

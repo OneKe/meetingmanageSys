@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.chinasofti.mms.dao.MeetingParticipantsMapper;
 import com.chinasofti.mms.pojo.Employee;
 import com.chinasofti.mms.pojo.Meeting;
-import com.chinasofti.mms.pojo.MeetingParticipants;
 @Service
 public class RoleService {
 	@Autowired
@@ -68,6 +67,25 @@ public class RoleService {
 	public boolean updateNewPassword(String loginUserName, String originpassword, String newpassword) {
 
 		return dao.updateNewPassword(loginUserName,originpassword,newpassword);
+	}
+	/**
+	 * 通过会议id，查询会议详情
+	 * @param meetingId
+	 * @return
+	 */
+	public Meeting selectByMyMeetingById(String meetingId) {
+		
+		return dao.selectByMyMeetingById(meetingId);
+	}
+
+	/**
+	 * 通过会议id，查询参加该会议的所有员工
+	 * @param meetingId
+	 * @return
+	 */
+	public List<Employee> selectEmployeeByMeetingId(String meetingId) {
+
+		return dao.selectEmployeeByMeetingId(meetingId);
 	}
    
 }
