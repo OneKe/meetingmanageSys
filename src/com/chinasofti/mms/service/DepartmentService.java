@@ -25,8 +25,8 @@ public class DepartmentService {
 		return dao.department(departmentName);
 	}
 
-	public boolean testDepartmentName(String departmentName) {
-		return false;
+	public String testDepartmentName(String departmentName) {
+		return dao.testDepartmentName(departmentName);
 	}
 
 	public boolean update(Department department) {

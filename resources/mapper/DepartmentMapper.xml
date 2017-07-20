@@ -79,15 +79,21 @@
   
   <!-- 添加部门 -->
   <insert id="department" parameterType="com.chinasofti.mms.pojo.Department">
-      insert into Department (DepartmentName) values = #{DepartmentName}
+      insert into Department (DepartmentId,DepartmentName) values(#{DepartmentId},#{DepartmentName})
   </insert>
+  
   <!-- 修改部门 -->
   <update id="update" parameterType="com.chinasofti.mms.pojo.Department">
       update Department set DepartmentName = #{DepartmentName} , Remark = #{Remark} where DepartmentId = #{DepartmentId}
   </update>
+  
   <!-- 删除部门 -->
   <delete id="delete" parameterType="com.chinasofti.mms.pojo.Department">
       delete from Department where DepartmentId = #{DepartmentId}
   </delete>
   
+  <select id="testDepartmentName" parameterType="String" resultType="String">
+      select DepartmentName from Department where DepartmentName = #{DepartmentName}
+  </select>
+      
 </mapper>
