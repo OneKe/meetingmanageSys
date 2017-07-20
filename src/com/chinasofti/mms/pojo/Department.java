@@ -82,8 +82,8 @@ public class Department {
 		this.departmentname = departmentname;
 	}
     
-	public Department(String departmentid, String departmentname, String remark) {
-		this.departmentid = departmentid;
+	public Department(String depid, String departmentname, String remark) {
+		this.departmentid = depid;
 		this.departmentname = departmentname;
 		this.remark = remark;
 	}
