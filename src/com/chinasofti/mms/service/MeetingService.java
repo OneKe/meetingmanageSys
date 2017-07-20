@@ -14,7 +14,7 @@ import com.chinasofti.mms.pojo.MeetingParticipants;
 @Service
 public class MeetingService {
 	@Autowired
-    private MeetingMapper dao;
+	private MeetingMapper dao;
 
 	public MeetingMapper getDao() {
 		return dao;
@@ -23,26 +23,24 @@ public class MeetingService {
 	public void setDao(MeetingMapper dao) {
 		this.dao = dao;
 	}
-    
+
 	public List<MeetingParticipants> selectMeetingParticipantsByparticipantId(String id) {
-		
+
 		return dao.selectListsById(id);
 	}
 
 	public Meeting findMeetingByMeetingId(String meetingid) {
-		
+
 		return dao.findMeetingByMeetingId(meetingid);
 	}
 
 	public Employee selectEmployeeByUsername(String reservationistid) {
-		
+
 		return dao.selectEmployeeByUsername(reservationistid);
 	}
 
-	public List<Map<String, Object>> selectMeet(){
-		return dao.selectMeet();
+	public List<Map<String, Object>> selectMeet(Map<Object, Object> map) {
+		return dao.selectMeet(map);
 	}
 
-	
-	
 }
