@@ -14,16 +14,16 @@
 		<result column="MeetingStatus" jdbcType="VARCHAR" property="meetingstatus" />
 		<result column="Description" jdbcType="VARCHAR" property="description" />
 	</resultMap>
-	
+
 	<resultMap type="com.chinasofti.mms.pojo.Meeting" id="Relevance">
-		<id column="MeetingId" property="meetingid"/>
-		<result column="MeetingName" property="meetingname"/>
-		<result column="BeginTime" property="begintime"/>
-		<result column="EndTime" property="endtime"/>
-		<result column="ReservationTime" property="reservationtime"/>
+		<id column="MeetingId" property="meetingid" />
+		<result column="MeetingName" property="meetingname" />
+		<result column="BeginTime" property="begintime" />
+		<result column="EndTime" property="endtime" />
+		<result column="ReservationTime" property="reservationtime" />
 		<association property="employee" javaType="com.chinasofti.mms.pojo.Employee">
-			<id column="ReservationistId" property="employeeid"/>
-			<result column="EmployeeName" property="employeename"/>
+			<id column="ReservationistId" property="employeeid" />
+			<result column="EmployeeName" property="employeename" />
 		</association>
 	</resultMap>
 
@@ -290,7 +290,12 @@
 		m.MeetingName,mr.RoomName,m.BeginTime,m.EndTime,m.ReservationTime,e.EmployeeName
 		FROM meeting m,meetingroom mr,employee e WHERE m.RoomId=mr.RoomId AND
 		m.ReservationistId=e.EmployeeId
+		<if test="meetingname!=null and meetingname!=''"> and m.MeetingName like CONCAT('%', #{meetingname}, '%') </if>
+		 <if test="roomname!=null and roomname!=''"> and mr.RoomName like CONCAT('%', #{roomname}, '%') </if>
+		<if test="reservername!=null and reservername!=''"> and e.EmployeeName like CONCAT('%', #{reservername}, '%')</if>
+		<if test="reservefromdate!=null and reservefromdate!=''"> and m.ReservationTime &gt; #{reservefromdate}</if>
+		<if test="reservetodate!=null and reservetodate!=''"> and m.ReservationTime &lt; #{reservetodate}</if>
+		<if test="meetingfromdate!=null and meetingfromdate!=''"> and m.BeginTime &lt; #{meetingfromdate}</if>
+		<if test="meetingtodate!=null and meetingtodate!=''"> and m.EndTime&gt;#{meetingtodate}</if>
 	</select>
-
-
 </mapper>

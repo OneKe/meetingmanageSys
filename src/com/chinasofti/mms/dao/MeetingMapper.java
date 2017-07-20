@@ -41,7 +41,7 @@ public interface MeetingMapper {
 	Meeting findMeetingByMeetingId(String meetingid);
     
     //搜索会议
-    List<Map<String, Object>> selectMeet();
+    List<Map<String, Object>> selectMeet(Map<Object, Object> map);
     
     
     
