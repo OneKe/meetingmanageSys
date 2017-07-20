@@ -6,14 +6,14 @@
 <head>
 <meta http-equiv="content-type" content="text/html" charset="utf-8">
 <title>CoolMeeting会议管理系统</title>
-<link rel="stylesheet" href="styles/common.css" />
+<link rel="stylesheet" href="../styles/common.css" />
 <style type="text/css">
 </style>
 </head>
 <body>
 	<div class="page-header">
 		<div class="header-banner">
-			<img src="images/header.png" alt="CoolMeeting" />
+			<img src="../images/header.png" alt="CoolMeeting" />
 		</div>
 		<div class="header-title">欢迎访问Cool-Meeting会议管理系统</div>
 		<div class="header-quicklink">
@@ -81,7 +81,7 @@
 	<div class="page-footer">
 		<hr />
 		更多问题，欢迎联系<a href="mailto:webmaster@eeg.com">管理员</a> <img
-			src="images/footer.png" alt="CoolMeeting" />
+			src="../images/footer.png" alt="CoolMeeting" />
 	</div>
 </body>
 </html>

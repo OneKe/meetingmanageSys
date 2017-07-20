@@ -28,7 +28,7 @@ public class MyBookingMeetingController {
 		this.rs = rs;
 	}
 
-	@RequestMapping("mybooking.action")
+	@RequestMapping("/mybooking.action")
 	public ModelAndView MyBooking(HttpServletRequest request,HttpServletResponse response){
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("loginEmployeeId");
