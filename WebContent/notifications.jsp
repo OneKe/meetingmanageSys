@@ -26,26 +26,25 @@
 				<ul class="sidebar-menu">
 					<li class="sidebar-menuitem"><a href="notification.action">最新通知</a></li>
 					<li class="sidebar-menuitem active"><a href="mybooking.action">我的预定</a></li>
-					<li class="sidebar-menuitem"><a
-						href="meetingparticipants.action">我的会议</a></li>
+					<li class="sidebar-menuitem"><a href="meetingparticipants.action">我的会议</a></li>
 				</ul>
 			</div>
 			<div class="sidebar-menugroup">
 				<div class="sidebar-grouptitle">人员管理</div>
 				<ul class="sidebar-menu">
-					<li class="sidebar-menuitem"><a href="jsp/departments.jsp">部门管理</a></li>
-					<li class="sidebar-menuitem"><a href="jsp/register.jsp">员工注册</a></li>
-					<li class="sidebar-menuitem"><a href="jsp/approveaccount.jsp">注册审批</a></li>
-					<li class="sidebar-menuitem"><a href="jsp/searchemployees.jsp">搜索员工</a></li>
+					<li class="sidebar-menuitem"><a href="departments.jsp">部门管理</a></li>
+					<li class="sidebar-menuitem"><a href="register.jsp">员工注册</a></li>
+					<li class="sidebar-menuitem"><a href="approveaccount.jsp">注册审批</a></li>
+					<li class="sidebar-menuitem"><a href="searchemployees.jsp">搜索员工</a></li>
 				</ul>
 			</div>
 			<div class="sidebar-menugroup">
 				<div class="sidebar-grouptitle">会议预定</div>
 				<ul class="sidebar-menu">
-					<li class="sidebar-menuitem"><a href="jsp/addmeetingroom.jsp">添加会议室</a></li>
-					<li class="sidebar-menuitem"><a href="jsp/meetingrooms.jsp">查看会议室</a></li>
-					<li class="sidebar-menuitem"><a href="jsp/bookmeeting.jsp">预定会议</a></li>
-					<li class="sidebar-menuitem"><a href="jsp/searchmeetings.jsp">搜索会议</a></li>
+					<li class="sidebar-menuitem"><a href="addmeetingroom.jsp">添加会议室</a></li>
+					<li class="sidebar-menuitem"><a href="meetingrooms.jsp">查看会议室</a></li>
+					<li class="sidebar-menuitem"><a href="bookmeeting.jsp">预定会议</a></li>
+					<li class="sidebar-menuitem"><a href="searchmeetings.jsp">搜索会议</a></li>
 				</ul>
 			</div>
 		</div>

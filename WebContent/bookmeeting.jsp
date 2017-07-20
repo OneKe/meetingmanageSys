@@ -5,9 +5,9 @@
     <head>
 <meta http-equiv="content-type" content="text/html"  charset="utf-8">
         <title>CoolMeeting会议管理系统</title>
-        <link rel="stylesheet" href="../styles/common.css"/>
-        <script type="text/javascript" src="../js/jquery.js"></script>
-        <script type="text/javascript" src="../js/bookmeeting.js"></script>
+        <link rel="stylesheet" href="styles/common.css"/>
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bookmeeting.js"></script>
         <style type="text/css">
             #divfrom{
                 float:left;
@@ -45,7 +45,7 @@
 
         <div class="page-header">
             <div class="header-banner">
-                <img src="../images/header.png" alt="CoolMeeting"/>
+                <img src="images/header.png" alt="CoolMeeting"/>
             </div>
             <div class="header-title">
                 欢迎访问Cool-Meeting会议管理系统
@@ -89,7 +89,7 @@
                 <div class="content-nav">
                     会议预定 > 预定会议 <span>${message }</span>
                 </div>
-                <form action="bookingmeetingaction"  method="post"  id="bookingmeetingform">
+                <form action="bookingmeeting.action"  method="post"  id="bookingmeetingform">
                     <fieldset>
                         <legend>会议信息</legend>
                         <table class="formtable">
@@ -175,7 +175,7 @@
         <div class="page-footer">
             <hr/>
             更多问题，欢迎联系<a href="mailto:webmaster@eeg.com">管理员</a>
-            <img src="../images/footer.png" alt="CoolMeeting"/>
+            <img src="images/footer.png" alt="CoolMeeting"/>
         </div>
     </body>
 </html>

@@ -6,7 +6,7 @@
     <head>
 <meta http-equiv="content-type" content="text/html"  charset="utf-8">
         <title>CoolMeeting会议管理系统</title>
-        <link rel="stylesheet" href="../styles/common.css"/>
+        <link rel="stylesheet" href="styles/common.css"/>
         <style type="text/css">
             #divfrom{
                 float:left;
@@ -44,7 +44,7 @@
    
         <div class="page-header">
             <div class="header-banner">
-                <img src="../images/header.png" alt="CoolMeeting"/>
+                <img src="images/header.png" alt="CoolMeeting"/>
             </div>
             <div class="header-title">
                 欢迎访问Cool-Meeting会议管理系统
@@ -88,7 +88,7 @@
                 <div class="content-nav">
                     会议预定 > 撤销会议预定
                 </div>
-                <form action="cancelmeetingaction" method="post" id="cancelmeetingform">
+                <form action="cancelmeeting.action" method="post" id="cancelmeetingform">
                     <fieldset>
                         <legend>撤销预定</legend>
                         <table class="formtable">

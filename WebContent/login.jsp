@@ -34,8 +34,8 @@
                     <div class="sidebar-grouptitle">人员管理</div>
                     <ul class="sidebar-menu">
                         <li class="sidebar-menuitem"><a href="departments.jsp">部门管理</a></li>
-                        <li class="sidebar-menuitem"><a href="jsp/register.jsp">员工注册</a></li>
-                        <li class="sidebar-menuitem"><a href="jsp/approveaccount.jsp">注册审批</a></li>
+                        <li class="sidebar-menuitem"><a href="register.jsp">员工注册</a></li>
+                        <li class="sidebar-menuitem"><a href="approveaccount.jsp">注册审批</a></li>
                         <li class="sidebar-menuitem"><a href="searchemployees.jsp">搜索员工</a></li>
                     </ul>
                 </div>
