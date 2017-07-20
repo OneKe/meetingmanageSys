@@ -77,7 +77,7 @@
   <!-- 
  	 查询我的预定会议，通过用户名ID
    --> 
-   <select id="selectByEmployeeName" parameterType="Integer" resultType="Meeting">
+   <select id="selectByEmployeeName" parameterType="String" resultType="Meeting">
    select * from meeting where reservationistID=#{id} and meetingstatus=1
    </select>
    

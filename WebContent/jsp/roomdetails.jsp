@@ -17,7 +17,7 @@
             </div>
             <div class="header-quicklink">
                 欢迎！<strong>${loginUserName }</strong>
-                <a href="changepassword.jsp">[修改密码]</a><a href="loginoffaction">[退出登录]</a>
+                <a href="changepassword.jsp">[修改密码]</a><a href="loginoff.action">[退出登录]</a>
             </div>
         </div>
         <div class="page-body">
@@ -25,9 +25,9 @@
                 <div class="sidebar-menugroup">
                     <div class="sidebar-grouptitle">个人中心</div>
                     <ul class="sidebar-menu">
-                        <li class="sidebar-menuitem"><a href="notificationaction">最新通知</a></li>
-                        <li class="sidebar-menuitem active"><a href="mybookingaction">我的预定</a></li>
-                        <li class="sidebar-menuitem"><a href="meetingparticipantsaction">我的会议</a></li>
+                        <li class="sidebar-menuitem"><a href="notification.action">最新通知</a></li>
+                        <li class="sidebar-menuitem active"><a href="mybooking.action">我的预定</a></li>
+                        <li class="sidebar-menuitem"><a href="meetingparticipants.action">我的会议</a></li>
                     </ul>
                 </div>
                 <div class="sidebar-menugroup">
@@ -53,7 +53,7 @@
                 <div class="content-nav">
                     会议预定 > 修改会议室信息
                 </div>
-                <form action="editmeetingroomaction"  id ="editmeetingroomform"  method="post"> 
+                <form action="editmeetingroom.action"  id ="editmeetingroomform"  method="post"> 
                     <fieldset>
                         <legend>会议室信息</legend>
                         <table class="formtable">

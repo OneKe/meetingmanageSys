@@ -50,7 +50,7 @@
             <div class="header-quicklink">
                 欢迎！<strong>${loginUserName }</strong>
                 <a href="changepassword.jsp">[修改密码]</a>
-                <a href="loginoffaction">[退出登录]</a>
+                <a href="loginoff.action">[退出登录]</a>
             </div>
         </div>
         <div class="page-body">

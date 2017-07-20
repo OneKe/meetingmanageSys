@@ -23,7 +23,7 @@ public interface MeetingParticipantsMapper {
 
     int updateByPrimaryKey(MeetingParticipants record);
 
-	List<Meeting> selectByEmployeeName(Integer id);
+	List<Meeting> selectByEmployeeName(String id);
 
 	Employee findlogin(Employee employee);
 
