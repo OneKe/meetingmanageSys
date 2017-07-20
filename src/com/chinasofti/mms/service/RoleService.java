@@ -25,7 +25,7 @@ public class RoleService {
 	/*
 	 * 根据用户名查看我的预定会议信息
 	 */
-	public List<Meeting> selectByEmployeeName(Integer id) {
+	public List<Meeting> selectByEmployeeName(String id) {
 		List<Meeting> books = dao.selectByEmployeeName(id);
 		return books;
 	}
