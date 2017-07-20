@@ -1,6 +1,7 @@
 package com.chinasofti.mms.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
@@ -26,13 +27,22 @@ public interface MeetingParticipantsMapper {
 	List<Meeting> selectByEmployeeName(String id);
 
 	Employee findlogin(Employee employee);
+	/**
+	 * 在最新通知里显示：未来7天我要参加的会议
+	 */
+	List<Map<String,Object>> selectMeetingByOrder(String id);
 
-	List<MeetingParticipants> selectMeetingByOrder(String id);
-
-	Meeting selectMeetingByMeetingId(String meetingid);
-
-	List<Meeting> selectCancelMeeting();
-
-	String selectRoomNameByid(String roomid);
+	/**
+	 * 在最新通知里显示：已取消的会议
+	 */
+	List<Map<String, Object>> cancelMeetingMap();
+	/**
+	 * 修改密码
+	 * @param loginUserName
+	 * @param originpassword
+	 * @param newpassword
+	 * @return
+	 */
+	boolean updateNewPassword(String loginUserName, String originpassword, String newpassword);
 
 }

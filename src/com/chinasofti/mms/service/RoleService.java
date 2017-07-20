@@ -1,6 +1,7 @@
 package com.chinasofti.mms.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,7 @@ public class RoleService {
 		this.dao = dao;
 	}
 	
-	/*
+	/**
 	 * 根据用户名查看我的预定会议信息
 	 */
 	public List<Meeting> selectByEmployeeName(String id) {
@@ -30,7 +31,7 @@ public class RoleService {
 		return books;
 	}
 	
-	/*
+	/**
 	 * 用户登录
 	 */
 	public Employee login(Employee employee) {
@@ -42,24 +43,31 @@ public class RoleService {
 		return em;
 	}
 
-	public List<MeetingParticipants> selectMeetingParticipantsByparticipantId(String id) {
+	/**
+	 * 在最新通知里显示：未来7天我要参加的会议
+	 */
+	public List<Map<String,Object>> selectMeetingParticipantsByparticipantId(String id) {
 		
 		return dao.selectMeetingByOrder(id);
 	}
+	
+	/**
+	 * 在最新通知里显示：已取消的会议
+	 */
+	public List<Map<String, Object>> cancelMeetingMap() {
 
-	public Meeting comingMeeting(String meetingid) {
-
-		return dao.selectMeetingByMeetingId(meetingid);
+		return dao.cancelMeetingMap();
 	}
+	/**
+	 * 修改密码
+	 * @param loginUserName
+	 * @param originpassword
+	 * @param newpassword
+	 * @return
+	 */
+	public boolean updateNewPassword(String loginUserName, String originpassword, String newpassword) {
 
-	public List<Meeting> cancelMeeting() {
-
-		return dao.selectCancelMeeting();
-	}
-
-	public 	String selectRoomNameByid(String roomid) {
-
-		return dao.selectRoomNameByid(roomid);
+		return dao.updateNewPassword(loginUserName,originpassword,newpassword);
 	}
    
 }
