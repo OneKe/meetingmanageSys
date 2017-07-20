@@ -1,7 +1,6 @@
 package com.chinasofti.mms.controller;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -20,7 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.chinasofti.mms.pojo.Employee;
 import com.chinasofti.mms.pojo.Meeting;
 import com.chinasofti.mms.pojo.MeetingParticipants;
-import com.chinasofti.mms.pojo.MeetingRoom;
+
 import com.chinasofti.mms.service.MeetingService;
 
 @Controller
@@ -62,19 +61,6 @@ public class MeetingController {
 		mav.addObject("meetings", mList);
 		mav.addObject("namelist", namelist);
 		return mav;
-	}
-
-	@RequestMapping("/meetingdetails.action")
-	public ModelAndView MeetingDetail(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		request.setCharacterEncoding("utf-8");
-		response.setCharacterEncoding("text/html;charset=utf-8");
-		String meetingId = request.getParameter("meetingid");
-		if (null == meetingId || "".equals(meetingId)) {
-			meetingId = "0";
-		}
-
-		return null;
-
 	}
 
 	@RequestMapping("/searchmeeting.action")
