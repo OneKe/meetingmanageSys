@@ -93,24 +93,24 @@
                         <table class="formtable">
                              <tr>
                                 <td>会议名称：</td>
-                                <td>${meetings.Meetingname}</td>
+                                <td>${meetings.getMeetingname()}</td>
                             </tr>
                             <tr>
                                 <td>预计参加人数：</td>
-                                <td>${meetings.Numberofparticipants}</td>
+                                <td>${meetings.getNumberofparticipants()}</td>
                             </tr>
                             <tr>
                                 <td>预计开始时间：</td>
-                                <td>${meetings.Starttime}</td>
+                                <td>${meetings.getStarttime()}</td>
                             </tr>
                             <tr>
                                 <td>预计结束时间：</td>
-                                <td>${meetings.Endtime}</td>
+                                <td>${meetings.getEndtime()}</td>
                             </tr>
                             <tr>
                                 <td>会议说明：</td>
                                 <td>
-                                    <textarea id="description" rows="5" readonly>${meetings.Description}</textarea>
+                                    <textarea id="description" rows="5" readonly>${meetings.getDescription()}</textarea>
                                 </td>
                             </tr>
                             <tr>

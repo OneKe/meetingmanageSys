@@ -31,7 +31,7 @@ public class MyMeetingDetailsController {
 	
 	@RequestMapping("meetingdetails.action")
 	public ModelAndView myMeetingDetails(HttpServletRequest request,HttpServletResponse response){
-		ModelAndView mv = new ModelAndView("meetingdetails");
+		ModelAndView mv = new ModelAndView("mymeetingdetails");
 		String meetingId = request.getParameter("meetingid");
 		if(null == meetingId || "".equals(meetingId)){
 			meetingId = "0";
@@ -45,7 +45,6 @@ public class MyMeetingDetailsController {
 		for (Employee employee : employees) {
 			System.out.println(employee);
 		}
-		
 		mv.addObject("employees", employees);
 		return mv;
 	}
