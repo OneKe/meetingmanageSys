@@ -2,7 +2,12 @@ package com.chinasofti.mms.util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.UUID;
+
+import com.sun.jmx.snmp.Timestamp;
 
 import sun.misc.BASE64Encoder;
 
@@ -36,6 +41,11 @@ public class TransferUtil {
 			e.printStackTrace();
 		}
 		return password;
+	}
+	
+	public String formatDate(Date date) throws ParseException{
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		return sdf.format(date);
 	}
 
 }

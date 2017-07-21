@@ -2,6 +2,7 @@ package com.chinasofti.mms.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -21,8 +23,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.chinasofti.mms.pojo.Employee;
 import com.chinasofti.mms.pojo.Meeting;
 import com.chinasofti.mms.pojo.MeetingParticipants;
-import com.chinasofti.mms.pojo.MeetingRoom;
 import com.chinasofti.mms.service.MeetingService;
+import com.chinasofti.mms.util.TransferUtil;
 
 @Controller
 public class MeetingController {
@@ -36,6 +38,8 @@ public class MeetingController {
 	public void setMservice(MeetingService mservice) {
 		this.mservice = mservice;
 	}
+	
+	TransferUtil tfu=new TransferUtil();
 
 	@RequestMapping("/mymeeting.action")
 	public ModelAndView MyMeeting(HttpServletRequest request, HttpServletResponse response) {
@@ -65,11 +69,10 @@ public class MeetingController {
 		return mav;
 	}
 
-	
-	
 	@RequestMapping("/searchmeeting.action")
 	public void selectMeeting(String meetingname, String roomname, String reservername, String reservefromdate,
-			String reservetodate, String meetingfromdate, String meetingtodate,HttpServletRequest request,HttpServletResponse response) throws IOException {
+			String reservetodate, String meetingfromdate, String meetingtodate, HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		Map<Object, Object> map = new HashMap<>();
@@ -81,9 +84,6 @@ public class MeetingController {
 		map.put("meetingfromdate", meetingfromdate);
 		map.put("meetingtodate", meetingtodate);
 		List<Map<String, Object>> list = mservice.selectMeet(map);
-		for (Map<String, Object> map2 : list) {
-			System.out.println(map2);
-		}
 		JSONObject jsonObject = new JSONObject();
 		JSONArray jsonArray = new JSONArray();
 		jsonObject.put("list", list);
@@ -94,5 +94,24 @@ public class MeetingController {
 		// 通过 out 对象将 jsonArray 传到前端页面
 		out.println(jsonArray.toJSONString());
 		out.close();
+	}
+
+	@RequestMapping("/querymeetingdetails.action")
+	public String meetdetail(String meetingid, Model model) throws ParseException {
+		if (null != meetingid) {
+			Meeting meeting = mservice.findMeetingByMeetingId(meetingid);
+			if(null!=meeting){
+				String begintime=tfu.formatDate(meeting.getBegintime());
+				String endtime=tfu.formatDate(meeting.getEndtime());
+				model.addAttribute("begintime", begintime);
+				model.addAttribute("endtime", endtime);
+				model.addAttribute("meeting", meeting);
+			}
+			List<Employee> list = mservice.selectemployeeBymeetingid(meetingid);
+			if(list.size()>0){
+				model.addAttribute("list", list);
+			}
+		}
+		return "meetingdetails";
 	}
 }

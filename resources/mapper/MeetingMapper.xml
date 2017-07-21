@@ -15,18 +15,6 @@
 		<result column="Description" jdbcType="VARCHAR" property="description" />
 	</resultMap>
 
-	<resultMap type="com.chinasofti.mms.pojo.Meeting" id="Relevance">
-		<id column="MeetingId" property="meetingid" />
-		<result column="MeetingName" property="meetingname" />
-		<result column="BeginTime" property="begintime" />
-		<result column="EndTime" property="endtime" />
-		<result column="ReservationTime" property="reservationtime" />
-		<association property="employee" javaType="com.chinasofti.mms.pojo.Employee">
-			<id column="ReservationistId" property="employeeid" />
-			<result column="EmployeeName" property="employeename" />
-		</association>
-	</resultMap>
-
 	<sql id="Base_Column_List">
 
 		MeetingId, MeetingName, RoomId, ReservationistId,
@@ -297,5 +285,10 @@
 		<if test="reservetodate!=null and reservetodate!=''"> and m.ReservationTime &lt; #{reservetodate}</if>
 		<if test="meetingfromdate!=null and meetingfromdate!=''"> and m.BeginTime &gt; #{meetingfromdate}</if>
 		<if test="meetingtodate!=null and meetingtodate!=''"> and m.EndTime&lt;#{meetingtodate}</if>
+	</select>
+	
+	
+	<select id="selectemployeeBymeetingid" resultType="com.chinasofti.mms.pojo.Employee">
+		SELECT * FROM employee WHERE EmployeeId in(SELECT ParticipantId FROM meetingparticipants WHERE MeetingId=#{0})
 	</select>
 </mapper>

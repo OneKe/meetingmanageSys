@@ -18,7 +18,7 @@ $("document").ready(function() {
 				var list = json[0].list;
 				var str = "";
 				for(var i in list) {
-					str += "<tr><td>" + list[i].MeetingName + "</td><td>" + list[i].RoomName + "</td><td>" + stringTodate(list[i].BeginTime)+ "</td><td>" + stringTodate(list[i].EndTime) + "</td><td>" + stringTodate(list[i].ReservationTime) + "</td><td>" + list[i].EmployeeName + "</td><td><a class='clickbutton' href='meetingdetails.action?meetingid="+list[i].meetingid+"'>查看详情</a></td></tr>";
+					str += "<tr><td>" + list[i].MeetingName + "</td><td>" + list[i].RoomName + "</td><td>" + stringTodate(list[i].BeginTime)+ "</td><td>" + stringTodate(list[i].EndTime) + "</td><td>" + stringTodate(list[i].ReservationTime) + "</td><td>" + list[i].EmployeeName + "</td><td><a class='clickbutton' href='querymeetingdetails.action?meetingid="+list[i].meetingid+"'>查看详情</a></td></tr>";
 				}
 				$("#count").html(list.length);
 				$("#qmt").html(str);

@@ -42,5 +42,8 @@ public class MeetingService {
 	public List<Map<String, Object>> selectMeet(Map<Object, Object> map) {
 		return dao.selectMeet(map);
 	}
-
+	
+	public List<Employee> selectemployeeBymeetingid(String meetingid){
+		return dao.selectemployeeBymeetingid(meetingid);
+	}
 }

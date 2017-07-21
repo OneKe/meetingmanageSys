@@ -6,6 +6,7 @@
 <meta http-equiv="content-type" content="text/html"  charset="utf-8">
         <title>CoolMeeting会议管理系统</title>
         <link rel="stylesheet" href="styles/common.css"/>
+        <script type="text/javascript" src="js/searchmeeting"></script>
         <style type="text/css">
             #divfrom{
                 float:left;
@@ -92,24 +93,24 @@
                         <table class="formtable">
                             <tr>
                                 <td>会议名称：</td>
-                                <td>${meeting.getMeetingName()}</td>
+                                <td>${meeting.meetingname}</td>
                             </tr>
                             <tr>
                                 <td>预计参加人数：</td>
-                                <td>${meeting.getNumberofParticipants()}</td>
+                                <td>${meeting.numofparticipants}</td>
                             </tr>
                             <tr>
                                 <td>预计开始时间：</td>
-                                <td>${meeting.getStartTime()}</td>
+                                <td>${begintime}</td>
                             </tr>
                             <tr>
                                 <td>预计结束时间：</td>
-                                <td>${meeting.getEndTime()}</td>
+                                <td>${endtime}</td>
                             </tr>
                             <tr>
                                 <td>会议说明：</td>
                                 <td>
-                                    <textarea id="description" rows="5" readonly>${meeting.getDescription()}</textarea>
+                                    <textarea id="description" rows="5" readonly>${meeting.description}</textarea>
                                 </td>
                             </tr>
                             <tr>
@@ -121,11 +122,11 @@
                                             <th>联系电话</th>
                                             <th>电子邮件</th>
                                         </tr>
-                                    <c:forEach var ="employee" items="${employees }">
+                                    <c:forEach var ="employee" items="${list }">
                                     	<tr>
-                                            <td>${employee.getEmployeeName() }</td>
-                                            <td>${employee.getPhone() }</td>
-                                            <td>${employee.getEmail() }</td>
+                                            <td>${employee.employeename }</td>
+                                            <td>${employee.phone }</td>
+                                            <td>${employee.email }</td>
                                         </tr>
                                     </c:forEach>
                                     </table>

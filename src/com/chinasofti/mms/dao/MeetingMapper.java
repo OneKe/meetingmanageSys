@@ -44,7 +44,7 @@ public interface MeetingMapper {
     List<Map<String, Object>> selectMeet(Map<Object, Object> map);
     
     
-    
+    List<Employee> selectemployeeBymeetingid(String meetingid);
     
     
     
