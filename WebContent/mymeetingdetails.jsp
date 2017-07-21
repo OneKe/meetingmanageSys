@@ -93,24 +93,24 @@
                         <table class="formtable">
                              <tr>
                                 <td>会议名称：</td>
-                                <td>${meetings.getMeetingname()}</td>
+                                <td>${meetings.meetingname}</td>
                             </tr>
                             <tr>
                                 <td>预计参加人数：</td>
-                                <td>${meetings.getNumberofparticipants()}</td>
+                                <td>${meetings.numofparticipants}</td>
                             </tr>
                             <tr>
                                 <td>预计开始时间：</td>
-                                <td>${meetings.getStarttime()}</td>
+                                <td>${meetings.begintime}</td>
                             </tr>
                             <tr>
                                 <td>预计结束时间：</td>
-                                <td>${meetings.getEndtime()}</td>
+                                <td>${meetings.endtime}</td>
                             </tr>
                             <tr>
                                 <td>会议说明：</td>
                                 <td>
-                                    <textarea id="description" rows="5" readonly>${meetings.getDescription()}</textarea>
+                                    <textarea id="description" rows="5" readonly>${meetings.description}</textarea>
                                 </td>
                             </tr>
                             <tr>
@@ -125,8 +125,8 @@
                                     <c:forEach var ="employees" items="${employees}">
                                     	<tr>
                                             <td>${employees.employeename}</td>
-                                            <td>${employees.phone }</td>
-                                            <td>${employees.email }</td>
+                                            <td>${employees.phone}</td>
+                                            <td>${employees.email}</td>
                                         </tr>
                                     </c:forEach>
                                     </table>  
