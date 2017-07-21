@@ -1,5 +1,7 @@
 package com.chinasofti.mms.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +37,10 @@ public class DepartmentService {
 
 	public boolean delete(String id) {
 		return dao.delete(id);
+	}
+	
+	public List<Department> selectAll(){
+		return dao.selectAll();
 	}
 
 }

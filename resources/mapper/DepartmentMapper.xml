@@ -95,5 +95,9 @@
   <select id="testDepartmentName" parameterType="String" resultType="String">
       select DepartmentName from Department where DepartmentName = #{DepartmentName}
   </select>
+  
+  <select id="selectAll" resultType="java.util.List">
+  	select * from department
+  </select>
       
 </mapper>
