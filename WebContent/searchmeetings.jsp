@@ -99,7 +99,7 @@
 				<h3 style="text-align: center; color: black">查询结果</h3>
 				<div class="pager-header">
 					<div class="header-info">
-						共<span class="info-number">${list.size() }</span>条结果， 分成<span
+						共<span class="info-number" id="count"></span>条结果， 分成<span
 							class="info-number">6</span>页显示， 当前第<span class="info-number">1</span>页
 					</div>
 					<div class="header-nav">
