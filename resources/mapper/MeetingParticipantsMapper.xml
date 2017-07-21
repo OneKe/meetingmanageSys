@@ -117,4 +117,14 @@
   	where e.DepartmentId=mp.ParticipantId AND m.MeetingId=mp.MeetingId AND m.MeetingId=#{0}
   	</select>
   	
+  	<!-- **************人员管理： 搜索员工 ************-->
+  	<select id="findEmployee" parameterType="Map" resultType="Employee">
+  	select * from Employee 
+  	where EmployeeName like '%${employeeName}%' and UserName like '%${accountName}%' and EmployeeStatus = #{intStatus} limit #{pstart} , #{psize}
+  	</select>
+  	
+  	<!-- **************人员管理：搜索员工********关闭账号************ -->
+  	<update id="updateEmployeeStatus">
+  	update Employee set EmployeeStatus =#{1} where EmployeeId =#{0}
+  	</update>
 </mapper>
