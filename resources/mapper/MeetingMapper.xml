@@ -287,7 +287,7 @@
 
 	<select id="selectMeet" resultType="Map">
 		SELECT
-		m.MeetingName,mr.RoomName,m.BeginTime,m.EndTime,m.ReservationTime,e.EmployeeName
+		m.meetingid,m.MeetingName,mr.RoomName,m.BeginTime,m.EndTime,m.ReservationTime,e.EmployeeName
 		FROM meeting m,meetingroom mr,employee e WHERE m.RoomId=mr.RoomId AND
 		m.ReservationistId=e.EmployeeId
 		<if test="meetingname!=null and meetingname!=''"> and m.MeetingName like CONCAT('%', #{meetingname}, '%') </if>
@@ -295,7 +295,7 @@
 		<if test="reservername!=null and reservername!=''"> and e.EmployeeName like CONCAT('%', #{reservername}, '%')</if>
 		<if test="reservefromdate!=null and reservefromdate!=''"> and m.ReservationTime &gt; #{reservefromdate}</if>
 		<if test="reservetodate!=null and reservetodate!=''"> and m.ReservationTime &lt; #{reservetodate}</if>
-		<if test="meetingfromdate!=null and meetingfromdate!=''"> and m.BeginTime &lt; #{meetingfromdate}</if>
-		<if test="meetingtodate!=null and meetingtodate!=''"> and m.EndTime&gt;#{meetingtodate}</if>
+		<if test="meetingfromdate!=null and meetingfromdate!=''"> and m.BeginTime &gt; #{meetingfromdate}</if>
+		<if test="meetingtodate!=null and meetingtodate!=''"> and m.EndTime&lt;#{meetingtodate}</if>
 	</select>
 </mapper>

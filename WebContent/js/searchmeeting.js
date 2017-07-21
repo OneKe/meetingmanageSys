@@ -18,9 +18,9 @@ $("document").ready(function() {
 				var list = json[0].list;
 				var str = "";
 				for(var i in list) {
-					str += "<tr><td>" + list[i].MeetingName + "</td><td>" + list[i].RoomName + "</td><td>" + formatdate(list[i].BeginTime)+ "</td><td>" + list[i].EndTime + "</td><td>" + list[i].ReservationTime + "</td><td>" + list[i].EmployeeName + "</td><td><a class='clickbutton' href='meetingdetails.action'>查看详情</a></td></tr>";
-					console.log(list[i].MeetingName);
+					str += "<tr><td>" + list[i].MeetingName + "</td><td>" + list[i].RoomName + "</td><td>" + stringTodate(list[i].BeginTime)+ "</td><td>" + stringTodate(list[i].EndTime) + "</td><td>" + stringTodate(list[i].ReservationTime) + "</td><td>" + list[i].EmployeeName + "</td><td><a class='clickbutton' href='meetingdetails.action?meetingid="+list[i].meetingid+"'>查看详情</a></td></tr>";
 				}
+				$("#count").html(list.length);
 				$("#qmt").html(str);
 			},
 			error: function(data) {
@@ -29,30 +29,41 @@ $("document").ready(function() {
 		});
 	});
 	
-	 function formatdate(format) {
-		 var fmt=new Date(format);
-	    var date = {
-	        "M+": fmt.getMonth() + 1,
-	        "d+": fmt.getDate(),
-	        "h+": fmt.getHours(),
-	        "m+": fmt.getMinutes(),
-	        "s+": fmt.getSeconds(),
-	        "q+": Math.floor((fmt.getMonth() + 3) / 3),
-	        "S+": fmt.getMilliseconds()
-	    };
-	     
-	    if (/(y+)/i.test(format)) {
-	        format = format.replace(RegExp.$1, (fmt.getFullYear() + '').substr(4 - RegExp.$1.length));
-	    }
-	 
-	    for (var k in date) {
-	        if (new RegExp("(" + k + ")").test(format)) {
-	          format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? date[k] : ("00" + date[k]).substr(("" + date[k]).length));
-	        }
-	    }
-	     
-	    return format;
-	}
+	 function stringTodate(fdate){
+		 var format=new Date(fdate);
+		 var year=format.getFullYear();//当前年份
+		 var month=format.getMonth() +1;//当前月份
+		 if(month>=10){
+			 month=month;
+		 }else{
+			 month='0'+month;
+		 }
+		 var day = format.getDate();//当前日
+		 if(day>=10){
+			 day=day;
+		 }else{
+			 day='0'+day;
+		 }
+		 var hours=format.getHours(); //获取当前小时数(0-23)
+		 if(hours>=10){
+			 hours=hours;
+		 }else{
+			 hours='0'+hours;
+		 }
+		 var minutes=format.getMinutes();     //获取当前分钟数(0-59)
+		 if(minutes>=10){
+			 minutes=minutes;
+		 }else{
+			 minutes='0'+minutes;
+		 }
+		 var seconds=format.getSeconds();     //获取当前秒数(0-59)
+		 if(seconds>=10){
+			 seconds=seconds;
+		 }else{
+			 seconds='0'+seconds;
+		 }
+		 return year+'-'+month+'-'+day+' '+hours+':'+minutes+':'+seconds;
+	 }
 })
 
 

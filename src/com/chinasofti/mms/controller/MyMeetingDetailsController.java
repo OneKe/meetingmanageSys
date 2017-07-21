@@ -36,7 +36,6 @@ public class MyMeetingDetailsController {
 		if(null == meetingId || "".equals(meetingId)){
 			meetingId = "0";
 		}
-		
 		//会议详情
 		Meeting meetings = service.selectByMyMeetingById(meetingId);
 		System.out.println("***************"+meetings);
