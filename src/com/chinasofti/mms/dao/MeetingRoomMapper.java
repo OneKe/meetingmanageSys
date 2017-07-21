@@ -1,5 +1,7 @@
 package com.chinasofti.mms.dao;
 
+import java.util.List;
+
 import com.chinasofti.mms.pojo.MeetingRoom;
 
 public interface MeetingRoomMapper {
@@ -16,4 +18,7 @@ public interface MeetingRoomMapper {
     int updateByPrimaryKeySelective(MeetingRoom record);
 
     int updateByPrimaryKey(MeetingRoom record);
+    
+    //查看未使用的会议室
+    List<MeetingRoom> selectunusedmeetroom();
 }

@@ -80,7 +80,7 @@
                     <ul class="sidebar-menu">
                         <li class="sidebar-menuitem"><a href="addmeetingroom.jsp">添加会议室</a></li>
                         <li class="sidebar-menuitem"><a href="meetingrooms.jsp">查看会议室</a></li>
-                        <li class="sidebar-menuitem"><a href="bookmeeting.jsp">预定会议</a></li>
+                        <li class="sidebar-menuitem"><a href="queryunusedmeetroom.action">预定会议</a></li>
                         <li class="sidebar-menuitem"><a href="searchmeetings.jsp">搜索会议</a></li>
                     </ul>
                 </div>
@@ -109,8 +109,8 @@
                                 <td>会议室：</td>
                                 <td>
                                     <select id = "roomid" name = "roomid" >
-										<c:forEach var ="room" items="${roomlist }">
-											<option value ="${room.getRoomId() }">${room.getRoomName()} 容量 ：${room.getRoomCapacity()} 人</option>
+										<c:forEach var ="room" items="${mrlist }">
+											<option value ="${room.roomid }">${room.roomname} 容量 ：${room.roomcapacity} 人</option>
 										</c:forEach>
 									</select>
                                 </td>
@@ -138,13 +138,13 @@
                                 <td>
                                     <div id="divfrom">
                                         <select id="selDepartments"  onclick="changeemployees()">
-                                        	<c:forEach var ="department" items = "${departmentlist }">
-                                        		<option value = "${department.getDepartmentId()}">${department.getDepartmentName()}</option>
+                                        	<c:forEach var ="department" items = "${dplist }">
+                                        		<option value = "${department.departmentId}">${department.departmentName}</option>
                                         	</c:forEach>
                                         </select>
                                         
-                                        <c:forEach var ="department" items = "${departmentlist}">
-                                        	<select id="sel${department.getDepartmentId()}Employees"  class="selEmployees" multiple="true"  style="width:150px;height:200px;display:none">
+                                        <c:forEach var ="department" items = "${dplist}">
+                                        	<select id="sel${department.departmentId }Employees"  class="selEmployees" multiple="true"  style="width:150px;height:200px;display:none">
                                         		<c:forEach var ="employee" items = "${employeeService.selectByDepartmetId(department.getDepartmentId()) }">
                                         			<option value = "${employee.getEmployeeId()}">${employee.getEmployeeName() }</option>
                                         		</c:forEach>

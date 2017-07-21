@@ -20,9 +20,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.chinasofti.mms.pojo.Department;
 import com.chinasofti.mms.pojo.Employee;
 import com.chinasofti.mms.pojo.Meeting;
 import com.chinasofti.mms.pojo.MeetingParticipants;
+import com.chinasofti.mms.pojo.MeetingRoom;
+import com.chinasofti.mms.service.MeetingRoomService;
+import com.chinasofti.mms.service.MeetingRoomServiceImp;
 import com.chinasofti.mms.service.MeetingService;
 import com.chinasofti.mms.util.TransferUtil;
 
@@ -38,8 +42,8 @@ public class MeetingController {
 	public void setMservice(MeetingService mservice) {
 		this.mservice = mservice;
 	}
-	
-	TransferUtil tfu=new TransferUtil();
+
+	TransferUtil tfu = new TransferUtil();
 
 	@RequestMapping("/mymeeting.action")
 	public ModelAndView MyMeeting(HttpServletRequest request, HttpServletResponse response) {
@@ -69,6 +73,7 @@ public class MeetingController {
 		return mav;
 	}
 
+	// 搜索会议
 	@RequestMapping("/searchmeeting.action")
 	public void selectMeeting(String meetingname, String roomname, String reservername, String reservefromdate,
 			String reservetodate, String meetingfromdate, String meetingtodate, HttpServletRequest request,
@@ -88,7 +93,6 @@ public class MeetingController {
 		JSONArray jsonArray = new JSONArray();
 		jsonObject.put("list", list);
 		jsonArray.add(jsonObject);
-		System.out.println(jsonArray);
 		// 获得输出流
 		PrintWriter out = response.getWriter();
 		// 通过 out 对象将 jsonArray 传到前端页面
@@ -96,22 +100,40 @@ public class MeetingController {
 		out.close();
 	}
 
+	// 查看会议详情
 	@RequestMapping("/querymeetingdetails.action")
 	public String meetdetail(String meetingid, Model model) throws ParseException {
 		if (null != meetingid) {
 			Meeting meeting = mservice.findMeetingByMeetingId(meetingid);
-			if(null!=meeting){
-				String begintime=tfu.formatDate(meeting.getBegintime());
-				String endtime=tfu.formatDate(meeting.getEndtime());
+			if (null != meeting) {
+				String begintime = tfu.formatDate(meeting.getBegintime());
+				String endtime = tfu.formatDate(meeting.getEndtime());
 				model.addAttribute("begintime", begintime);
 				model.addAttribute("endtime", endtime);
 				model.addAttribute("meeting", meeting);
 			}
 			List<Employee> list = mservice.selectemployeeBymeetingid(meetingid);
-			if(list.size()>0){
+			if (list.size() > 0) {
 				model.addAttribute("list", list);
 			}
 		}
 		return "meetingdetails";
+	}
+
+	@Autowired
+	private MeetingRoomService service;
+
+	// 查看所有未使用的会议室
+	@RequestMapping("/queryunusedmeetroom.action")
+	public String queryunusedmr(Model model) {
+		List<MeetingRoom> roomlist = service.selectunusedmeetroom();
+		if (roomlist.size() > 0) {
+			model.addAttribute("mrlist", roomlist);
+		}
+		List<Department> departlist = service.selectAll();
+		if (departlist.size() > 0) {
+			model.addAttribute("dplist", departlist);
+		}
+		return "bookmeeting";
 	}
 }
