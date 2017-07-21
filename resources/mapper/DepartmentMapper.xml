@@ -79,7 +79,7 @@
   
   <!-- 添加部门 -->
   <insert id="department" parameterType="com.chinasofti.mms.pojo.Department">
-      insert into Department (DepartmentId,DepartmentName) values(#{DepartmentId},#{DepartmentName})
+      insert into Department (DepartmentId,DepartmentName) values(#{departmentId},#{departmentName})
   </insert>
   
   <!-- 修改部门 -->

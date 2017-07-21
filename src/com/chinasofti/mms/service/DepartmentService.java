@@ -22,9 +22,9 @@ public class DepartmentService {
 	}
 
 	
-	public boolean addDepartment(String departmentName) {
+	public boolean addDepartment(Department department) {
 		
-		return dao.department(departmentName);
+		return dao.department(department);
 	}
 
 	public String testDepartmentName(String departmentName) {
