@@ -87,5 +87,26 @@ public class RoleService {
 		return dao.selectEmployeeByMeetingId(meetingId);
 	}
 
+	/**
+	 * --------人员管理： 搜索员工
+	 * @param paramMap
+	 * @return
+	 */
+	public List<Employee> findEmployee(Map<String, Object> paramMap) {
+
+		return dao.findEmployee(paramMap);
+	}
+	
+	/**
+	 * --------人员管理： 搜索员工-----关闭账号
+	 * @param id
+	 * @param status
+	 * @return
+	 */
+	public int updateEmployeeStatus(String id, int status) {
+		
+		return dao.updateEmployeeStatus(id,status);
+	}
+
    
 }

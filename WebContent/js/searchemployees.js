@@ -2,7 +2,7 @@ $(document).ready(function(){
 	var employeename = $("#employeename").val();
 	var accountname= $("#accountname").val();
 	var status = $("[checked='checked']").val();
-	var pageindex = 1;
+	//var pageindex = 1;
 	var pagesize = $("#pagesize").val();
 	
 	$("#submitbutton").click(function(){
@@ -13,7 +13,7 @@ $(document).ready(function(){
 	});
 	
 	$("#headpage").click(function(){
-		window.location.href = "searchemployeesaction?employeename=" + employeename
+		window.location.href = "searchemployees.action?employeename=" + employeename
 		+ "accountname=" + accountname 
 		+ "status=" + status
 		+"pagesize=" + pagesize
