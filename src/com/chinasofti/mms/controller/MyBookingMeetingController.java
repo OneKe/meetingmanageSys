@@ -1,6 +1,8 @@
 package com.chinasofti.mms.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,7 +34,8 @@ public class MyBookingMeetingController {
 	public ModelAndView MyBooking(HttpServletRequest request,HttpServletResponse response){
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("loginEmployeeId");
-		List<Meeting> mList = rs.selectByEmployeeName(id);
+		List<Map<String,Object>> mList = new ArrayList<Map<String,Object>>();
+		mList = rs.selectByEmployeeName(id);
 		ModelAndView mv=new ModelAndView("mybookings");
 		mv.addObject("bookinglist", mList);
 		return mv;

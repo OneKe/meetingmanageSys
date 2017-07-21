@@ -24,8 +24,18 @@ public interface MeetingParticipantsMapper {
 
     int updateByPrimaryKey(MeetingParticipants record);
 
-	List<Meeting> selectByEmployeeName(String id);
+    /**
+     * 登陆后，根据用户的用户id查询我的预定
+     * @param id
+     * @return
+     */
+	List<Map<String, Object>> selectByEmployeeName(String id);
 
+	/**
+	 * 用户登录
+	 * @param employee
+	 * @return
+	 */
 	Employee findlogin(Employee employee);
 	
 	/**
