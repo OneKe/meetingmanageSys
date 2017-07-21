@@ -7,6 +7,8 @@
 <meta http-equiv="content-type" content="text/html" charset="utf-8">
 <title>CoolMeeting会议管理系统</title>
 <link rel="stylesheet" href="styles/common.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/searchmeeting.js"></script>
 <style type="text/css">
 </style>
 </head>
@@ -87,8 +89,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td colspan="6" class="command"><input type="submit"
-								class="clickbutton" value="查询" /> <input type="reset"
+							<td colspan="6" class="command"><input type="button" id="querymeet" class="clickbutton" value="查询" /> <input type="reset"
 								class="clickbutton" value="重置" /></td>
 						</tr>
 					</table>
@@ -112,27 +113,18 @@
 				</div>
 			</div>
 			<table class="listtable">
-				<tr class="listheader">
-					<th>会议名称</th>
-					<th>会议室名称</th>
-					<th>会议开始时间</th>
-					<th>会议结束时间</th>
-					<th>会议预定时间</th>
-					<th>预定者</th>
-					<th>操作</th>
-				</tr>
-				<c:forEach var="meeting" items="${list }">
-					<tr>
-						<td>${meeting.MeetingName}</td>
-						<td>${meeting.RoomName}</td>
-						<td>${meeting.BeginTime}</td>
-						<td>${meeting.EndTime}</td>
-						<td>${meeting.ReservationTime}</td>
-						<td>${meeting.EmployeeName}</td>
-						<td><a class="clickbutton" href="meetingdetails.action">查看详情</a>
-						</td>
+				<thead>
+					<tr class="listheader">
+						<th>会议名称</th>
+						<th>会议室名称</th>
+						<th>会议开始时间</th>
+						<th>会议结束时间</th>
+						<th>会议预定时间</th>
+						<th>预定者</th>
+						<th>操作</th>
 					</tr>
-				</c:forEach>
+				</thead>
+				<tbody id="qmt"></tbody>
 			</table>
 		</div>
 	</div>

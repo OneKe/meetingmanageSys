@@ -13,8 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.chinasofti.mms.pojo.Meeting;
-import com.chinasofti.mms.pojo.MeetingParticipants;
 import com.chinasofti.mms.service.RoleService;
 
 

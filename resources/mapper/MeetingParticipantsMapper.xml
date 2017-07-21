@@ -103,4 +103,16 @@
   	<update id="updateNewPassword">
   	update employee set userpwd =#{2} where username=#{0} and userpwd=#{1}
   	</update>
+  	
+  	<!--  通过会议id，查询会议详情 -->
+  	<select id="selectByMyMeetingById" resultType="Meeting">
+  	select * from meeting where meetingid=#{0}
+  	</select>
+  	
+  	<!-- 通过会议id，查询参加该会议的所有员工 -->
+  	<select id="selectEmployeeByMeetingId" resultType="Employee">
+  	select e.EmployeeName,e.Phone,e.Email from employee e,meeting m,meetingparticipants mp 
+  	where e.DepartmentId=mp.ParticipantId AND m.MeetingId=mp.MeetingId AND m.MeetingId=#{0}
+  	</select>
+  	
 </mapper>
