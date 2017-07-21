@@ -64,12 +64,12 @@
 				</tr>
 				<c:forEach var="meeting" items="${bookinglist}">
 					<tr>
-						<td>${meeting.getMeetingname() }</td>
-						<td>${meetingRoom.selectByRoomId(meeting.getRoomid()).getRoomname()}</td>
-						<td>${meeting.getBegintime()}</td>
-						<td>${meeting.getEndtime()}</td>
-						<td>${meeting.getReservationtime()}</td>
-						<td><a class="clickbutton" href=" cancelmeeting.jsp?meetingid=${meeting.getMeetingid()}">查看/撤销</a>
+						<td>${meeting.get("MeetingName") }</td>
+						<td>${meeting.get("RoomName")}</td>
+						<td>${meeting.get("BeginTime")}</td>
+						<td>${meeting.get("EndTime")}</td>
+						<td>${meeting.get("ReservationTime")}</td>
+						<td><a class="clickbutton" href=" cancelmeeting.jsp?meetingid=${meeting.get('Meetingid')}">查看/撤销</a>
 						</td>
 					</tr>
 				</c:forEach>

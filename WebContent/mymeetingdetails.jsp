@@ -129,7 +129,7 @@
                                             <td>${employees.email }</td>
                                         </tr>
                                     </c:forEach>
-                                    </table>
+                                    </table>  
                                 </td>
                             </tr>
                             <tr>

@@ -77,8 +77,10 @@
   <!-- 
  	 查询我的预定会议，通过用户名ID
    --> 
-   <select id="selectByEmployeeName" parameterType="String" resultType="Meeting">
-   select * from meeting where reservationistID=#{id} and meetingstatus=1
+   <select id="selectByEmployeeName" parameterType="String" resultType="Map">
+   SELECT m.Meetingid,m.MeetingName,mr.RoomName,m.BeginTime,m.EndTime,m.ReservationTime 
+	FROM meeting m,meetingroom mr 
+	WHERE m.RoomId=mr.RoomId AND reservationistID=#{id} and meetingstatus=1
    </select>
    
    <!-- 用户登录 -->
@@ -95,7 +97,7 @@
   	
   	<!-- 在最新通知里显示：已取消的会议 -->
   	<select id="cancelMeetingMap" resultType="Map">
-  	select m.MeetingName,mr.RoomName,m.BeginTime,m.EndTime,m.Description from meeting m,meetingroom mr 
+  	select m.MeetingName,mr.RoomName,m.BeginTime,m.EndTime,m.CanceledReson from meeting m,meetingroom mr 
   	where m.RoomId=mr.RoomId and m.meetingstatus=2
   	</select>
   	
@@ -111,7 +113,7 @@
   	
   	<!-- 通过会议id，查询参加该会议的所有员工 -->
   	<select id="selectEmployeeByMeetingId" resultType="Employee">
-  	select e.EmployeeName,e.Phone,e.Email from employee e,meeting m,meetingparticipants mp 
+  	select e.Employeename,e.Phone,e.Email from employee e,meeting m,meetingparticipants mp 
   	where e.DepartmentId=mp.ParticipantId AND m.MeetingId=mp.MeetingId AND m.MeetingId=#{0}
   	</select>
   	

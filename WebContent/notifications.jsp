@@ -90,7 +90,7 @@
 						<td>${cancelmeeting.get("RoomName")}</td>
 						<td>${cancelmeeting.get("BeginTime")}</td>
 						<td>${cancelmeeting.get("EndTime")}</td>
-						<td>${cancelmeeting.get("Description")}</td>
+						<td>${cancelmeeting.get("CanceledReson")}</td>
 						<td><a class="clickbutton" href="meetingdetails.jsp">查看详情</a>
 						</td>
 					</tr>

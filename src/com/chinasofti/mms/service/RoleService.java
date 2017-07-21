@@ -23,19 +23,18 @@ public class RoleService {
 	}
 	
 	/**
-	 * 根据用户名查看我的预定会议信息
+	 * 登陆后，根据用户的用户id查询我的预定
 	 */
-	public List<Meeting> selectByEmployeeName(String id) {
-		List<Meeting> books = dao.selectByEmployeeName(id);
-		return books;
+
+	public List<Map<String, Object>> selectByEmployeeName(String id) {
+
+		return dao.selectByEmployeeName(id);
 	}
 	
 	/**
 	 * 用户登录
 	 */
 	public Employee login(Employee employee) {
-		
-		System.out.println(employee);
 		
 		Employee em = dao.findlogin(employee);
 		
@@ -87,5 +86,6 @@ public class RoleService {
 
 		return dao.selectEmployeeByMeetingId(meetingId);
 	}
+
    
 }
