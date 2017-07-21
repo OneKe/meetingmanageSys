@@ -2,27 +2,30 @@ package com.chinasofti.mms.pojo;
 
 public class Department {
     
-    private String departmentid;
+    private String departmentId;
 
-    private String departmentname;
+    private String departmentName;
 
     private String remark;
 
-	public String getDepartmentid() {
-		return departmentid;
-	}
 
-	public void setDepartmentid(String departmentid) {
-		this.departmentid = departmentid;
-	}
-
-	public String getDepartmentname() {
-		return departmentname;
+	public String getDepartmentId() {
+		return departmentId;
 	}
 
 
-	public void setDepartmentname(String departmentname) {
-		this.departmentname = departmentname;
+	public void setDepartmentId(String departmentId) {
+		this.departmentId = departmentId;
+	}
+
+
+	public String getDepartmentName() {
+		return departmentName;
+	}
+
+
+	public void setDepartmentName(String departmentName) {
+		this.departmentName = departmentName;
 	}
 
 
@@ -40,8 +43,8 @@ public class Department {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((departmentid == null) ? 0 : departmentid.hashCode());
-		result = prime * result + ((departmentname == null) ? 0 : departmentname.hashCode());
+		result = prime * result + ((departmentId == null) ? 0 : departmentId.hashCode());
+		result = prime * result + ((departmentName == null) ? 0 : departmentName.hashCode());
 		result = prime * result + ((remark == null) ? 0 : remark.hashCode());
 		return result;
 	}
@@ -56,15 +59,15 @@ public class Department {
 		if (getClass() != obj.getClass())
 			return false;
 		Department other = (Department) obj;
-		if (departmentid == null) {
-			if (other.departmentid != null)
+		if (departmentId == null) {
+			if (other.departmentId != null)
 				return false;
-		} else if (!departmentid.equals(other.departmentid))
+		} else if (!departmentId.equals(other.departmentId))
 			return false;
-		if (departmentname == null) {
-			if (other.departmentname != null)
+		if (departmentName == null) {
+			if (other.departmentName != null)
 				return false;
-		} else if (!departmentname.equals(other.departmentname))
+		} else if (!departmentName.equals(other.departmentName))
 			return false;
 		if (remark == null) {
 			if (other.remark != null)
@@ -78,20 +81,20 @@ public class Department {
 	}
 	
     public Department(String departmentid, String departmentname) {
-		this.departmentid = departmentid;
-		this.departmentname = departmentname;
+		this.departmentId = departmentid;
+		this.departmentName = departmentname;
 	}
     
 	public Department(String depid, String departmentname, String remark) {
-		this.departmentid = depid;
-		this.departmentname = departmentname;
+		this.departmentId = depid;
+		this.departmentName = departmentname;
 		this.remark = remark;
 	}
 
 
 	@Override
 	public String toString() {
-		return "Department [departmentid=" + departmentid + ", departmentname=" + departmentname + ", remark=" + remark
+		return "Department [departmentid=" + departmentId + ", departmentname=" + departmentName + ", remark=" + remark
 				+ "]";
 	}
 

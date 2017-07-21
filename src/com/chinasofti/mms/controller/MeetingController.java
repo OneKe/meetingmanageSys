@@ -81,6 +81,9 @@ public class MeetingController {
 		map.put("meetingfromdate", meetingfromdate);
 		map.put("meetingtodate", meetingtodate);
 		List<Map<String, Object>> list = mservice.selectMeet(map);
+		for (Map<String, Object> map2 : list) {
+			System.out.println(map2);
+		}
 		JSONObject jsonObject = new JSONObject();
 		JSONArray jsonArray = new JSONArray();
 		jsonObject.put("list", list);
