@@ -96,7 +96,7 @@
       select DepartmentName from Department where DepartmentName = #{DepartmentName}
   </select>
   
-  <select id="selectAll" resultType="java.util.List">
+  <select id="selectAll" resultType="com.chinasofti.mms.pojo.Department">
   	select * from department
   </select>
       

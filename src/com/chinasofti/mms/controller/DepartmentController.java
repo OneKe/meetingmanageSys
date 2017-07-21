@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.chinasofti.mms.pojo.Department;
 import com.chinasofti.mms.service.DepartmentService;
+import com.chinasofti.mms.util.TransferUtil;
 
 
 
@@ -22,6 +23,7 @@ import com.chinasofti.mms.service.DepartmentService;
 public class DepartmentController {
 	@Autowired
     private DepartmentService dservice;
+	TransferUtil tfu = new TransferUtil();
     
 	public DepartmentService getDservice() {
 		return dservice;
@@ -39,6 +41,10 @@ public class DepartmentController {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("text/html;charset=utf-8");
 		ModelAndView mav = new ModelAndView();
+		List<Department> departmentList = dservice.selectAll();
+		mav.addObject("departmentlist" , departmentList);
+		String departmentId = request.getParameter("departmentid");
+		tfu.getUUID();
 		String departmentName = request.getParameter("departmentname");
 		if(null == departmentName || "".equals(departmentName)){
 			request.setAttribute("message", "部门名为空！");
@@ -54,14 +60,14 @@ public class DepartmentController {
 		}else{
 			boolean isAdded = dservice.addDepartment(departmentName);
 			if(isAdded){
-				List<Department> departmentList = dservice.selectAll();
-				mav.addObject("departmentlist" , departmentList);
+//				List<Department> departmentList = dservice.selectAll();
+//				mav.addObject("departmentlist" , departmentList);
 				request.setAttribute("message", "添加部门成功！");
 				mav.setViewName("departments");
 				return mav;
 			}else{
-				List<Department> departmentList = dservice.selectAll();
-				mav.addObject("departmentlist" , departmentList);
+//				List<Department> departmentList = dservice.selectAll();
+//				mav.addObject("departmentlist" , departmentList);
 				request.setAttribute("message", "添加部门失败！");
 				mav.setViewName("departments");
 				return mav;

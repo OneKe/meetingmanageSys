@@ -38,6 +38,4 @@ public interface DepartmentMapper {
 
 	List<Department> selectAll();
     
-    
-    
 }
