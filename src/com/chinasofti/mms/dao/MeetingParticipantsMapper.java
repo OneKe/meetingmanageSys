@@ -71,4 +71,19 @@ public interface MeetingParticipantsMapper {
 	 */
 	List<Employee> selectEmployeeByMeetingId(String meetingId);
 
+	/**
+	 *   --------人员管理： 搜索员工
+	 * @param paramMap
+	 * @return
+	 */
+	List<Employee> findEmployee(Map<String, Object> paramMap);
+
+	/**
+	 * --------人员管理： 搜索员工-----关闭账号
+	 * @param id
+	 * @param status
+	 * @return
+	 */
+	int updateEmployeeStatus(String id, int status);
+
 }

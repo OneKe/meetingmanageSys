@@ -54,7 +54,7 @@
             </div>
             <div class="page-content">
                 <div class="content-nav">
-                    会议预定 > 搜索员工
+                    人员管理 > 搜索员工
                 </div>
                 <form action = "searchemployees.action"  method ="post"  id="searchform">
                     <fieldset>
@@ -92,7 +92,7 @@
                         <div class="header-info">
                             共<span class="info-number">&nbsp; ${list.size()} &nbsp;</span>条结果，
                             每页显示<input type="text" id="pagesize" name = "pagesize" style="width:25px" value="${pagesize}"> 条结果，
-                            当前第<span class="info-number">${pageindex }</span>页
+                            当前第<span class="info-number">${pageindex}</span>页
                         </div>
                         <div class="header-nav">
                             <input type="button" class="clickbutton" value="首页" id="headpage"/>
@@ -112,14 +112,14 @@
                         <th>电子邮件</th>
                         <th>操作</th>
                     </tr>
-                    <c:forEach var = "employee" items = "${list }">
+                    <c:forEach var = "employee" items = "${list}">
                     	<tr>
-                        <td>${employee.getEmployeeName() }</td>
-                        <td>${employee.getUserName() }</td>
-                        <td>${employee.getPhone() }</td>
-                        <td>${employee.getEmail() }</td>
+                        <td>${employee.employeename}</td>
+                        <td>${employee.username}</td>
+                        <td>${employee.phone}</td>
+                        <td>${employee.email}</td>
                         <td>
-                            <a class="clickbutton" href="closeemployee?employeeid=${employee.getEmployeeId() }">关闭账号</a>
+                            <a class="clickbutton" href="closeemployee.action?employeeid=${employee.employeeid}">关闭账号</a>
                         </td>
                     </tr>
                     </c:forEach>
