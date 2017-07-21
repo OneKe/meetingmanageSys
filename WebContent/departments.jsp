@@ -63,7 +63,7 @@
                     <fieldset>
                         <legend>添加部门</legend>
                         部门名称:
-                        <input type="text" id="departmentname" name = "departmentname" maxlength="20"/>
+                        <input type="text" id="departmentname" name = "departmentName" maxlength="20"/>
                         <input type="button" id="adddepartmentformbutton" class="clickbutton" value="添加"/>
                         <span style="color: red; display: none;" id="departmentnamespan">部门名为空！</span>
                         <span style="color:red">${message }</span>

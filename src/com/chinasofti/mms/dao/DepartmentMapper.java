@@ -24,7 +24,7 @@ public interface DepartmentMapper {
     int updateByPrimaryKey(Department record);
 
 
-	boolean department(String departmentName);
+	boolean department(Department department);
 
 
 	boolean delete(String id);

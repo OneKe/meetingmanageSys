@@ -37,18 +37,21 @@ public class DepartmentController {
 	 * 添加部门
 	 */
 	@RequestMapping("/adddepartmen.action")
-	public ModelAndView ManageDepartment(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException{
+	public ModelAndView ManageDepartment(Department department,HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException{
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("text/html;charset=utf-8");
+		String departmentName=department.getDepartmentName();
 		ModelAndView mav = new ModelAndView();
-		List<Department> departmentList = dservice.selectAll();
-		mav.addObject("departmentlist" , departmentList);
-		String departmentId = request.getParameter("departmentid");
-		tfu.getUUID();
-		String departmentName = request.getParameter("departmentname");
+		
+		String departmentId = tfu.getUUID();
+		System.out.println(departmentId);
+		department.setDepartmentId(departmentId);
+		
+//		String departmentName = request.getParameter("departmentname");
 		if(null == departmentName || "".equals(departmentName)){
 			request.setAttribute("message", "部门名为空！");
 			mav.setViewName("departments");
+			
 			return mav;
 		}
 		System.out.println("*********"+departmentName);
@@ -58,10 +61,13 @@ public class DepartmentController {
 			mav.setViewName("departments");
 			return mav;
 		}else{
-			boolean isAdded = dservice.addDepartment(departmentName);
+			System.out.println("----------------------------->");
+			boolean isAdded = dservice.addDepartment(department);
 			if(isAdded){
 //				List<Department> departmentList = dservice.selectAll();
 //				mav.addObject("departmentlist" , departmentList);
+				List<Department> departmentList = dservice.selectAll();
+				mav.addObject("departmentlist" , departmentList);
 				request.setAttribute("message", "添加部门成功！");
 				mav.setViewName("departments");
 				return mav;
