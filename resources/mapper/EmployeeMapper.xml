@@ -185,4 +185,9 @@
 		employeestatus=${employeestatus} where
 		employeeid=#{employeeid}
 	</update>
+	
+	<!-- 根据部门id查询员工 -->
+	<select id="selectEmpByDpId" parameterType="java.lang.String" resultType="com.chinasofti.mms.pojo.Employee">
+		SELECT * from employee WHERE DepartmentId=#{0}
+	</select>
 </mapper>

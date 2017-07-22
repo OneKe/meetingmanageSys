@@ -18,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.chinasofti.mms.pojo.Department;
@@ -25,6 +26,8 @@ import com.chinasofti.mms.pojo.Employee;
 import com.chinasofti.mms.pojo.Meeting;
 import com.chinasofti.mms.pojo.MeetingParticipants;
 import com.chinasofti.mms.pojo.MeetingRoom;
+import com.chinasofti.mms.service.EmployeeService;
+import com.chinasofti.mms.service.EmployeeServiceImp;
 import com.chinasofti.mms.service.MeetingRoomService;
 import com.chinasofti.mms.service.MeetingRoomServiceImp;
 import com.chinasofti.mms.service.MeetingService;
@@ -135,5 +138,43 @@ public class MeetingController {
 			model.addAttribute("dplist", departlist);
 		}
 		return "bookmeeting";
+	}
+
+	@Autowired
+	private EmployeeService eservice;
+
+	// 根据departmentid查询员工
+	@RequestMapping("/queryemplbydpid.action")
+	public void queryemplbydpid(String departmentid, Model model, HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		JSONObject jsonObject = new JSONObject();
+		JSONArray jsonArray = new JSONArray();
+		System.out.println(departmentid);
+		if (null != departmentid) {
+			List<Employee> list = eservice.selectEmpByDpId(departmentid);
+			if (list.size() > 0) {
+				jsonObject.put("elist", list);
+				jsonArray.add(jsonObject);
+			} else {
+				jsonObject.put("message", "出错了！");
+				jsonArray.add(jsonObject);
+			}
+		} else {
+			jsonObject.put("message", "出错了！");
+			jsonArray.add(jsonObject);
+		}
+		// 获得输出流
+		PrintWriter out = response.getWriter();
+		// 通过 out 对象将 jsonArray 传到前端页面
+		out.println(jsonArray.toJSONString());
+		out.close();
+	}
+
+	@RequestMapping("/bookingmeeting.action")
+	public void bookmeet(Map<String, Object> employeeids, HttpServletRequest request, HttpServletResponse response) {
+		JSONObject jsonObject=new JSONObject(employeeids);
+		System.out.println(jsonObject);
 	}
 }

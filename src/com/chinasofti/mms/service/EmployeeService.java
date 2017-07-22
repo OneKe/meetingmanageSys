@@ -30,4 +30,7 @@ public interface EmployeeService {
 	
 	//查询待审批员工
 	List<Employee> selectEmpByStatus();
+	
+	//根据部门id查询员工
+	List<Employee> selectEmpByDpId(String departmentId);
 }

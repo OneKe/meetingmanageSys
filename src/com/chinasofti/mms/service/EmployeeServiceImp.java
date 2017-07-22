@@ -61,4 +61,9 @@ public class EmployeeServiceImp implements EmployeeService {
 		return dao.selectByPrimaryKey(employeeid);
 	}
 
+	@Override
+	public List<Employee> selectEmpByDpId(String departmentId) {
+		return dao.selectEmpByDpId(departmentId);
+	}
+
 }
