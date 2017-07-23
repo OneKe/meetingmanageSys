@@ -116,6 +116,14 @@
                 </form>
             </div>
         </div>
+        <div id="hidebox" style="width: 400px;height: 160px;background-color:lightgray;position: fixed;left: 40%;top: 200px;border-radius: 10px;border: 1px solid #A52A2A">
+    		<p style="width: 25px;height: 25px;border-radius: 50%;float: right;background-color: #696969;text-align: center">X</p>
+    		<p style="margin-top: 50px;font-size: 20px;text-align: center">是否确认删除？</p>
+    		<div id="btnplace" style="margin-top: 30px;height: 40px;left: auto;right: auto;margin-left: 50px">
+        		<input type="button" id="querenbtn" value="确认" style="display: inline-block; width:100px; height:40px" />
+        		<input type="button" id="backbtn" value="取消" style="display: inline-block; width:100px; height:40px;margin-left: 80px" onclick="window.history.back();" />
+    </div>
+</div>
         <div class="page-footer">
             <hr/>
             更多问题，欢迎联系<a href="mailto:webmaster@eeg.com">管理员</a>
