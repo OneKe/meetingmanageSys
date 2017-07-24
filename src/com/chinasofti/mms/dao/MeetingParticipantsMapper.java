@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.chinasofti.mms.pojo.Employee;
 import com.chinasofti.mms.pojo.Meeting;
 import com.chinasofti.mms.pojo.MeetingParticipants;
+import com.chinasofti.mms.pojo.MeetingRoom;
 
 @Repository
 public interface MeetingParticipantsMapper {
@@ -96,5 +97,18 @@ public interface MeetingParticipantsMapper {
 	
 	//批量添加
 	int insertMpt(List<MeetingParticipants> list);
+
+	/**
+	 * -----会议预定 > 查看所有会议室
+	 * @return
+	 */
+	List<Map<String, Object>> selectAllMeetingRoom();
+
+	/**
+	 * -----会议预定 > 查看所有会议室 > 会议室详情
+	 * @param id
+	 * @return
+	 */
+	MeetingRoom selectOneMeetingRoom(String id);
 
 }

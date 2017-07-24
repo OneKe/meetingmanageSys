@@ -43,7 +43,7 @@
                     <div class="sidebar-grouptitle">会议预定</div>
                     <ul class="sidebar-menu">
                         <li class="sidebar-menuitem"><a href="addmeetingroom.jsp">添加会议室</a></li>
-                        <li class="sidebar-menuitem"><a href="meetingrooms.jsp">查看会议室</a></li>
+                        <li class="sidebar-menuitem"><a href="findMeetingRoom.action">查看会议室</a></li>
                         <li class="sidebar-menuitem"><a href="bookmeeting.jsp">预定会议</a></li>
                         <li class="sidebar-menuitem"><a href="searchmeetings.jsp">搜索会议</a></li>
                     </ul>
@@ -60,32 +60,32 @@
                             <tr>
                                 <td>门牌号:</td>
                                 <td>
-                                <input name = "roomid"  type="text"  value = "${meetingroom.getRoomId() }" style="display:none"/>
-                                    <input id="roomnumber"  name="roomnumber"    type="text" value="${meetingroom.getRoomCode() }" maxlength="10"/>
+                                <input name = "roomid"  type="text"  value = "${meetingroom.getRoomid() }" style="display:none"/>
+                                    <input id="roomnumber"  name="roomnumber"    type="text" value="${meetingroom.getRoomcode() }" maxlength="10"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>会议室名称:</td>
                                 <td>
-                                    <input id="roomname"  name="roomname"  type="text" value="${meetingroom.getRoomName() }" maxlength="20"/>
+                                    <input id="roomname"  name="roomname"  type="text" value="${meetingroom.getRoomname() }" maxlength="20"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>最多容纳人数：</td>
                                 <td>
-                                    <input id="roomcapacity"  name="roomcapacity"   type="text" value="${meetingroom.getRoomCapacity() }"/>
+                                    <input id="roomcapacity"  name="roomcapacity"   type="text" value="${meetingroom.getRoomcapacity() }"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>当前状态：</td>
                                 <td>
-	                                <c:if test = "${meetingroom.getRoomStatus()  == 0 }">
+	                                <c:if test = "${meetingroom.getRoomstatus()  == 0 }">
 	                        			<c:set var = "using" value = "checked='checked'"></c:set>
 	                        		</c:if>
-	                        		<c:if test = "${meetingroom.getRoomStatus()  == 1 }">
+	                        		<c:if test = "${meetingroom.getRoomstatus()  == 1 }">
 	                        			<c:set var = "stop" value = "checked='checked'"></c:set>
 	                        		</c:if>
-	                        		<c:if test = "${meetingroom.getRoomStatus()  == 2 }">
+	                        		<c:if test = "${meetingroom.getRoomstatus()  == 2 }">
 	                        			<c:set var = "delete" value = "checked='checked'"></c:set>
 	                        		</c:if>
                                     <input type="radio" id="status" name="status"  ${using} value="0"/><label for="status">启用</label>

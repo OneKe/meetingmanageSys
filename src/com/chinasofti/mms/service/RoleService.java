@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.chinasofti.mms.dao.MeetingParticipantsMapper;
 import com.chinasofti.mms.pojo.Employee;
 import com.chinasofti.mms.pojo.Meeting;
+import com.chinasofti.mms.pojo.MeetingRoom;
 @Service
 public class RoleService {
 	@Autowired
@@ -117,6 +118,25 @@ public class RoleService {
 	public int cancelOneMeeting(String mtid, String canceledreson) {
 
 		return dao.cancelOneMeeting(mtid,canceledreson);
+	}
+
+	/**
+	 * -----会议预定 > 查看所有会议室
+	 * @return
+	 */
+	public List<Map<String, Object>> selectMeetingRoomAll() {
+
+		return dao.selectAllMeetingRoom();
+	}
+
+	/**
+	 * -----会议预定 > 查看所有会议室 > 会议室详情
+	 * @param id
+	 * @return
+	 */
+	public MeetingRoom selectOneMeetingRoom(String id) {
+
+		return dao.selectOneMeetingRoom(id);
 	}
 
    

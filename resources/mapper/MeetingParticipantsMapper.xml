@@ -151,4 +151,14 @@
 			(#{mpt.mpid},#{mpt.meetingid},#{mpt.participantid})
 		</foreach>
 	</insert>
+	
+	<!-- ************会议预定 > 查看所有会议室*************** -->
+	<select id="selectAllMeetingRoom" resultType="Map">
+	select RoomId,RoomCode,RoomName,RoomCapacity,RoomStatus,Description from MeetingRoom
+	</select>
+	
+	<!-- **********会议预定 > 查看所有会议室 > 会议室详情***** -->
+	<select id="selectOneMeetingRoom" resultType="MeetingRoom">
+	select * from meetingroom where RoomId = #{0}
+	</select>
 </mapper>
