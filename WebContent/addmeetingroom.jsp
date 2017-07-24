@@ -81,9 +81,9 @@
                             <tr>
                                 <td>当前状态：</td>
                                 <td>
-                                    <input type="radio" id="roomstatus" name="roomstatus" checked="checked" value="0"/><label for="status">启用</label>
-                                    <input type="radio" id="roomstatus" name="roomstatus"  value="1"/><label for="status" >停用</label>
-                                    <input type="radio" id="roomstatus" name="roomstatus"  value="2"/><label for="status" >删除</label>
+                                    <input type="radio" id="roomstatus" name="roomstatus" checked="checked" value="1"/><label for="status">启用</label>
+                                    <input type="radio" id="roomstatus" name="roomstatus"  value="2"/><label for="status" >停用</label>
+                                    <input type="radio" id="roomstatus" name="roomstatus"  value="3"/><label for="status" >删除</label>
                                 </td>
                             </tr>
                             <tr>

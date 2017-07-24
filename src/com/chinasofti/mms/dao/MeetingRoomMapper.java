@@ -6,7 +6,7 @@ import com.chinasofti.mms.pojo.MeetingRoom;
 
 public interface MeetingRoomMapper {
     
-    int deleteByPrimaryKey(Integer roomid);
+    int deleteByPrimaryKey(String roomid);
     
     //添加会议室
     int insert(MeetingRoom record);
@@ -21,4 +21,7 @@ public interface MeetingRoomMapper {
     
     //查看未使用的会议室
     List<MeetingRoom> selectunusedmeetroom();
+    
+    //修改会议室状态
+    int updateroomstatusbyid(String roomid);
 }

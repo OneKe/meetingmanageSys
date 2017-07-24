@@ -34,4 +34,9 @@ public class MeetingRoomServiceImp implements MeetingRoomService {
 		return ddao.selectAll();
 	}
 
+	@Override
+	public int updateroomstatusbyid(String roomid) {
+		return dao.updateroomstatusbyid(roomid) ;
+	}
+
 }

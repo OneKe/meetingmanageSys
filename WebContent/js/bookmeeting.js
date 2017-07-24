@@ -86,16 +86,24 @@ $("document").ready(function() {
 	//会议提交
 	$("#bookingbtn").click(function(){
 		var rightOption = $("#selSelectedEmployees option");
+		var roomoption=$("#roomid option:selected");
+		alert(roomoption.val());
 		var arr=[];
 		for(var h = 0; h < rightOption.length; h++){
 			arr.push({employeeid:rightOption.eq(h).val()});
 		};
-		alert(arr);
+		alert(arr[0]);
 		$.ajax({
 			type: "post",
 			url: "bookingmeeting.action",
-			data: {
-				"employeeids":arr
+			dataType:"json",
+			data: {meetingname:$("#meetingname").val(),
+					numofparticipants:$("#numofparticipants").val(),
+					roomid:roomoption.val(),
+					startdatetime:$("#startdatetime").val(),
+					enddatetime:$("#enddatetime").val(),
+					description:$("#description").val(),
+					employeeids:JSON.stringify(arr)
 			},
 			async: true,
 			
