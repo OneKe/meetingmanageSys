@@ -81,7 +81,7 @@
                         </c:if>
                         <td>${status }</td>
                         <td>
-                            <a class="clickbutton" href="roomdetails.jsp?roomid=${meetingroom.getRoomId()}">查看详情</a>
+                            <a class="clickbutton" href="roomdetails.action">查看详情</a>
                         </td>
                     </tr>
                     </c:forEach>

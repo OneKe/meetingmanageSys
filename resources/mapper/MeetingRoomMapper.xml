@@ -107,5 +107,10 @@
   	SELECT * FROM meetingroom WHERE RoomStatus=0
   </select>
   
+  <update id="updateMeetingRoom" parameterType="com.chinasofti.mms.pojo.MeetingRoom">
+      update meetingroom set RoomCode = #{RoomCode} ,RoomName = #{RoomName},RoomCapacity = #{RoomCapacity} ,RoomStatus = #{RoomStatus} ,Description = #{Description}
+ 				where RoomId = #{RoomId}
+  </update>
+  
   
 </mapper>
