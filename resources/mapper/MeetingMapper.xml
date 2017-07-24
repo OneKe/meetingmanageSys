@@ -293,10 +293,10 @@
 	</select>
 	
 	<select id="selectListsById" resultType="Map">
-		select m.meetingname , r.roomname , m.begintime , m.endtime
+		select m.meetingid,m.meetingname , r.roomname , m.begintime , m.endtime
 		,m.ReservationTime ,e.EmployeeName from meeting m , meetingroom r
 		,employee e where m.roomid=r.roomid and
-		e.EmployeeId=m.ReservationistId
+		e.EmployeeId=m.ReservationistId and ReservationistId=#{0}
 	</select>
 	
 </mapper>

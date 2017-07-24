@@ -46,6 +46,32 @@ public class MyMeetingDetailsController {
 			System.out.println(employee);
 		}
 		mv.addObject("employees", employees);
+		mv.addObject("meetingid", meetingId);
+		 		return mv;
+		 	}
+		 	
+		 	@RequestMapping("cancelmeettransfer.action")
+		 	public ModelAndView cancelMeetTransfer(HttpServletRequest request,HttpServletResponse response){
+		 		ModelAndView mv = new ModelAndView("cancelmeeting");
+		 		String mtid = request.getParameter("meetingid");
+		 		Meeting meetings = service.selectByMyMeetingById(mtid);
+		 		mv.addObject("meetings", meetings);
+		 		return mv;
+		 	}
+		 	
+		 	@RequestMapping("cancelmeeting.action")
+		 	public ModelAndView cancelMeeting(HttpServletRequest request,HttpServletResponse response){
+		 		ModelAndView mv = new ModelAndView("cancelmeeting");
+		 		String mtid = request.getParameter("meetingid");
+		 		String canceledreson =request.getParameter("canceledreson");
+		 		int mt = service.cancelOneMeeting(mtid,canceledreson);
+		 		System.out.println(mt);
+		 		if(mt>0){
+		 			mv.addObject("message", "会议取消成功！");
+		 		}else{
+		 			mv.addObject("message", "会议失败成功！");
+		 		}
+		 		mv.addObject("meetingid", mtid);
 		return mv;
 	}
 
