@@ -26,7 +26,7 @@
 				<ul class="sidebar-menu">
 					<li class="sidebar-menuitem"><a href="notification.action">最新通知</a></li>
 					<li class="sidebar-menuitem active"><a href="mybooking.action">我的预定</a></li>
-					<li class="sidebar-menuitem"><a href="meetingparticipants.action">我的会议</a></li>
+					<li class="sidebar-menuitem"><a href="mymeeting.action">我的会议</a></li>
 				</ul>
 			</div>
 			<div class="sidebar-menugroup">
