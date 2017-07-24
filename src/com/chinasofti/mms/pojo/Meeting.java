@@ -22,7 +22,7 @@ public class Meeting {
 
 	private Date canceledtime;
 
-	private String meetingstatus;
+	private Integer meetingstatus;
 
 	private String description;
 	
@@ -128,11 +128,11 @@ public class Meeting {
 		this.canceledtime = canceledtime;
 	}
 
-	public String getMeetingstatus() {
+	public Integer getMeetingstatus() {
 		return meetingstatus;
 	}
 
-	public void setMeetingstatus(String meetingstatus) {
+	public void setMeetingstatus(Integer meetingstatus) {
 		this.meetingstatus = meetingstatus;
 	}
 
@@ -146,10 +146,25 @@ public class Meeting {
 
 	public Meeting() {
 	}
-
+	
+	public Meeting(String meetingid, String meetingname, String roomid, String reservationistid,
+			Integer numofparticipants, Date begintime, Date endtime, Date reservationtime,
+			Integer meetingstatus, String description) {
+		this.meetingid = meetingid;
+		this.meetingname = meetingname;
+		this.roomid = roomid;
+		this.reservationistid = reservationistid;
+		this.numofparticipants = numofparticipants;
+		this.begintime = begintime;
+		this.endtime = endtime;
+		this.reservationtime = reservationtime;
+		this.meetingstatus = meetingstatus;
+		this.description = description;
+	}
+	
 	public Meeting(String meetingid, String meetingname, String roomid, String reservationistid,
 			Integer numofparticipants, Date begintime, Date endtime, Date reservationtime, Date canceledtime,
-			String meetingstatus, String description) {
+			Integer meetingstatus, String description) {
 		this.meetingid = meetingid;
 		this.meetingname = meetingname;
 		this.roomid = roomid;

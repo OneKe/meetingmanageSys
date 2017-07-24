@@ -17,10 +17,7 @@ public class FindMeetingService {
 		this.dao = dao;
 	}
 
-	public boolean updateMeetingRoom(Object meetingRoom) {
-		
-		return dao.updateMeetingRoom(meetingRoom);
-	}
+	
     
 
 

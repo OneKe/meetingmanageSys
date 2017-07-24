@@ -108,5 +108,16 @@ public class RoleService {
 		return dao.updateEmployeeStatus(id,status);
 	}
 
+	/**
+	 * ------个人中心 > 最新通知 > 撤销会议
+	 * @param mtid
+	 * @param canceledreson 
+	 * @return
+	 */
+	public int cancelOneMeeting(String mtid, String canceledreson) {
+
+		return dao.cancelOneMeeting(mtid,canceledreson);
+	}
+
    
 }

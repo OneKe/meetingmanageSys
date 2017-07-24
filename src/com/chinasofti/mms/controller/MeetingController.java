@@ -2,8 +2,11 @@ package com.chinasofti.mms.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,14 +14,15 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
+import org.codehaus.jettison.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.chinasofti.mms.pojo.Department;
@@ -27,9 +31,7 @@ import com.chinasofti.mms.pojo.Meeting;
 import com.chinasofti.mms.pojo.MeetingParticipants;
 import com.chinasofti.mms.pojo.MeetingRoom;
 import com.chinasofti.mms.service.EmployeeService;
-import com.chinasofti.mms.service.EmployeeServiceImp;
 import com.chinasofti.mms.service.MeetingRoomService;
-import com.chinasofti.mms.service.MeetingRoomServiceImp;
 import com.chinasofti.mms.service.MeetingService;
 import com.chinasofti.mms.util.TransferUtil;
 
@@ -37,6 +39,12 @@ import com.chinasofti.mms.util.TransferUtil;
 public class MeetingController {
 	@Autowired
 	private MeetingService mservice;
+
+	@Autowired
+	private MeetingRoomService service;
+
+	@Autowired
+	private EmployeeService eservice;
 
 	public MeetingService getMservice() {
 		return mservice;
@@ -123,9 +131,6 @@ public class MeetingController {
 		return "meetingdetails";
 	}
 
-	@Autowired
-	private MeetingRoomService service;
-
 	// 查看所有未使用的会议室
 	@RequestMapping("/queryunusedmeetroom.action")
 	public String queryunusedmr(Model model) {
@@ -139,9 +144,6 @@ public class MeetingController {
 		}
 		return "bookmeeting";
 	}
-
-	@Autowired
-	private EmployeeService eservice;
 
 	// 根据departmentid查询员工
 	@RequestMapping("/queryemplbydpid.action")
@@ -173,8 +175,50 @@ public class MeetingController {
 	}
 
 	@RequestMapping("/bookingmeeting.action")
-	public void bookmeet(Map<String, Object> employeeids, HttpServletRequest request, HttpServletResponse response) {
-		JSONObject jsonObject=new JSONObject(employeeids);
-		System.out.println(jsonObject);
+	public void bookmeet(HttpServletRequest request, HttpServletResponse response)
+			throws UnsupportedEncodingException, JSONException, ParseException {
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		String meetingname = request.getParameter("meetingname");
+		String numofparticipants = request.getParameter("numofparticipants");
+		String roomid = request.getParameter("roomid");
+		String startdatetime = request.getParameter("startdatetime");
+		String enddatetime = request.getParameter("enddatetime");
+		String description = request.getParameter("description");
+		String employeeids = request.getParameter("employeeids");
+		HttpSession session = request.getSession();
+		String reservationistid = (String) session.getAttribute("loginEmployeeId");
+		String meetingid = tfu.getUUID();
+		int numofptps = 0;
+		if (null != numofparticipants) {
+			numofptps = Integer.valueOf(numofparticipants).intValue();
+		}
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
+		Date begintime = null;
+		Date endtime = null;
+		if (null != startdatetime && null != enddatetime) {
+			begintime = sdf.parse(startdatetime);
+			endtime = sdf.parse(enddatetime);
+		}
+		if (null != meetingid && !"".equals(meetingid) && null != meetingname && !"".equals(meetingname)
+				&& null != roomid && !"".equals(roomid) && null != begintime && !"".equals(begintime) && null != endtime
+				&& !"".equals(endtime) && numofptps > 0 && null != description && !"".equals(description)
+				&& null != reservationistid && !"".equals(reservationistid)) {
+			Meeting meeting = new Meeting(meetingid, meetingname, roomid, reservationistid, numofptps, begintime,
+					endtime, new Date(), 1, description);
+			System.out.println(meeting);
+			int i=mservice.insert(meeting);
+			System.out.println(i);
+			if(i>0){
+				service.updateroomstatusbyid(roomid);
+			}
+		}
+		JSONArray jsonArray = JSONArray.parseArray(employeeids);
+		JSONObject jsonObject;
+		List<String> list = new ArrayList<>();
+		for (int i = 0; i < jsonArray.size(); i++) {
+			jsonObject = jsonArray.getJSONObject(i);
+			list.add((String) jsonObject.get("employeeid"));
+		}
 	}
 }

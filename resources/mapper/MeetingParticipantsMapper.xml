@@ -97,7 +97,7 @@
   	
   	<!-- 在最新通知里显示：已取消的会议 -->
   	<select id="cancelMeetingMap" resultType="Map">
-  	select m.MeetingName,mr.RoomName,m.BeginTime,m.EndTime,m.CanceledReson from meeting m,meetingroom mr 
+  	select m.MeetingId,m.MeetingName,mr.RoomName,m.BeginTime,m.EndTime,m.CanceledReson from meeting m,meetingroom mr 
   	where m.RoomId=mr.RoomId and m.meetingstatus=2
   	</select>
   	
@@ -126,5 +126,10 @@
   	<!-- **************人员管理：搜索员工********关闭账号************ -->
   	<update id="updateEmployeeStatus">
   	update Employee set EmployeeStatus =#{1} where EmployeeId =#{0}
+  	</update>
+  	
+  	<!-- 个人中心 > 最新通知 > 撤销会议 -->
+  	<update id="cancelOneMeeting">
+  	update Meeting set MeetingStatus =2 , canceledreson=#{1} ,canceledtime=Now() where meetingid=#{0}
   	</update>
 </mapper>

@@ -21,9 +21,4 @@ public interface MeetingRoomMapper {
     
     //查看未使用的会议室
     List<MeetingRoom> selectunusedmeetroom();
-
-	boolean updateMeetingRoom(Object meetingRoom);
-    
-    
-    
 }

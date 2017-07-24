@@ -10,7 +10,7 @@ public class MeetingRoom {
 
     private Integer roomcapacity;
 
-    private Integer roomstatus;
+    private Integer roomstatus;   //会议室状态，1表示可用，2表示停用
 
     private String description;
     
