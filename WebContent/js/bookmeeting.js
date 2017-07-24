@@ -97,7 +97,8 @@ $("document").ready(function() {
 			type: "post",
 			url: "bookingmeeting.action",
 			dataType:"json",
-			data: {meetingname:$("#meetingname").val(),
+			data: {
+					meetingname:$("#meetingname").val(),
 					numofparticipants:$("#numofparticipants").val(),
 					roomid:roomoption.val(),
 					startdatetime:$("#startdatetime").val(),

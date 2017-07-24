@@ -225,15 +225,20 @@ public class MeetingController {
 			int i=mservice.insert(meeting);
 			System.out.println(i);
 			if(i>0){
-				service.updateroomstatusbyid(roomid);
+				System.out.println(service.updateroomstatusbyid(roomid));
 			}
 		}
 		JSONArray jsonArray = JSONArray.parseArray(employeeids);
 		JSONObject jsonObject;
-		List<String> list = new ArrayList<>();
+		List<MeetingParticipants> list=new ArrayList<>();
+		MeetingParticipants meetingParticipants=null;
 		for (int i = 0; i < jsonArray.size(); i++) {
 			jsonObject = jsonArray.getJSONObject(i);
-			list.add((String) jsonObject.get("employeeid"));
+			meetingParticipants=new MeetingParticipants(tfu.getUUID(), meetingid, jsonObject.getString("employeeid"));
+			list.add(meetingParticipants);
+		}
+		if(list.size()>0){
+			System.out.println(mservice.insertMpt(list));
 		}
 	}
 }

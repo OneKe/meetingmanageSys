@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.chinasofti.mms.dao.MeetingMapper;
+import com.chinasofti.mms.dao.MeetingParticipantsMapper;
 import com.chinasofti.mms.pojo.Employee;
 import com.chinasofti.mms.pojo.Meeting;
 import com.chinasofti.mms.pojo.MeetingParticipants;
@@ -23,7 +24,10 @@ public class MeetingService {
 	public void setDao(MeetingMapper dao) {
 		this.dao = dao;
 	}
-
+	
+	@Autowired
+	private MeetingParticipantsMapper mpt;
+	
 	public List<Map<String, Object>> selectMeetingParticipantsByparticipantId(String id) {
 
 		return dao.selectListsById(id);
@@ -52,4 +56,8 @@ public class MeetingService {
 		return dao.insert(record);
 	}
 	
+	//批量添加
+	public int insertMpt(List<MeetingParticipants> list){
+		return mpt.insertMpt(list);
+	}
 }
