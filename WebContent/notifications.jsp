@@ -68,7 +68,7 @@
 						<td>${comemeeting.get("RoomName")}</td>
 						<td>${comemeeting.get("BeginTime")}</td>
 						<td>${comemeeting.get("EndTime")}</td>
-						<td><a class="clickbutton" href="meetingdetails.action?meetingid=${comemeeting.get("MeetingId")}">查看详情</a>
+						<td><a class="clickbutton" href="querymeetingdetails.action?meetingid=${comemeeting.get("MeetingId")}">查看详情</a>
 						</td>
 					</tr>
 				</c:forEach>
@@ -91,7 +91,7 @@
 						<td>${cancelmeeting.get("BeginTime")}</td>
 						<td>${cancelmeeting.get("EndTime")}</td>
 						<td>${cancelmeeting.get("CanceledReson")}</td>
-						<td><a class="clickbutton" href="meetingdetails.jsp">查看详情</a>
+						<td><a class="clickbutton" href="querymeetingdetails.action?meetingid=${cancelmeeting.get("MeetingId")}">查看详情</a>
 						</td>
 					</tr>
 				</c:forEach>
