@@ -28,7 +28,7 @@ public class MeetingService {
 	@Autowired
 	private MeetingParticipantsMapper mpt;
 	
-	public List<MeetingParticipants> selectMeetingParticipantsByparticipantId(String id) {
+	public List<Map<String, Object>> selectMeetingParticipantsByparticipantId(String id) {
 
 		return dao.selectListsById(id);
 	}

@@ -54,7 +54,7 @@ public class MeetingController {
 
 	TransferUtil tfu = new TransferUtil();
 
-	@RequestMapping("/mymeeting.action")
+	/*@RequestMapping("/mymeeting.action")
 	public ModelAndView MyMeeting(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("loginEmployeeId");
@@ -80,8 +80,23 @@ public class MeetingController {
 		mav.addObject("meetings", mList);
 		mav.addObject("namelist", namelist);
 		return mav;
-	}
+	}*/
 
+	
+	@RequestMapping("/mymeeting.action" )
+	public ModelAndView MyMeeting(HttpServletRequest request, HttpServletResponse response, Model model) {
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("loginEmployeeId");
+		List<Map<String, Object>> meetings = mservice.selectMeetingParticipantsByparticipantId(id);
+		for (Map<String, Object> map : meetings) {
+			System.out.println(map.get("meetingname")+""+map.get("roomname")+""+map.get("begintime")+""+map.get("endtime")+""+map.get("ReservationTime")+""+map.get("EmployeeName"));
+		}
+		ModelAndView mav= new ModelAndView("mymeetings");
+		mav.addObject("meetings", meetings);
+		return mav;
+	}
+	
+	
 	// 搜索会议
 	@RequestMapping("/searchmeeting.action")
 	public void selectMeeting(String meetingname, String roomname, String reservername, String reservefromdate,

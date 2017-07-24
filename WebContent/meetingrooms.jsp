@@ -30,7 +30,7 @@
                     <ul class="sidebar-menu">
                         <li class="sidebar-menuitem"><a href="notification.action">最新通知</a></li>
                         <li class="sidebar-menuitem active"><a href="mybooking.action">我的预定</a></li>
-                        <li class="sidebar-menuitem"><a href="meetingparticipants.action">我的会议</a></li>
+                        <li class="sidebar-menuitem"><a href="mymeeting.action">我的会议</a></li>
                     </ul>
                 </div>
                 <div class="sidebar-menugroup">
@@ -46,7 +46,7 @@
                     <div class="sidebar-grouptitle">会议预定</div>
                     <ul class="sidebar-menu">
                         <li class="sidebar-menuitem"><a href="addmeetingroom.jsp">添加会议室</a></li>
-                        <li class="sidebar-menuitem"><a href="meetingrooms.jsp">查看会议室</a></li>
+                        <li class="sidebar-menuitem"><a href="findMeetingRoom.action">查看会议室</a></li>
                         <li class="sidebar-menuitem"><a href="bookmeeting.jsp">预定会议</a></li>
                         <li class="sidebar-menuitem"><a href="searchmeetings.jsp">搜索会议</a></li>
                     </ul>
@@ -65,23 +65,23 @@
                         <th>当前状态</th>
                         <th>操作</th>
                     </tr>
-                    <c:forEach var = "meetingroom" items = "${meetingroomlist }">
+                    <c:forEach var = "meetingroom" items = "${meetingroomlist}">
                     	<tr>
-                        <td>${meetingroom.getRoomCode() }</td>
-                        <td>${meetingroom.getRoomName() }</td>
-                        <td>${meetingroom.getRoomCapacity() }</td>
-                        <c:if test = "${meetingroom.getRoomStatus()  == 0 }">
+                        <td>${meetingroom.get("RoomCode") }</td>
+                        <td>${meetingroom.get("RoomName") }</td>
+                        <td>${meetingroom.get("RoomCapacity") }</td>
+                        <c:if test = "${meetingroom.get('RoomStatus')  == 0 }">
                         	<c:set var = "status" value = "启用"></c:set>
                         </c:if>
-                        <c:if test = "${meetingroom.getRoomStatus()  == 1 }">
+                        <c:if test = "${meetingroom.get('RoomStatus')  == 1 }">
                         	<c:set var = "status" value = "停用"></c:set>
                         </c:if>
-                        <c:if test = "${meetingroom.getRoomStatus()  == 2 }">
+                        <c:if test = "${meetingroom.get('RoomStatus')  == 2 }">
                         	<c:set var = "status" value = "删除"></c:set>
                         </c:if>
-                        <td>${status }</td>
+                        <td>${status}</td>
                         <td>
-                            <a class="clickbutton" href="roomdetails.jsp?roomid=${meetingroom.getRoomId()}">查看详情</a>
+                            <a class="clickbutton" href="oneroomdetails.action?roomid=${meetingroom.get('RoomId')}">查看详情</a>
                         </td>
                     </tr>
                     </c:forEach>
