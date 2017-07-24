@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> 
 <!DOCTYPE html>
 <html>
     <head>
@@ -101,11 +102,11 @@
                             </tr>
                             <tr>
                                 <td>预计开始时间：</td>
-                                <td>${meetings.begintime}</td>
+                                <td><fmt:formatDate value="${meetings.begintime}" pattern="yyyy-MM-dd HH:mm"/></td>
                             </tr>
                             <tr>
                                 <td>预计结束时间：</td>
-                                <td>${meetings.endtime}</td>
+                                <td><fmt:formatDate value="${meetings.endtime}" pattern="yyyy-MM-dd HH:mm"/></td>
                             </tr>
                             <tr>
                                 <td>会议说明：</td>

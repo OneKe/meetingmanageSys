@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,9 +67,9 @@
 					<tr>
 						<td>${meeting.get("MeetingName") }</td>
 						<td>${meeting.get("RoomName")}</td>
-						<td>${meeting.get("BeginTime")}</td>
-						<td>${meeting.get("EndTime")}</td>
-						<td>${meeting.get("ReservationTime")}</td>
+						<td><fmt:formatDate value="${meeting.get('BeginTime')}" pattern="yyyy-MM-dd HH:mm"/></td>
+						<td><fmt:formatDate value="${meeting.get('EndTime')}" pattern="yyyy-MM-dd HH:mm"/></td>
+						<td><fmt:formatDate value="${meeting.get('ReservationTime')}" pattern="yyyy-MM-dd HH:mm"/></td>
 						<td><a class="clickbutton" href="meetingdetails.action?meetingid=${meeting.get('Meetingid')}">查看/撤销</a>
 						</td>
 					</tr>

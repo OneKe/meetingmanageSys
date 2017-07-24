@@ -2,6 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> 
+<fmt:formatDate value="${date}" type="both"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,9 +68,9 @@
 					<tr>
 						<td>${comemeeting.get("MeetingName")}</td>
 						<td>${comemeeting.get("RoomName")}</td>
-						<td>${comemeeting.get("BeginTime")}</td>
-						<td>${comemeeting.get("EndTime")}</td>
-						<td><a class="clickbutton" href="querymeetingdetails.action?meetingid=${comemeeting.get("MeetingId")}">查看详情</a>
+						<td><fmt:formatDate value="${comemeeting.get('BeginTime')}" pattern="yyyy-MM-dd HH:mm"/></td>
+						<td><fmt:formatDate value="${comemeeting.get('EndTime')}" pattern="yyyy-MM-dd HH:mm"/></td>
+						<td><a class="clickbutton" href="querymeetingdetails.action?meetingid=${comemeeting.get('MeetingId')}">查看详情</a>
 						</td>
 					</tr>
 				</c:forEach>
@@ -88,10 +90,10 @@
 					<tr>
 						<td>${cancelmeeting.get("MeetingName")}</td>
 						<td>${cancelmeeting.get("RoomName")}</td>
-						<td>${cancelmeeting.get("BeginTime")}</td>
-						<td>${cancelmeeting.get("EndTime")}</td>
+						<td><fmt:formatDate value="${cancelmeeting.get('BeginTime')}" pattern="yyyy-MM-dd HH:mm"/></td>
+						<td><fmt:formatDate value="${cancelmeeting.get('EndTime')}" pattern="yyyy-MM-dd HH:mm"/></td>
 						<td>${cancelmeeting.get("CanceledReson")}</td>
-						<td><a class="clickbutton" href="querymeetingdetails.action?meetingid=${cancelmeeting.get("MeetingId")}">查看详情</a>
+						<td><a class="clickbutton" href="querymeetingdetails.action?meetingid=${cancelmeeting.get('MeetingId')}">查看详情</a>
 						</td>
 					</tr>
 				</c:forEach>
