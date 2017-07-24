@@ -21,4 +21,6 @@ public interface MeetingRoomMapper {
     
     //查看未使用的会议室
     List<MeetingRoom> selectunusedmeetroom();
+
+	int updateroomstatusbyid(String roomid);
 }
