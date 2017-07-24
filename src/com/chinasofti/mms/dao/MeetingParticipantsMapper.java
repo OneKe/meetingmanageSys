@@ -93,5 +93,8 @@ public interface MeetingParticipantsMapper {
 	 * @return
 	 */
 	int cancelOneMeeting(String mtid, String canceledreson);
+	
+	//批量添加
+	int insertMpt(List<MeetingParticipants> list);
 
 }

@@ -107,8 +107,8 @@
   	SELECT * FROM meetingroom WHERE RoomStatus=1
   </select>
   
-  <select id="updateroomstatusbyid">
+  <update id="updateroomstatusbyid">
   	UPDATE meetingroom SET RoomStatus=2 WHERE RoomId=#{0}
-  </select>
+  </update>
   
 </mapper>
