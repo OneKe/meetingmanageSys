@@ -54,26 +54,22 @@ public class DepartmentController {
 			
 			return mav;
 		}
-		System.out.println("*********"+departmentName);
 		String isUsed = dservice.testDepartmentName(departmentName);
 		if(isUsed == departmentName){
 			request.setAttribute("message", "部门名重复！");
 			mav.setViewName("departments");
 			return mav;
 		}else{
-			System.out.println("----------------------------->");
 			boolean isAdded = dservice.addDepartment(department);
 			if(isAdded){
-//				List<Department> departmentList = dservice.selectAll();
-//				mav.addObject("departmentlist" , departmentList);
+
 				List<Department> departmentList = dservice.selectAll();
 				mav.addObject("departmentlist" , departmentList);
 				request.setAttribute("message", "添加部门成功！");
 				mav.setViewName("departments");
 				return mav;
 			}else{
-//				List<Department> departmentList = dservice.selectAll();
-//				mav.addObject("departmentlist" , departmentList);
+
 				request.setAttribute("message", "添加部门失败！");
 				mav.setViewName("departments");
 				return mav;

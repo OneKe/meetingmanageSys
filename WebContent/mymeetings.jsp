@@ -68,15 +68,15 @@
                         <th>预定者</th>
                         <th>操作</th>
                     </tr>
-                    <c:forEach var="meeting" items="${meetings}">
+                    <c:forEach var="map" items="${meetings}">
                     <tr>
-                        <td>${meeting.getMeetingName() }</td>
-                        <td>${meetingRoom.selectByRoomId(meeting.getRoomID()).getRoomName()}</td>
-                        <td>${meeting.getStartTime()}</td>
-                        <td>${meeting.getEndTime()}</td>
-                        <td>${meeting.getReservationTime()}</td>
-                        <td>${employeeService.selectEmployeeName(meeting.getReservationistID()) }</td>
-                        <td>
+                        <td>${map.get("meetingname")}</td>
+						<td>${map.get("roomname")}</td>
+						<td>${map.get("begintime")}</td>
+						<td>${map.get("endtime")}</td>
+						<td>${map.get("ReservationTime")}</td>
+						<td>${map.get("EmployeeName")}</td>
+						<td>
                             <a class="clickbutton" href="meetingdetails.action?meetingid=${meeting.getMeetingID()}">查看详情</a>
                         </td>
                     </tr>

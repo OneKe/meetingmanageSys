@@ -33,7 +33,7 @@ public interface MeetingMapper {
     /*
      * 通过参加会议的员工的id查找员工与会议关系的对象
      */
-	List<MeetingParticipants> selectListsById(String id);
+	List<Map<String, Object>> selectListsById(String id);
 	
 	/*
 	 * 通过员工与会议关系的对象拿到会议id，通过会议id查询该会议
