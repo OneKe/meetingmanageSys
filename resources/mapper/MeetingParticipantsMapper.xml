@@ -161,4 +161,10 @@
 	<select id="selectOneMeetingRoom" resultType="MeetingRoom">
 	select * from meetingroom where RoomId = #{0}
 	</select>
+	
+	<!-- 会议预定 > 查看所有会议室 > 会议室详情 > 确认修改会议室信息 -->
+	<update id="updateMeetingRoom" parameterType="MeetingRoom">
+	update meetingroom set RoomCode=#{roomcode},RoomName=#{roomname},RoomCapacity=#{roomcapacity},RoomStatus=#{roomstatus},Description=#{description}
+	where RoomId =#{roomid}
+	</update>
 </mapper>

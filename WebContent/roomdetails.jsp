@@ -53,7 +53,7 @@
                 <div class="content-nav">
                     会议预定 > 修改会议室信息
                 </div>
-                <form action="editmeetingroom.action"  id ="editmeetingroomform"  method="post"> 
+                <form action="ConfirmTheChange.action"  id ="editmeetingroomform"  method="post"> 
                     <fieldset>
                         <legend>会议室信息</legend>
                         <table class="formtable">
@@ -101,7 +101,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2" class="command">
-                                    <input type="submit" value="确认修改" class="clickbutton"/>
+                                    <input type="submit" value="确认修改" class="clickbutton" />
                                     <input type="button" class="clickbutton" value="返回" onclick="window.history.back();"/>
                                 </td>
                             </tr>

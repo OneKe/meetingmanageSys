@@ -45,6 +45,30 @@ public class FindMeetingRoomController {
 		MeetingRoom mr = service.selectOneMeetingRoom(id);
 		mv.addObject("meetingroom", mr);
 		return mv;
+	}
+	@RequestMapping("ConfirmTheChange.action")
+	public ModelAndView ConfirmTheChange(HttpServletRequest request,HttpServletResponse response){
+		ModelAndView mv =new ModelAndView("roomdetails");
+		String roomid = request.getParameter("roomid");
+		String roomnumber = request.getParameter("roomnumber");
+		String roomname = request.getParameter("roomname");
+		String roomcapacity = request.getParameter("roomcapacity");
+		String status = request.getParameter("status");
+		String description = request.getParameter("description");
+		System.out.println("roomid"+roomid);
+		System.out.println("roomcapacity"+roomcapacity); 
+		System.out.println("status"+status);
 		
+		int capacity =  Integer.parseInt(roomcapacity);
+		int sta =  Integer.parseInt(status);
+		
+		MeetingRoom mr =  new MeetingRoom(roomid,roomnumber,roomname,capacity,sta,description);
+		int i = service.updateMeetingRoom(mr);
+		if(i==0){
+			mv.addObject("message", "修改失败！");
+		}else{
+			mv.addObject("message", "修改成功！");
+		}
+		return mv;
 	}
 }

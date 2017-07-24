@@ -139,5 +139,15 @@ public class RoleService {
 		return dao.selectOneMeetingRoom(id);
 	}
 
+	/**
+	 * -----会议预定 > 查看所有会议室 > 会议室详情 > 确认修改会议室信息
+	 * @param mr
+	 * @return
+	 */
+	public int updateMeetingRoom(MeetingRoom mr) {
+
+		return dao.updateMeetingRoom(mr);
+	}
+
    
 }

@@ -111,4 +111,11 @@ public interface MeetingParticipantsMapper {
 	 */
 	MeetingRoom selectOneMeetingRoom(String id);
 
+	/**
+	 * -----会议预定 > 查看所有会议室 > 会议室详情 > 确认修改会议室信息
+	 * @param mr
+	 * @return
+	 */
+	int updateMeetingRoom(MeetingRoom mr);
+
 }
