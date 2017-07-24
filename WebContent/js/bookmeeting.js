@@ -33,11 +33,23 @@ $("document").ready(function() {
 			success:function(data){
 				var json=jQuery.parseJSON(data);
 				var list=json[0].elist;
+				var rlist=json[1].rlist;
+				var dlist=json[2].dlist;
 				var str="";
+				var rstr="";
+				var dstr="";
 				for(var i in list){
 					str+="<option value="+list[i].employeeid+">"+list[i].employeename+"</option>"
 				}
+				for(var i in rlist){
+					rstr+="<option value="+rlist[i].roomid+">"+rlist[i].roomname+'容量：'+rlist[i].roomcapacity+'人'+"</option>"
+				}
+				for(var i in dlist){
+					dstr+="<option value="+dlist[i].departmentId+">"+dlist[i].departmentName+"</option>"
+				}
 				$("#selemployees").html(str);
+				$("#roomid").html(rstr);
+				$("#selDepartments").html(dstr);
 			},
 			error:function(data){
 				alert("出错了");
@@ -107,6 +119,14 @@ $("document").ready(function() {
 					employeeids:JSON.stringify(arr)
 			},
 			async: true,
+			success:function(result){
+				if(result==true){
+					location.href="searchmeetings.jsp"
+				}
+			},
+			error:function(result){
+				alert("错了！");
+			}
 			
 		});
 		

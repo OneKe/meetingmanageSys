@@ -2,7 +2,6 @@ package com.chinasofti.mms.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -14,7 +13,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
 import org.codehaus.jettison.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -131,20 +129,6 @@ public class MeetingController {
 		return "meetingdetails";
 	}
 
-	// 查看所有未使用的会议室
-	@RequestMapping("/queryunusedmeetroom.action")
-	public String queryunusedmr(Model model) {
-		List<MeetingRoom> roomlist = service.selectunusedmeetroom();
-		if (roomlist.size() > 0) {
-			model.addAttribute("mrlist", roomlist);
-		}
-		List<Department> departlist = service.selectAll();
-		if (departlist.size() > 0) {
-			model.addAttribute("dplist", departlist);
-		}
-		return "bookmeeting";
-	}
-
 	// 根据departmentid查询员工
 	@RequestMapping("/queryemplbydpid.action")
 	public void queryemplbydpid(String departmentid, Model model, HttpServletRequest request,
@@ -152,8 +136,9 @@ public class MeetingController {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		JSONObject jsonObject = new JSONObject();
+		JSONObject json2 = new JSONObject();
+		JSONObject json3 = new JSONObject();
 		JSONArray jsonArray = new JSONArray();
-		System.out.println(departmentid);
 		if (null != departmentid) {
 			List<Employee> list = eservice.selectEmpByDpId(departmentid);
 			if (list.size() > 0) {
@@ -163,10 +148,20 @@ public class MeetingController {
 				jsonObject.put("message", "出错了！");
 				jsonArray.add(jsonObject);
 			}
+		}
+		List<MeetingRoom> roomlist = service.selectunusedmeetroom();
+		if (roomlist.size() > 0) {
+			json2.put("rlist", roomlist);
+		}
+		List<Department> departlist = service.selectAll();
+		if (departlist.size() > 0) {
+			json3.put("dlist", departlist);
 		} else {
 			jsonObject.put("message", "出错了！");
 			jsonArray.add(jsonObject);
 		}
+		jsonArray.add(json2);
+		jsonArray.add(json3);
 		// 获得输出流
 		PrintWriter out = response.getWriter();
 		// 通过 out 对象将 jsonArray 传到前端页面
@@ -176,7 +171,7 @@ public class MeetingController {
 
 	@RequestMapping("/bookingmeeting.action")
 	public void bookmeet(HttpServletRequest request, HttpServletResponse response)
-			throws UnsupportedEncodingException, JSONException, ParseException {
+			throws JSONException, ParseException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		String meetingname = request.getParameter("meetingname");
@@ -190,6 +185,8 @@ public class MeetingController {
 		String reservationistid = (String) session.getAttribute("loginEmployeeId");
 		String meetingid = tfu.getUUID();
 		int numofptps = 0;
+		int m=0;
+		int n=0;
 		if (null != numofparticipants) {
 			numofptps = Integer.valueOf(numofparticipants).intValue();
 		}
@@ -206,24 +203,34 @@ public class MeetingController {
 				&& null != reservationistid && !"".equals(reservationistid)) {
 			Meeting meeting = new Meeting(meetingid, meetingname, roomid, reservationistid, numofptps, begintime,
 					endtime, new Date(), 1, description);
-			System.out.println(meeting);
-			int i=mservice.insert(meeting);
-			System.out.println(i);
-			if(i>0){
-				System.out.println(service.updateroomstatusbyid(roomid));
-			}
+			// 添加会议
+//			m=mservice.insert(meeting);
+			// if (i > 0) {
+			// service.updateroomstatusbyid(roomid);
+			// }
 		}
 		JSONArray jsonArray = JSONArray.parseArray(employeeids);
 		JSONObject jsonObject;
-		List<MeetingParticipants> list=new ArrayList<>();
-		MeetingParticipants meetingParticipants=null;
+		List<MeetingParticipants> list = new ArrayList<>();
+		MeetingParticipants meetingParticipants = null;
 		for (int i = 0; i < jsonArray.size(); i++) {
 			jsonObject = jsonArray.getJSONObject(i);
-			meetingParticipants=new MeetingParticipants(tfu.getUUID(), meetingid, jsonObject.getString("employeeid"));
+			meetingParticipants = new MeetingParticipants(tfu.getUUID(), meetingid, jsonObject.getString("employeeid"));
 			list.add(meetingParticipants);
 		}
-		if(list.size()>0){
-			System.out.println(mservice.insertMpt(list));
+		if (list.size() > 0) {
+			// 批量添加
+//			n=mservice.insertMpt(list);
 		}
+		boolean istrue=false;
+		if(m==0&&n==0){
+			istrue=true;
+		}
+		System.out.println(istrue);
+		// 获得输出流
+		PrintWriter out = response.getWriter();
+		// 通过 out 对象将 jsonArray 传到前端页面
+		out.println(istrue);
+		out.close();
 	}
 }
