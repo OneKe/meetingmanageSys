@@ -134,7 +134,7 @@
                             </tr>
                             <tr>
                                 <td class="command" colspan="2">
-                                    <input type="button" class="clickbutton" value="撤销会议" onclick="cancelmeetingaction?meetingid=${meeting.getMeetingID}"/>
+                                    <input type="button" class="clickbutton" value="撤销会议" onclick="window.location.href='cancelmeettransfer.action?meetingid=${meetingid}'"/>
                                     <input type="button" class="clickbutton" value="返回" onclick="window.history.back();"/>
                                 </td>
                             </tr>

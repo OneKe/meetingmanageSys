@@ -86,4 +86,12 @@ public interface MeetingParticipantsMapper {
 	 */
 	int updateEmployeeStatus(String id, int status);
 
+	/**
+	 * ------个人中心 > 最新通知 > 撤销会议
+	 * @param mtid
+	 * @param canceledreson 
+	 * @return
+	 */
+	int cancelOneMeeting(String mtid, String canceledreson);
+
 }

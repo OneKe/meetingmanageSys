@@ -69,7 +69,7 @@
 						<td>${meeting.get("BeginTime")}</td>
 						<td>${meeting.get("EndTime")}</td>
 						<td>${meeting.get("ReservationTime")}</td>
-						<td><a class="clickbutton" href=" cancelmeeting.jsp?meetingid=${meeting.get('Meetingid')}">查看/撤销</a>
+						<td><a class="clickbutton" href="meetingdetails.action?meetingid=${meeting.get('Meetingid')}">查看/撤销</a>
 						</td>
 					</tr>
 				</c:forEach>
