@@ -2,11 +2,11 @@ package com.chinasofti.mms.pojo;
 
 public class MeetingParticipants {
    
-    private String mpid;
+    private String mpid;			//ID标识--主键
 
-    private String meetingid;
+    private String meetingid;		//会议ID
 
-    private String participantid;
+    private String participantid;	//参加会议的员工ID
 
 	public String getMpid() {
 		return mpid;

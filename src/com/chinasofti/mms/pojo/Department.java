@@ -2,11 +2,11 @@ package com.chinasofti.mms.pojo;
 
 public class Department {
     
-    private Integer departmentId;
+    private Integer departmentId;//部门ID
 
-    private String departmentName;
+    private String departmentName;//部门名称
 
-    private String remark;
+    private String remark;//备注
 
 	public Integer getDepartmentId() {
 		return departmentId;
