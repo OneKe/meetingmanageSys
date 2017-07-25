@@ -46,7 +46,7 @@
                     <div class="sidebar-grouptitle">会议预定</div>
                     <ul class="sidebar-menu">
                         <li class="sidebar-menuitem"><a href="addmeetingroom.jsp">添加会议室</a></li>
-                        <li class="sidebar-menuitem"><a href="meetingrooms.jsp">查看会议室</a></li>
+                        <li class="sidebar-menuitem"><a href="findMeetingRoom.action">查看会议室</a></li>
                         <li class="sidebar-menuitem"><a href="bookmeeting.jsp">预定会议</a></li>
                         <li class="sidebar-menuitem"><a href="searchmeetings.jsp">搜索会议</a></li>
                     </ul>
