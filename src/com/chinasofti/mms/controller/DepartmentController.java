@@ -1,6 +1,7 @@
 package com.chinasofti.mms.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
@@ -13,18 +14,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.chinasofti.mms.pojo.Department;
 import com.chinasofti.mms.service.DepartmentService;
 import com.chinasofti.mms.util.TransferUtil;
 
-
-
 @Controller
 public class DepartmentController {
 	@Autowired
-    private DepartmentService dservice;
+	private DepartmentService dservice;
 	TransferUtil tfu = new TransferUtil();
-    
+
 	public DepartmentService getDservice() {
 		return dservice;
 	}
@@ -33,103 +34,108 @@ public class DepartmentController {
 		this.dservice = dservice;
 	}
 
-	/*
-	 * 添加部门
-	 */
-	@RequestMapping("/adddepartmen.action")
-	public ModelAndView ManageDepartment(Department department,HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException{
-		request.setCharacterEncoding("utf-8");
-		response.setCharacterEncoding("text/html;charset=utf-8");
-		String departmentName=department.getDepartmentName();
-		ModelAndView mav = new ModelAndView();
-		
-		String departmentId = tfu.getUUID();
-		System.out.println(departmentId);
-		department.setDepartmentId(departmentId);
-		
-//		String departmentName = request.getParameter("departmentname");
-		if(null == departmentName || "".equals(departmentName)){
-			request.setAttribute("message", "部门名为空！");
-			mav.setViewName("departments");
-			
-			return mav;
-		}
-		String isUsed = dservice.testDepartmentName(departmentName);
-		if(isUsed == departmentName){
-			request.setAttribute("message", "部门名重复！");
-			mav.setViewName("departments");
-			return mav;
-		}else{
-			boolean isAdded = dservice.addDepartment(department);
-			if(isAdded){
-
-				List<Department> departmentList = dservice.selectAll();
-				mav.addObject("departmentlist" , departmentList);
-				request.setAttribute("message", "添加部门成功！");
-				mav.setViewName("departments");
-				return mav;
-			}else{
-
-				request.setAttribute("message", "添加部门失败！");
-				mav.setViewName("departments");
-				return mav;
+	// 查询所有部门
+	@RequestMapping("/queryAllDepartment.action")
+	public void selectAllDepartment(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		List<Department> list = dservice.selectAll();
+		for (Department department : list) {
+			if (null == department.getRemark()) {
+				department.setRemark("");
 			}
 		}
-		
-		
+		JSONObject jsonObject = new JSONObject();
+		JSONArray jsonArray = new JSONArray();
+		if (list.size() > 0) {
+			jsonObject.put("list", list);
+			jsonArray.add(jsonObject);
+			// 获得输出流
+			PrintWriter out = response.getWriter();
+			// 通过 out 对象将 jsonArray 传到前端页面
+			out.println(jsonArray);
+			out.close();
+		}
 	}
+
+	/**
+	 * 添加部门
+	 * @throws IOException 
+	 */
+	@RequestMapping("/adddepartmen.action")
+	public String ManageDepartment(HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+		String departmentname=request.getParameter("departmentName");
+		Department department=new Department(departmentname);
+		int i=0;
+		if(department!=null){
+			i=dservice.addDepartment(department);
+			if(i>0){
+				return "departments";
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * 修改部门
+	 * 
+	 * @throws IOException
 	 */
 	@RequestMapping("/editdepartment.action")
-	public ModelAndView modify(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException{
+	public void modify(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		request.setCharacterEncoding("utf-8");
-		ModelAndView mav = new ModelAndView();
-		response.setCharacterEncoding("text/html;charset=utf-8");
-		String id = request.getParameter("departmentid");
-		String name = request.getParameter("departmentname");
-		String remark  = request.getParameter("departmentremark");
-		if(id == null || name == null || remark == null || "".equals(id)){
-			mav.setViewName("departments");
-			return mav;
+		response.setCharacterEncoding("utf-8");
+		Integer departmentid = Integer.valueOf(request.getParameter("departmentid")).intValue();
+		String departmentname = request.getParameter("departmentname");
+		String remark = request.getParameter("remark");
+		int i = 0;
+		if (null != departmentid && !"".equals(departmentid) && null != departmentname && !"".equals(departmentname)
+				&& null != remark && !"".equals(remark)) {
+			Department department = new Department(departmentid, departmentname, remark);
+			i = dservice.update(department);
 		}
-		Department department = new Department(id, name, remark);
-		boolean isUpdated = dservice.update(department);
-		String message;
-		if(isUpdated){
-			message = "修改成功";
-		}else{
-			message = "修改失败";
-		}
-		request.setAttribute("message", message);
-		mav.setViewName("departments");
-		List<Department> departmentList = dservice.selectAll();
-		mav.addObject("departmentlist" , departmentList);
-		return mav;
+		PrintWriter out = response.getWriter();
+		out.println(i);
+		out.close();
 	}
+
 	/**
 	 * 删除部门
 	 */
-	@RequestMapping("/editdepartment.action")
-	public ModelAndView editor (HttpServletRequest request,HttpServletResponse response) throws Exception{
+	@RequestMapping("/deletedepartment.action")
+	public void editor(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
-		response.setCharacterEncoding("text/html;charset=utf-8");
-		ModelAndView mav = new ModelAndView();
-		String id = request.getParameter("departmentid");
-		if(null == id || "".equals(id)){
-			request.setAttribute("message", "id为空！");
-			mav.setViewName("departments");
-			return mav;
+		response.setCharacterEncoding("utf-8");
+		Integer departmentid = Integer.valueOf(request.getParameter("departmentid")).intValue();
+		int i = 0;
+		if (departmentid > 0) {
+			i = dservice.delete(departmentid);
 		}
-		boolean isDeleted = dservice.delete(id);
-		if(isDeleted){
-			request.setAttribute("message", "删除成功！");
-		}else{
-			request.setAttribute("message", "删除失败！");
+		PrintWriter out = response.getWriter();
+		out.println(i);
+		out.close();
+	}
+	
+	/**
+	 * 根据部门名查询部门
+	 * @throws IOException 
+	 */
+	
+	@RequestMapping("/querydepartbyname.action")
+	public void findDepartByName(HttpServletRequest request, HttpServletResponse response) throws IOException{
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+		String departmentname=request.getParameter("departmentname");
+		int i=0;
+		if(null!=departmentname&&!"".equals(departmentname)){
+			i=dservice.findDepartByName(departmentname);
+			System.out.println(i);
 		}
-		mav.setViewName("departments");
-		List<Department> departmentList = dservice.selectAll();
-		mav.addObject("departmentlist" , departmentList);
-		return mav;
+		PrintWriter out = response.getWriter();
+		out.println(i);
+		out.close();
 	}
 }

@@ -104,7 +104,7 @@
     where RoomId = #{roomid,jdbcType=VARCHAR}
   </update>
   <select id="selectunusedmeetroom" resultType="com.chinasofti.mms.pojo.MeetingRoom">
-  	SELECT * FROM meetingroom <!-- WHERE RoomStatus=1 -->
+  	SELECT * FROM meetingroom WHERE RoomStatus=0 
   </select>
   
     <update id="updateroomstatusbyid">

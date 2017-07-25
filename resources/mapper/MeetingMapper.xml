@@ -274,10 +274,10 @@
 	</select>
 
 	<select id="selectMeet" resultType="Map">
-		SELECT
-		m.meetingid,m.MeetingName,mr.RoomName,m.BeginTime,m.EndTime,m.ReservationTime,e.EmployeeName
-		FROM meeting m,meetingroom mr,employee e WHERE m.RoomId=mr.RoomId AND
-		m.ReservationistId=e.EmployeeId
+	SELECT
+	m.meetingid,m.MeetingName,mr.RoomName,m.BeginTime,m.EndTime,m.ReservationTime,e.EmployeeName
+	FROM meeting m,meetingroom mr,employee e WHERE m.RoomId=mr.RoomId AND
+	m.ReservationistId=e.EmployeeId
 		<if test="meetingname!=null and meetingname!=''"> and m.MeetingName like CONCAT('%', #{meetingname}, '%') </if>
 		 <if test="roomname!=null and roomname!=''"> and mr.RoomName like CONCAT('%', #{roomname}, '%') </if>
 		<if test="reservername!=null and reservername!=''"> and e.EmployeeName like CONCAT('%', #{reservername}, '%')</if>

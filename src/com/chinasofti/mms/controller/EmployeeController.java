@@ -20,7 +20,6 @@ import com.chinasofti.mms.service.EmployeeService;
 import com.chinasofti.mms.util.TransferUtil;
 
 @Controller
-@RequestMapping("/jsp")
 public class EmployeeController {
 	@Autowired
 	private EmployeeService service;

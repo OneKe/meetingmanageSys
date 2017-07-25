@@ -219,7 +219,7 @@ public class MeetingController {
 			Meeting meeting = new Meeting(meetingid, meetingname, roomid, reservationistid, numofptps, begintime,
 					endtime, new Date(), 1, description);
 			// 添加会议
-//			m=mservice.insert(meeting);
+			m=mservice.insert(meeting);
 			// if (i > 0) {
 			// service.updateroomstatusbyid(roomid);
 			// }
@@ -235,10 +235,10 @@ public class MeetingController {
 		}
 		if (list.size() > 0) {
 			// 批量添加
-//			n=mservice.insertMpt(list);
+			n=mservice.insertMpt(list);
 		}
 		boolean istrue=false;
-		if(m==0&&n==0){
+		if(m>0&&n>0){
 			istrue=true;
 		}
 		System.out.println(istrue);

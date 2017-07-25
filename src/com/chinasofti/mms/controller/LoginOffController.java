@@ -12,11 +12,12 @@ import org.springframework.web.servlet.ModelAndView;
 public class LoginOffController {
 
 	@RequestMapping("loginoff.action")
-	public ModelAndView loginOff(HttpServletRequest request,HttpServletResponse response){
-		ModelAndView mv=new ModelAndView("login");
+	public ModelAndView loginOff(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView mv = new ModelAndView("login");
 		HttpSession session = request.getSession();
 		session.invalidate();
 		mv.addObject("message", "退出登录成功！");
 		return mv;
 	}
+
 }

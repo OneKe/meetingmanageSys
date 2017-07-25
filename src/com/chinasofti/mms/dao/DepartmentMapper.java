@@ -24,18 +24,21 @@ public interface DepartmentMapper {
     int updateByPrimaryKey(Department record);
 
 
-	boolean department(Department department);
+	int department(Department department);
 
 
-	boolean delete(String id);
+	int delete(Integer id);
 
 
-	boolean update(Department department);
+	int update(Department department);
 
 
 	String testDepartmentName(String departmentName);
 
 
 	List<Department> selectAll();
+	
+	//根据部门名查询部门
+	int findDepartByName(String departmentname);
     
 }
