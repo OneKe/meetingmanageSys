@@ -28,6 +28,7 @@ public class FindAllEmployeesController {
 	public void setService(RoleService service) {
 		this.service = service;
 	}
+	
 	@RequestMapping("searchemployees.action")
 	public ModelAndView findEmployees(HttpServletRequest request,HttpServletResponse response){
 		
@@ -85,7 +86,7 @@ public class FindAllEmployeesController {
 	@RequestMapping("closeemployee.action")
 	public ModelAndView CloseAccount(HttpServletRequest request,HttpServletResponse response){
 		ModelAndView mv = new ModelAndView("searchemployees");
-		String id  = request.getParameter("employeeid");
+		String id  = request.getParameter("id");
 		if(null == id || "".equals(id)){
 			request.setAttribute("message", "id为空！");
 			return mv;
