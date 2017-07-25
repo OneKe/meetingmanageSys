@@ -71,13 +71,13 @@
                         <td>${meetingroom.get("RoomName") }</td>
                         <td>${meetingroom.get("RoomCapacity") }</td>
                         <c:if test = "${meetingroom.get('RoomStatus')  == 0 }">
-                        	<c:set var = "status" value = "启用"></c:set>
+                        	<c:set var = "status" value = "删除"></c:set>
                         </c:if>
                         <c:if test = "${meetingroom.get('RoomStatus')  == 1 }">
-                        	<c:set var = "status" value = "停用"></c:set>
+                        	<c:set var = "status" value = "启用"></c:set>
                         </c:if>
                         <c:if test = "${meetingroom.get('RoomStatus')  == 2 }">
-                        	<c:set var = "status" value = "删除"></c:set>
+                        	<c:set var = "status" value = "停用"></c:set>
                         </c:if>
                         <td>${status}</td>
                         <td>
