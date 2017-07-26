@@ -66,7 +66,7 @@
 						<tr>
 							<td style="width: 100px">姓名：</td>
 							<td class="inp"><input type="text" id="employeename"
-								name="employeename" maxlength="20" /> <span id="empnamespan">请输入姓名！</span>
+								name="employeename" maxlength="20" /> <span id="empnamespan">请输入姓名！</span><span id="empnamereg">请输入中文！</span>
 							</td>
 						</tr>
 						<tr>
@@ -80,7 +80,7 @@
 							<td>密码：</td>
 							<td class="inp"><input type="password" id="userpwd"
 								name="userpwd" maxlength="20" placeholder="请输入6位以上的密码" /> <span
-								id="passwordspan">请输入密码！</span></td>
+								id="passwordspan">请输入密码！</span><span id="pwdreg">请输入长度为6~16的密码！</span></td>
 						</tr>
 						<tr>
 							<td>确认密码：</td>
@@ -105,12 +105,12 @@
 						<tr>
 							<td>联系电话：</td>
 							<td class="inp"><input type="text" id="phone" name="phone"
-								maxlength="20" /> <span id="phonespan"> 请输入联系电话！</span></td>
+								maxlength="20" /> <span id="phonespan"> 请输入联系电话！</span><span id="phonereg">请输入正确电话号码！</span></td>
 						</tr>
 						<tr>
 							<td>电子邮箱：</td>
 							<td><input type="text" id="email" name="email"
-								maxlength="20" /> <span id="emailspan"> 请输入邮箱！ </span></td>
+								maxlength="20" /> <span id="emailspan"> 请输入邮箱！ </span><span id="emailreg">请输入正确邮箱！</span></td>
 						</tr>
 						<tr>
 							<td colspan="3"><label style="color: red">${message}</label></td>

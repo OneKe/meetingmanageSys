@@ -74,13 +74,24 @@ $("document")
 														success : function(data) {
 															if (data == 0) {
 																isexist = true;
-																$("#testnamespan").hide();
-																$("#departmentnamespan").hide();
+																$(
+																		"#testnamespan")
+																		.hide();
+																$(
+																		"#departmentnamespan")
+																		.hide();
 															} else {
 																isexist = false;
-																$("#testnamespan").html("该部门名称已存在，不能重复添加！");
-																$("#testnamespan").show();
-																$("#departmentnamespan").hide();
+																$(
+																		"#testnamespan")
+																		.html(
+																				"该部门名称已存在，不能重复添加！");
+																$(
+																		"#testnamespan")
+																		.show();
+																$(
+																		"#departmentnamespan")
+																		.hide();
 															}
 														}
 													});
@@ -89,14 +100,14 @@ $("document")
 											$("#testnamespan").hide();
 										}
 									})
-						// 添加部门
+					// 添加部门
 					$("#adddepartmentformbutton").click(function() {
-						if($("#departmentname").val().trim().length = 0){
+						if ($("#departmentname").val().trim().length = 0) {
 							$("#departmentnamespan").show();
-						}else if(isexist == false){
+						} else if (isexist == false) {
 							$("#departmentnamespan").hide();
 							$("#testnamespan").show();
-						}else{
+						} else {
 							$("#departmentnamespan").hide();
 							$("#testnamespan").hide();
 							if (confirm("确定要添加该部门名？")) {
@@ -156,6 +167,7 @@ function editconfirmclick(id) {
 			}
 		});
 	}
+
 	$("#" + id + "namespan").show();
 	$("#" + id + "nametext").hide();
 	$("#" + id + "remarkspan").show();
