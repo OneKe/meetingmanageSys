@@ -6,7 +6,8 @@
 <meta http-equiv="content-type" content="text/html"  charset="utf-8">
         <title>CoolMeeting会议管理系统</title>
         <link rel="stylesheet" href="styles/common.css"/>
-        <script type="text/javascript" src="js/searchmeeting"></script>
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/searchmeeting.js"></script>
         <style type="text/css">
             #divfrom{
                 float:left;
