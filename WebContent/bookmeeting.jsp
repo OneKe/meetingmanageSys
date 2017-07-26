@@ -133,12 +133,12 @@
 						<tr>
 							<td>预计开始时间：</td>
 							<td><input type="datetime-local" id="startdatetime"
-								name="startdatetime" /></td>
+								name="startdatetime" min="2017-07-26T00:00"/></td>
 						</tr>
 						<tr>
 							<td>预计结束时间：</td>
 							<td><input type="datetime-local" id="enddatetime"
-								name="enddatetime" /></td>
+								name="enddatetime" min="2017-07-26T00:00"/></td>
 						</tr>
 						<tr>
 							<td>会议说明：</td>
