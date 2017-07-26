@@ -17,7 +17,7 @@
             </div>
             <div class="header-quicklink">
                 欢迎！<strong>${loginUserName }</strong>
-                <a href="changepassword.jsp">[修改密码]</a>
+                <a href="beforelogin.jsp">[修改密码]</a>
             </div>
         </div>
         <div class="page-body">
@@ -25,27 +25,27 @@
                 <div class="sidebar-menugroup">
                     <div class="sidebar-grouptitle">个人中心</div>
                     <ul class="sidebar-menu">
-                        <li class="sidebar-menuitem"><a href="notification.action">最新通知</a></li>
-                        <li class="sidebar-menuitem active"><a href="mybooking.action">我的预定</a></li>
-                        <li class="sidebar-menuitem"><a href="mymeeting.action">我的会议</a></li>
+                        <li class="sidebar-menuitem"><a href="beforelogin.jsp">最新通知</a></li>
+                        <li class="sidebar-menuitem active"><a href="beforelogin.jsp">我的预定</a></li>
+                        <li class="sidebar-menuitem"><a href="beforelogin.jsp">我的会议</a></li>
                     </ul>
                 </div>
                 <div class="sidebar-menugroup">
                     <div class="sidebar-grouptitle">人员管理</div>
                     <ul class="sidebar-menu">
-                        <li class="sidebar-menuitem"><a href="departments.jsp">部门管理</a></li>
+                        <li class="sidebar-menuitem"><a href="beforelogin.jsp">部门管理</a></li>
                         <li class="sidebar-menuitem"><a href="register.jsp">员工注册</a></li>
-                        <li class="sidebar-menuitem"><a href="searchempbystatus.action">注册审批</a></li>
-                        <li class="sidebar-menuitem"><a href="searchemployees.jsp">搜索员工</a></li>
+                        <li class="sidebar-menuitem"><a href="beforelogin.jsp">注册审批</a></li>
+                        <li class="sidebar-menuitem"><a href="beforelogin.jsp">搜索员工</a></li>
                     </ul>
                 </div>
                 <div class="sidebar-menugroup">
                     <div class="sidebar-grouptitle">会议预定</div>
                     <ul class="sidebar-menu">
-                        <li class="sidebar-menuitem"><a href="addmeetingroom.jsp">添加会议室</a></li>
-                        <li class="sidebar-menuitem"><a href="findMeetingRoom.action">查看会议室</a></li>
-                        <li class="sidebar-menuitem"><a href="bookmeeting.jsp">预定会议</a></li>
-                        <li class="sidebar-menuitem"><a href="searchmeetings.jsp">搜索会议</a></li>
+                        <li class="sidebar-menuitem"><a href="beforelogin.jsp">添加会议室</a></li>
+                        <li class="sidebar-menuitem"><a href="beforelogin.jsp">查看会议室</a></li>
+                        <li class="sidebar-menuitem"><a href="beforelogin.jsp">预定会议</a></li>
+                        <li class="sidebar-menuitem"><a href="beforelogin.jsp">搜索会议</a></li>
                     </ul>
                 </div>
             </div>
@@ -72,7 +72,7 @@
                             <tr>
                                 <td colspan="2" class="command">
                                     <input type="submit" value="登录" class="clickbutton" onclick="window.location.href='notifiactions.jsp';"/>
-                                    <input type="button" value="返回" class="clickbutton" onclick="window.history.back();"/>
+                                    <input type="button" value="注册" class="clickbutton" onclick="window.location.href='register.jsp';"/>
                                 </td>
                             </tr>
                         </table>
