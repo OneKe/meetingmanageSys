@@ -64,6 +64,7 @@ public class MyMeetingDetailsController {
 		 		ModelAndView mv = new ModelAndView("cancelmeeting");
 		 		String mtid = request.getParameter("meetingid");
 		 		String canceledreson =request.getParameter("canceledreson");
+		 		System.out.println("******canceledreson"+canceledreson);
 		 		int mt = service.cancelOneMeeting(mtid,canceledreson);
 		 		System.out.println(mt);
 		 		if(mt>0){

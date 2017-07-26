@@ -6,6 +6,12 @@
 <meta http-equiv="content-type" content="text/html"  charset="utf-8">
         <title>CoolMeeting会议管理系统</title>
         <link rel="stylesheet" href="styles/common.css"/>
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <style>
+        	#hidebox{
+        		display: none;
+        	}
+        </style>
     </head>
     <body>
         <div class="page-header">
@@ -101,7 +107,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2" class="command">
-                                    <input type="submit" value="确认修改" class="clickbutton" />
+                                    <input type="button" value="确认修改" class="clickbutton" id="clickbtn" />
                                     <input type="button" class="clickbutton" value="返回" onclick="window.history.back();"/>
                                 </td>
                             </tr>
@@ -110,10 +116,33 @@
                 </form>
             </div>
         </div>
+		<div id="hidebox" style="width: 400px;height: 160px;background-color:lightgray;position: fixed;left: 40%;top: 200px;border-radius: 10px;border: 1px solid #A52A2A">
+			<p style="width: 25px;height: 25px;border-radius: 50%;float: right;background-color: #696969;text-align: center" id="closehidebox">X</p>
+			<p style="margin-top: 50px;font-size: 20px;text-align: center">是否确认修改？</p>
+			<div id="btnplace" style="margin-top: 30px;height: 40px;left: auto;right: auto;margin-left: 50px">
+				<input type="button" id="querenbtn" value="确认" style="display: inline-block; width:100px; height:40px" />
+				<input type="button" id="backbtn" value="取消" style="display: inline-block; width:100px; height:40px;margin-left: 80px" />
+			</div>
+		</div>
         <div class="page-footer">
             <hr/>
             更多问题，欢迎联系<a href="mailto:webmaster@eeg.com">管理员</a>
             <img src="images/footer.png" alt="CoolMeeting"/>
         </div>
     </body>
+    <script>
+    	$("#clickbtn").click(function(){
+    		$("#hidebox").show();
+    	});
+    	$("#closehidebox").click(function(){
+    		$("#hidebox").hide();
+    	});
+    	$("#backbtn").click(function(){
+    		$("#hidebox").hide();
+    	});
+    	$("#querenbtn").click(function(){
+    		$("#hidebox").hide();
+    		$("#editmeetingroomform").submit();
+    	});
+    </script>
 </html>
