@@ -51,7 +51,7 @@
             </div>
             <div class="page-content">
                 <div class="content-nav">
-                    登录
+                    登录 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color:red">${loginMessage}</span>
                 </div>
                 <form id="loginform"  method="post"  action="login.action">
                     <fieldset>

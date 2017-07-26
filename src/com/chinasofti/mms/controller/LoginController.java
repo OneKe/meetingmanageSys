@@ -11,12 +11,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.chinasofti.mms.pojo.Employee;
 import com.chinasofti.mms.service.RoleService;
+import com.chinasofti.mms.util.TransferUtil;
 
 @Controller
 public class LoginController {
 	@Autowired
 	private RoleService employeeService;
-	
+	TransferUtil mdu = new TransferUtil();
 	public RoleService getEmployeeService() {
 		return employeeService;
 	}
@@ -34,11 +35,12 @@ public class LoginController {
 	public ModelAndView login(HttpServletRequest request,HttpServletResponse response){
 		String UserName = request.getParameter("username");
 		String UserPwd = request.getParameter("userpwd");
+		String password = mdu.getMD5(UserPwd);
 		Employee employee = null;
-		if(null == UserName ||null == UserPwd || "".equals(UserName) || "".equals(UserPwd)){
+		if(null == UserName ||null == password || "".equals(UserName) || "".equals(password)){
 			return new ModelAndView("login");
 		}else{
-			employee = new Employee(UserName,UserPwd);
+			employee = new Employee(UserName,password);
 		}
 		
 		Employee loginEmployee = employeeService.login(employee);
@@ -52,8 +54,14 @@ public class LoginController {
 			session.setAttribute("employeestaus", loginEmployee.getEmployeestatus());
 			request.setAttribute("loginMessage", "登录成功！");
 			return new ModelAndView("forward:notification.action");
+		}else if(loginEmployee != null&&0==loginEmployee.getEmployeestatus()){
+			request.setAttribute("loginMessage", "账号正在审核中，请耐心等待！");
+			return new ModelAndView("login");
+		}else if(loginEmployee != null&&2==loginEmployee.getEmployeestatus()){
+			request.setAttribute("loginMessage", "账号未通过审核或已关闭，请重新注册！");
+			return new ModelAndView("login");
 		}else{
-			request.setAttribute("loginMessage", "登录失败！");
+			request.setAttribute("loginMessage", "账号或密码不正确，请重新登录！");
 			return new ModelAndView("login");
 		}
 	}

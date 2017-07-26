@@ -90,7 +90,7 @@
             </div>
             <div class="page-content">
                 <div class="content-nav">
-                    会议预定 > 撤销会议预定
+                    会议预定 > 撤销会议预定 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color:red">${message}</span>
                 </div>
                 <form action="cancelmeeting.action" method="post" id="cancelmeetingform">
                     <fieldset>
@@ -128,7 +128,7 @@
         		<input type="button" id="backbtn" value="取消" style="display: inline-block; width:100px; height:40px;margin-left: 80px" />
     </div>
     </div>
-    <p>${message}</p>
+    
         <div class="page-footer">
             <hr/>
             更多问题，欢迎联系<a href="mailto:webmaster@eeg.com">管理员</a>

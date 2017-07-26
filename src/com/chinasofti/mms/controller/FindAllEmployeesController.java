@@ -91,7 +91,7 @@ public class FindAllEmployeesController {
 			request.setAttribute("message", "id为空！");
 			return mv;
 		}
-		int isClosed = service.updateEmployeeStatus(id, 3);
+		int isClosed = service.updateEmployeeStatus(id, 2);
 		if(isClosed>0){
 			request.setAttribute("message", "关闭成功！");
 			return mv;
