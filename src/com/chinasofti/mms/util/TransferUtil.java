@@ -7,8 +7,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
-import com.sun.jmx.snmp.Timestamp;
-
 import sun.misc.BASE64Encoder;
 
 public class TransferUtil {

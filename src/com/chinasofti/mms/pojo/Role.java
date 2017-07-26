@@ -2,11 +2,11 @@ package com.chinasofti.mms.pojo;
 
 public class Role {
     
-    private Integer roleid;
+    private Integer roleid;		//角色ID
 
-    private String rolename;
+    private String rolename;	//角色名称
 
-    private String remark;
+    private String remark;		//备注
 
 	public Integer getRoleid() {
 		return roleid;

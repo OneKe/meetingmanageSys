@@ -80,17 +80,17 @@
                                 <td>当前状态：</td>
                                 <td>
 	                                <c:if test = "${meetingroom.getRoomstatus()  == 0 }">
-	                        			<c:set var = "using" value = "checked='checked'"></c:set>
-	                        		</c:if>
-	                        		<c:if test = "${meetingroom.getRoomstatus()  == 1 }">
-	                        			<c:set var = "stop" value = "checked='checked'"></c:set>
-	                        		</c:if>
-	                        		<c:if test = "${meetingroom.getRoomstatus()  == 2 }">
 	                        			<c:set var = "delete" value = "checked='checked'"></c:set>
 	                        		</c:if>
-                                    <input type="radio" id="status" name="status"  ${using} value="0"/><label for="status">启用</label>
-                                    <input type="radio" id="status" name="status"  ${stop} value="1"/><label for="status">停用</label>
-                                    <input type="radio" id="status" name="status"  ${delete} value="2"/><label for="status" >删除</label>
+	                        		<c:if test = "${meetingroom.getRoomstatus()  == 1 }">
+	                        			<c:set var = "using" value = "checked='checked'"></c:set>
+	                        		</c:if>
+	                        		<c:if test = "${meetingroom.getRoomstatus()  == 2 }">
+	                        			<c:set var = "stop" value = "checked='checked'"></c:set>
+	                        		</c:if>
+                                    <input type="radio" id="status" name="status"  ${using} value="0"/><label for="status">删除</label>
+                                    <input type="radio" id="status" name="status"  ${stop} value="1"/><label for="status">启用</label>
+                                    <input type="radio" id="status" name="status"  ${delete} value="2"/><label for="status" >停用</label>
                                 </td>
                             </tr>
                             <tr>

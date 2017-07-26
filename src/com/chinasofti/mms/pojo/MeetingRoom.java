@@ -2,17 +2,17 @@ package com.chinasofti.mms.pojo;
 
 public class MeetingRoom {
     
-    private String roomid;
+    private String roomid;			//会议室ID
 
-    private String roomcode;
+    private String roomcode;		//会议室编号-门牌号
 
-    private String roomname;
+    private String roomname;		//会议室名称
 
-    private Integer roomcapacity;
+    private Integer roomcapacity;	//会议室容量
 
-    private Integer roomstatus;   //会议室状态，1表示可用，2表示停用
+    private Integer roomstatus;   	//会议室状态，0表示已删除，1表示可用，2表示停用
 
-    private String description;
+    private String description;		//会议室描述
     
 	public String getRoomid() {
 		return roomid;

@@ -5,7 +5,6 @@ import java.util.Map;
 
 import com.chinasofti.mms.pojo.Employee;
 import com.chinasofti.mms.pojo.Meeting;
-import com.chinasofti.mms.pojo.MeetingParticipants;
 
 public interface MeetingMapper {
     

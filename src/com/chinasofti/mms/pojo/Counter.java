@@ -2,7 +2,7 @@ package com.chinasofti.mms.pojo;
 
 public class Counter {
     
-    private String visitcount;
+    private String visitcount;//统计访问人数
 
 	public String getVisitcount() {
 		return visitcount;

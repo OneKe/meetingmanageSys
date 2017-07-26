@@ -71,7 +71,7 @@
 							<a href="addmeetingroom.jsp">添加会议室</a>
 						</li>
 						<li class="sidebar-menuitem">
-							<a href="meetingrooms.jsp">查看会议室</a>
+							<a href="findMeetingRoom.action">查看会议室</a>
 						</li>
 						<li class="sidebar-menuitem">
 							<a href="bookmeeting.jsp">预定会议</a>

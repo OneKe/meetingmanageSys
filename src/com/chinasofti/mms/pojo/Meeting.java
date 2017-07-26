@@ -4,33 +4,33 @@ import java.util.Date;
 
 public class Meeting {
 
-	private String meetingid;
+	private String meetingid;			//会议ID
 
-	private String meetingname;
+	private String meetingname;			//会议名称
 
-	private String roomid;
+	private String roomid;				//会议室ID
 
-	private String reservationistid;
+	private String reservationistid;	//预订者ID
 
-	private Integer numofparticipants;
+	private Integer numofparticipants;	//预计参加人数
 
-	private Date begintime;
+	private Date begintime;				//预计开始时间
 
-	private Date endtime;
+	private Date endtime;				//预计结束时间
 
-	private Date reservationtime;
+	private Date reservationtime;		//预定时间
 
-	private Date canceledtime;
+	private Date canceledtime;			//会议取消时间
 
-	private Integer meetingstatus;
+	private Integer meetingstatus;		//会议状态，1表示正常，2表示取消
 
-	private String description;
+	private String description;			//会议描述
 	
-	private String CanceledReson;
+	private String CanceledReson;		//会议取消原因
 	
-	private Employee employee;
+	private Employee employee;			//员工对象
 	
-	private MeetingRoom meetingRoom;
+	private MeetingRoom meetingRoom;	//会议室对象
 
 	public Employee getEmployee() {
 		return employee;

@@ -54,35 +54,6 @@ public class MeetingController {
 
 	TransferUtil tfu = new TransferUtil();
 
-	/*@RequestMapping("/mymeeting.action")
-	public ModelAndView MyMeeting(HttpServletRequest request, HttpServletResponse response) {
-		HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("loginEmployeeId");
-		List<MeetingParticipants> lists = mservice.selectMeetingParticipantsByparticipantId(id);
-		List<Meeting> mList = new ArrayList<Meeting>();
-		List<String> namelist = new ArrayList<String>();
-		Employee employee;
-		if (lists != null) {
-			for (MeetingParticipants mps : lists) {
-				Meeting meet = mservice.findMeetingByMeetingId(mps.getMeetingid());
-				if (meet != null) {
-					mList.add(meet);
-				}
-			}
-		}
-		for (Meeting meeting : mList) {
-			employee = mservice.selectEmployeeByUsername(meeting.getReservationistid());
-			if (employee != null) {
-				namelist.add(employee.getUsername());
-			}
-		}
-		ModelAndView mav = new ModelAndView("mymeeting.jsp");
-		mav.addObject("meetings", mList);
-		mav.addObject("namelist", namelist);
-		return mav;
-	}*/
-
-	
 	@RequestMapping("/mymeeting.action" )
 	public ModelAndView MyMeeting(HttpServletRequest request, HttpServletResponse response, Model model) {
 		HttpSession session = request.getSession();
