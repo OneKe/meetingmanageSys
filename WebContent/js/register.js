@@ -66,38 +66,30 @@ $("document").ready(function() {
 		}
 	});
 	
-	//获取部门
-	$("#departmentid").click(function(){
-		
-	});
-	
 	
 	//判断部门
-	$("#departmentid").blur(function(){
-		if($("#departmentid").val()==null){
-			$.ajax({
-				type:"post",
-				url:"selectdpm.action",
-				async:true,
-				success:function(data){
-					var json=jQuery.parseJSON(data);
-					var list=json[0].list;
-					console.log(list);
-					var str="";
-					for(var i in list){
-						str+="<option id="+'optionid'+" value="+list[i].departmentid+">"+list[i].departmentname+"</option>";
-						console.log(list[i].departmentname);
-					}
-					$("#departmentid").html(str)
-				},
-				error:function(data){
-					alert("出错了");
+	window.onload=function(){
+		$.ajax({
+			type:"post",
+			url:"selectdpm.action",
+			async:true,
+			success:function(data){
+				var json=jQuery.parseJSON(data);
+				var list=json[0].list;
+				console.log(list);
+				var str="";
+				for(var i in list){
+					str+="<option id="+'optionid'+" value="+list[i].departmentId+">"+list[i].departmentName+"</option>";
+					console.log(list[i].departmentName);
 				}
-			});
-		}else{
-			$("#departmentidspan").hide();
-		}
-	});
+				$("#departmentid").html(str)
+			},
+			error:function(data){
+				alert("出错了");
+			}
+		});
+	}
+	
 	
 	//判断联系电话
 	$("#phone").blur(function() {
