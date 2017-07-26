@@ -11,6 +11,7 @@
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/register.js"></script>
 </head>
+
 <body>
 	<div class="page-header">
 		<div class="header-banner">
@@ -34,7 +35,7 @@
 			<div class="sidebar-menugroup">
 				<div class="sidebar-grouptitle">人员管理</div>
 				<ul class="sidebar-menu">
-					<li class="sidebar-menuitem"><a href="departments.jsp">部门管理</a>
+					<li class="sidebar-menuitem"><a class="ooop" href="departments.jsp">部门管理</a>
 					</li>
 					<li class="sidebar-menuitem"><a href="register.jsp">员工注册</a></li>
 					<li class="sidebar-menuitem"><a href="searchempbystatus.action">注册审批</a>
@@ -131,4 +132,5 @@
 			src="images/footer.png " alt="CoolMeeting " />
 	</div>
 </body>
+
 </html>

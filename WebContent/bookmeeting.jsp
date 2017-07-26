@@ -123,7 +123,7 @@
 						<tr>
 							<td>预计参加人数：</td>
 							<td><input type="number" id="numofparticipants"
-								name="numofparticipants" /></td>
+								name="numofparticipants" /><span id="numtest" style="color:red;display:none">参加人数不能大于会议室容量！</span></td>
 						</tr>
 						<tr>
 							<td>会议室：</td>

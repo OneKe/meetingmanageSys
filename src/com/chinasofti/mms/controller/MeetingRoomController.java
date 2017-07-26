@@ -10,7 +10,6 @@ import com.chinasofti.mms.service.MeetingRoomService;
 import com.chinasofti.mms.util.TransferUtil;
 
 @Controller
-@RequestMapping("/jsp")
 public class MeetingRoomController {
 	
 	@Autowired

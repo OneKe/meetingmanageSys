@@ -104,7 +104,7 @@
 								<td>
 									<input type="radio" name="status" value="1" checked="checked" /><label>已批准</label>
 									<input type="radio" name="status" value="0" /><label>待审批</label>
-									<input type="radio" name="status" value="3" /><label>已关闭</label>
+									<input type="radio" name="status" value="2" /><label>已关闭</label>
 								</td>
 							</tr>
 							<tr>
@@ -172,10 +172,7 @@
 	</body>
 	<script>
 		var myid;
-			
-// 		$(".clickbutton1").click(function() {
-// 			$("#hidebox").show();
-// 		});
+
 		function doclick(id){
 			$("#hidebox").show();
 			myid = id;
@@ -190,7 +187,6 @@
 		});
 		
 		$("#querenbtn").click(function(){
-			alert(myid);
 			$("#hidebox").hide();
 			$.ajax({
 				type:"post",
@@ -198,15 +194,12 @@
 				async:true,
 				data:{id:myid},
 				success:function(data){
-					//alert($("#myid"));
-					
-				
+
 				$("#"+myid).remove();
 				window.location.reload();
 				
 				}
 			});
-			//window.location.href = "closeemployee.action?employeeid=${employee.employeeid}";
 		});
 	</script>
 
