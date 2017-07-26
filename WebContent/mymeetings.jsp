@@ -77,7 +77,7 @@
 						<td>${map.get("ReservationTime")}</td>
 						<td>${map.get("EmployeeName")}</td>
 						<td>
-                            <a class="clickbutton" href="meetingdetails.action?meetingid=${map.get('meetingid')}">查看详情</a>
+                            <a class="clickbutton" href="querymeetingdetails.action?meetingid=${map.get('meetingid')}">查看详情</a>
                         </td>
                     </tr>
                     </c:forEach>

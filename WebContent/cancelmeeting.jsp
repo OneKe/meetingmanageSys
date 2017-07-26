@@ -138,7 +138,7 @@
     <script type="text/javascript">
     $("#querenbtn").click(function(){
 		$("#hidebox").hide();
-		window.location.href = "cancelmeeting.action?meetingid=${meetings.meetingid}";
+		$("#cancelmeetingform").submit();
 	});
     </script>
 </html>

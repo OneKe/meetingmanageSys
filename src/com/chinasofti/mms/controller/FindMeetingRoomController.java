@@ -48,7 +48,7 @@ public class FindMeetingRoomController {
 	}
 	@RequestMapping("ConfirmTheChange.action")
 	public ModelAndView ConfirmTheChange(HttpServletRequest request,HttpServletResponse response){
-		ModelAndView mv =new ModelAndView("roomdetails");
+		ModelAndView mv =new ModelAndView("forward:findMeetingRoom.action");
 		String roomid = request.getParameter("roomid");
 		String roomnumber = request.getParameter("roomnumber");
 		String roomname = request.getParameter("roomname");
@@ -64,11 +64,13 @@ public class FindMeetingRoomController {
 		
 		MeetingRoom mr =  new MeetingRoom(roomid,roomnumber,roomname,capacity,sta,description);
 		int i = service.updateMeetingRoom(mr);
-		if(i==0){
-			mv.addObject("message", "修改失败！");
-		}else{
-			mv.addObject("message", "修改成功！");
-		}
-		return mv;
+
+			if(i==0){
+				mv.addObject("message", "修改失败！");
+			}else{
+				mv.addObject("message", "修改成功！");
+				
+			}
+			return mv;
 	}
 }
