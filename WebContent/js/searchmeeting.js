@@ -1,4 +1,29 @@
 $("document").ready(function() {
+	$("#reservefromdate").blur(function(){
+		if($("#reservetodate").val()==0||($("#reservefromdate").val()>$("#reservetodate").val())){
+			$("#reservetodate").val($("#reservefromdate").val());
+		}
+	})
+	
+	$("#reservetodate").blur(function(){
+		if($("#reservefromdate").val()==0||($("#reservetodate").val()<$("#reservefromdate").val())){
+			$("#reservefromdate").val($("#reservetodate").val());
+		}
+	})
+	
+	$("#meetingfromdate").blur(function(){
+		if($("#meetingtodate").val()==0||($("#meetingfromdate").val()>$("#meetingtodate").val())){
+			$("#meetingtodate").val($("#meetingfromdate").val());
+		}
+	})
+	
+	$("#meetingtodate").blur(function(){
+		if($("#meetingfromdate").val()==0||($("#meetingtodate").val()<$("#meetingfromdate").val())){
+			$("#meetingfromdate").val($("#meetingtodate").val());
+		}
+	})
+	
+	//搜索会议信息
 	$("#querymeet").click(function() {
 		$.ajax({
 			type: "post",
