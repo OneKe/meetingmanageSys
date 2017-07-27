@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="styles/common.css" />
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/searchmeeting.js"></script>
+<script type="text/javascript" src="js/checkroleid.js"></script>
 <style type="text/css">
 </style>
 </head>
@@ -19,8 +20,8 @@
 		</div>
 		<div class="header-title">欢迎访问Cool-Meeting会议管理系统</div>
 		<div class="header-quicklink">
-			欢迎！<strong>${loginUserName }</strong> <a href="changepassword.jsp">[修改密码]</a>
-			<a href="loginoff.action">[退出登录]</a>
+			欢迎！<strong>${loginUserName } <span id="roleid" style="display:none">${roleid }</span></strong> <a
+				href="changepassword.jsp">[修改密码]</a> <a href="loginoff.action">[退出登录]</a>
 		</div>
 	</div>
 	<div class="page-body">
@@ -36,19 +37,20 @@
 			<div class="sidebar-menugroup">
 				<div class="sidebar-grouptitle">人员管理</div>
 				<ul class="sidebar-menu">
-					<li class="sidebar-menuitem"><a href="departments.jsp">部门管理</a></li>
+					<li class="sidebar-menuitem"><a class="checkroleid" href="departments.jsp">部门管理</a></li>
 					<li class="sidebar-menuitem"><a href="register.jsp">员工注册</a></li>
-					<li class="sidebar-menuitem"><a href="searchempbystatus.action">注册审批</a></li>
-					<li class="sidebar-menuitem"><a href="searchemployees.jsp">搜索员工</a></li>
+					<li class="sidebar-menuitem"><a class="checkroleid"
+						href="searchempbystatus.action">注册审批</a></li>
+					<li class="sidebar-menuitem"><a class="checkroleid" href="searchemployees.jsp">搜索员工</a></li>
 				</ul>
 			</div>
 			<div class="sidebar-menugroup">
 				<div class="sidebar-grouptitle">会议预定</div>
 				<ul class="sidebar-menu">
-					<li class="sidebar-menuitem"><a href="addmeetingroom.jsp">添加会议室</a></li>
-					<li class="sidebar-menuitem"><a href="findMeetingRoom.action">查看会议室</a></li>
-					<li class="sidebar-menuitem"><a href="bookmeeting.jsp">预定会议</a></li>
-					<li class="sidebar-menuitem"><a href="searchmeetings.jsp">搜索会议</a></li>
+					<li class="sidebar-menuitem"><a class="checkroleid" href="addmeetingroom.jsp">添加会议室</a></li>
+					<li class="sidebar-menuitem"><a class="checkroleid" href="findMeetingRoom.action">查看会议室</a></li>
+					<li class="sidebar-menuitem"><a class="checkroleid" href="bookmeeting.jsp">预定会议</a></li>
+					<li class="sidebar-menuitem"><a class="checkroleid" href="searchmeetings.jsp">搜索会议</a></li>
 				</ul>
 			</div>
 		</div>
@@ -89,8 +91,9 @@
 							</td>
 						</tr>
 						<tr>
-							<td colspan="6" class="command"><input type="button" id="querymeet" class="clickbutton" value="查询" /> <input type="reset"
-								class="clickbutton" value="重置" /></td>
+							<td colspan="6" class="command"><input type="button"
+								id="querymeet" class="clickbutton" value="查询" /> <input
+								type="reset" class="clickbutton" value="重置" /></td>
 						</tr>
 					</table>
 				</fieldset>
@@ -99,15 +102,16 @@
 				<h3 style="text-align: center; color: black">查询结果</h3>
 				<div class="pager-header">
 					<div class="header-info">
-						共<span class="info-number" id="count"></span>条结果， 分成<span id="disnum"
-							class="info-number"></span>页显示， 当前第<span id="page" class="info-number">1</span>页
+						共<span class="info-number" id="count"></span>条结果， 分成<span
+							id="disnum" class="info-number"></span>页显示， 当前第<span id="page"
+							class="info-number">1</span>页
 					</div>
 					<div class="header-nav">
-						<input type="button" id="homepage" class="clickbutton" value="首页" /> <input
-							type="button" id="lastpage" class="clickbutton" value="上页" /> <input
-							type="button" id="nextpage" class="clickbutton" value="下页" /> <input
-							type="button" id="endpage" class="clickbutton" value="末页" /> 跳到第<input
-							type="number" id="pagenum" class="nav-number" />页 <input
+						<input type="button" id="homepage" class="clickbutton" value="首页" />
+						<input type="button" id="lastpage" class="clickbutton" value="上页" />
+						<input type="button" id="nextpage" class="clickbutton" value="下页" />
+						<input type="button" id="endpage" class="clickbutton" value="末页" />
+						跳到第<input type="number" id="pagenum" class="nav-number" />页 <input
 							type="button" id="skip" class="clickbutton" value="跳转" />
 					</div>
 				</div>

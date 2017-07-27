@@ -44,6 +44,7 @@
     </head>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/cancelmeeting.js"></script>
+    <script type="text/javascript" src="js/checkroleid.js"></script>
     
     <body onload="body_load()">
         <div class="page-header">
@@ -54,7 +55,7 @@
                 欢迎访问Cool-Meeting会议管理系统
             </div>
             <div class="header-quicklink">
-                欢迎！<strong>${loginUserName }</strong>
+                欢迎！<strong>${loginUserName } <span id="roleid" style="display:none">${roleid }</span></strong>
                 <a href="changepassword.jsp">[修改密码]</a>
                 <a href="loginoff.action">[退出登录]</a>
             </div>
@@ -72,19 +73,19 @@
                 <div class="sidebar-menugroup">
                     <div class="sidebar-grouptitle">人员管理</div>
                     <ul class="sidebar-menu">
-                        <li class="sidebar-menuitem"><a href="departments.jsp">部门管理</a></li>
+                        <li class="sidebar-menuitem"><a class="checkroleid" href="departments.jsp">部门管理</a></li>
                         <li class="sidebar-menuitem"><a href="register.jsp">员工注册</a></li>
-                        <li class="sidebar-menuitem"><a href="searchempbystatus.action">注册审批</a></li>
-                        <li class="sidebar-menuitem"><a href="searchemployees.jsp">搜索员工</a></li>
+                        <li class="sidebar-menuitem"><a class="checkroleid" href="searchempbystatus.action">注册审批</a></li>
+                        <li class="sidebar-menuitem"><a class="checkroleid" href="searchemployees.jsp">搜索员工</a></li>
                     </ul>
                 </div>
                 <div class="sidebar-menugroup">
                     <div class="sidebar-grouptitle">会议预定</div>
                     <ul class="sidebar-menu">
-                        <li class="sidebar-menuitem"><a href="addmeetingroom.jsp">添加会议室</a></li>
-                        <li class="sidebar-menuitem"><a href="findMeetingRoom.action">查看会议室</a></li>
-                        <li class="sidebar-menuitem"><a href="bookmeeting.jsp">预定会议</a></li>
-                        <li class="sidebar-menuitem"><a href="searchmeetings.jsp">搜索会议</a></li>
+                        <li class="sidebar-menuitem"><a class="checkroleid" href="addmeetingroom.jsp">添加会议室</a></li>
+                        <li class="sidebar-menuitem"><a class="checkroleid" href="findMeetingRoom.action">查看会议室</a></li>
+                        <li class="sidebar-menuitem"><a class="checkroleid" href="bookmeeting.jsp">预定会议</a></li>
+                        <li class="sidebar-menuitem"><a class="checkroleid" href="searchmeetings.jsp">搜索会议</a></li>
                     </ul>
                 </div>
             </div>

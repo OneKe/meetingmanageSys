@@ -8,6 +8,7 @@
 <title>CoolMeeting会议管理系统</title>
 		<link rel="stylesheet" href="styles/common.css" />
 		<script type="text/javascript" src="js/jquery.js" ></script>
+		<script type="text/javascript" src="js/checkroleid.js"></script>
 	</head>
 	<body>
 		<div class="page-header">
@@ -38,16 +39,16 @@
 					<div class="sidebar-grouptitle">人员管理</div>
 					<ul class="sidebar-menu">
 						<li class="sidebar-menuitem">
-							<a href="beforelogin.jsp">部门管理</a>
+							<a class="checkroleid" href="beforelogin.jsp">部门管理</a>
 						</li>
 						<li class="sidebar-menuitem">
 							<a href="register.jsp">员工注册</a>
 						</li>
 						<li class="sidebar-menuitem">
-							<a href="beforelogin.jsp">注册审批</a>
+							<a class="checkroleid" href="beforelogin.jsp">注册审批</a>
 						</li>
 						<li class="sidebar-menuitem">
-							<a href="beforelogin.jsp">搜索员工</a>
+							<a class="checkroleid" href="beforelogin.jsp">搜索员工</a>
 						</li>
 					</ul>
 				</div>
@@ -55,16 +56,16 @@
 					<div class="sidebar-grouptitle">会议预定</div>
 					<ul class="sidebar-menu">
 						<li class="sidebar-menuitem">
-							<a href="beforelogin.jsp">添加会议室</a>
+							<a class="checkroleid" href="beforelogin.jsp">添加会议室</a>
 						</li>
 						<li class="sidebar-menuitem">
-							<a href="beforelogin.jsp">查看会议室</a>
+							<a class="checkroleid" href="beforelogin.jsp">查看会议室</a>
 						</li>
 						<li class="sidebar-menuitem">
-							<a href="beforelogin.jsp">预定会议</a>
+							<a class="checkroleid" href="beforelogin.jsp">预定会议</a>
 						</li>
 						<li class="sidebar-menuitem">
-							<a href="beforelogin.jsp">搜索会议</a>
+							<a class="checkroleid" href="beforelogin.jsp">搜索会议</a>
 						</li>
 					</ul>
 				</div>
