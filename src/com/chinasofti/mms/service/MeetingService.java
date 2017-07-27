@@ -60,4 +60,9 @@ public class MeetingService {
 	public int insertMpt(List<MeetingParticipants> list){
 		return mpt.insertMpt(list);
 	}
+	
+	//会议总数
+	public int meetingcount(Map<Object, Object> map){
+		return dao.meetingcount(map);
+	}
 }

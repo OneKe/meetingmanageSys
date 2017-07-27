@@ -45,7 +45,8 @@ public interface MeetingMapper {
     
     List<Employee> selectemployeeBymeetingid(String meetingid);
     
-    
+    //会议总数
+    int meetingcount(Map<Object, Object> map);
     
     
      

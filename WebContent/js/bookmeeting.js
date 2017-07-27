@@ -265,3 +265,45 @@ $("document")
 									});
 
 				})
+				
+function operate() {
+	return stringTodate2();
+}
+
+//获取当前时间
+function stringTodate2() {
+	var format = new Date();
+	var year = format.getFullYear();// 当前年份
+	var month = format.getMonth() + 1;// 当前月份
+	if (month >= 10) {
+		month = month;
+	} else {
+		month = '0' + month;
+	}
+	var day = format.getDate();// 当前日
+	if (day >= 10) {
+		day = day;
+	} else {
+		day = '0' + day;
+	}
+	var hours = format.getHours(); // 获取当前小时数(0-23)
+	if (hours >= 10) {
+		hours = hours;
+	} else {
+		hours = '0' + hours;
+	}
+	var minutes = format.getMinutes(); // 获取当前分钟数(0-59)
+	if (minutes >= 10) {
+		minutes = minutes;
+	} else {
+		minutes = '0' + minutes;
+	}
+	var seconds = format.getSeconds(); // 获取当前秒数(0-59)
+	if (seconds >= 10) {
+		seconds = seconds;
+	} else {
+		seconds = '0' + seconds;
+	}
+	return year + '-' + month + '-' + day + 'T' + hours
+			+ ':' + minutes;
+}
