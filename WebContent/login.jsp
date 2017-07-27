@@ -7,7 +7,7 @@
         <title>CoolMeeting会议管理系统</title>
         <link rel="stylesheet" href="styles/common.css"/>
         <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="js/checkroleid.js"></script>
+        <!-- <script type="text/javascript" src="js/checkroleid.js"></script> -->
     </head>
     <body>
         <div class="page-header">
@@ -18,7 +18,7 @@
                 欢迎访问Cool-Meeting会议管理系统
             </div>
             <div class="header-quicklink">
-                欢迎！<strong>${loginUserName }<span id="roleid" style="display:none">${roleid }</span></strong>
+                欢迎！<strong><label id="labelusername">${loginUserName }</label><span id="roleid" style="display:none">${roleid }</span></strong>
                 <a href="beforelogin.jsp">[修改密码]</a>
             </div>
         </div>

@@ -8,7 +8,7 @@
 <title>CoolMeeting会议管理系统</title>
 		<link rel="stylesheet" href="styles/common.css" />
 		<script type="text/javascript" src="js/jquery.js" ></script>
-		<script type="text/javascript" src="js/checkroleid.js"></script>
+		<!-- <script type="text/javascript" src="js/checkroleid.js"></script> -->
 	</head>
 	<body>
 		<div class="page-header">
@@ -21,55 +21,33 @@
 		</div>
 		<div class="page-body">
 			<div class="page-sidebar">
-				<div class="sidebar-menugroup">
-					<div class="sidebar-grouptitle">个人中心</div>
-					<ul class="sidebar-menu">
-						<li class="sidebar-menuitem">
-							<a href="beforelogin.jsp">最新通知</a>
-						</li>
-						<li class="sidebar-menuitem active">
-							<a href="beforelogin.jsp">我的预定</a>
-						</li>
-						<li class="sidebar-menuitem">
-							<a href="beforelogin.jsp">我的会议</a>
-						</li>
-					</ul>
-				</div>
-				<div class="sidebar-menugroup">
-					<div class="sidebar-grouptitle">人员管理</div>
-					<ul class="sidebar-menu">
-						<li class="sidebar-menuitem">
-							<a class="checkroleid" href="beforelogin.jsp">部门管理</a>
-						</li>
-						<li class="sidebar-menuitem">
-							<a href="register.jsp">员工注册</a>
-						</li>
-						<li class="sidebar-menuitem">
-							<a class="checkroleid" href="beforelogin.jsp">注册审批</a>
-						</li>
-						<li class="sidebar-menuitem">
-							<a class="checkroleid" href="beforelogin.jsp">搜索员工</a>
-						</li>
-					</ul>
-				</div>
-				<div class="sidebar-menugroup">
-					<div class="sidebar-grouptitle">会议预定</div>
-					<ul class="sidebar-menu">
-						<li class="sidebar-menuitem">
-							<a class="checkroleid" href="beforelogin.jsp">添加会议室</a>
-						</li>
-						<li class="sidebar-menuitem">
-							<a class="checkroleid" href="beforelogin.jsp">查看会议室</a>
-						</li>
-						<li class="sidebar-menuitem">
-							<a class="checkroleid" href="beforelogin.jsp">预定会议</a>
-						</li>
-						<li class="sidebar-menuitem">
-							<a class="checkroleid" href="beforelogin.jsp">搜索会议</a>
-						</li>
-					</ul>
-				</div>
-			</div>
+                <div class="sidebar-menugroup">
+                    <div class="sidebar-grouptitle">个人中心</div>
+                    <ul class="sidebar-menu">
+                        <li class="sidebar-menuitem"><a href="notifications.jsp">最新通知</a></li>
+                        <li class="sidebar-menuitem active"><a href="mybookings.jsp">我的预定</a></li>
+                        <li class="sidebar-menuitem"><a href="mymeeting.action">我的会议</a></li>
+                    </ul>
+                </div>
+                <div class="sidebar-menugroup">
+                    <div class="sidebar-grouptitle">人员管理</div>
+                    <ul class="sidebar-menu">
+                        <li class="sidebar-menuitem"><a class="checkroleid" href="departments.jsp">部门管理</a></li>
+                        <li class="sidebar-menuitem"><a href="register.jsp">员工注册</a></li>
+                        <li class="sidebar-menuitem"><a class="checkroleid" href="searchempbystatus.action">注册审批</a></li>
+                        <li class="sidebar-menuitem"><a class="checkroleid" href="searchemployees.jsp">搜索员工</a></li>
+                    </ul>
+                </div>
+                <div class="sidebar-menugroup">
+                    <div class="sidebar-grouptitle">会议预定</div>
+                    <ul class="sidebar-menu">
+                        <li class="sidebar-menuitem"><a class="checkroleid" href="addmeetingroom.jsp">添加会议室</a></li>
+                        <li class="sidebar-menuitem"><a class="checkroleid" href="findMeetingRoom.action">查看会议室</a></li>
+                        <li class="sidebar-menuitem"><a class="checkroleid" href="bookmeeting.jsp">预定会议</a></li>
+                        <li class="sidebar-menuitem"><a class="checkroleid" href="searchmeetings.jsp">搜索会议</a></li>
+                    </ul>
+                </div>
+            </div>
 			<div class="page-content">
 				<div id="hidebox" style="width: 400px;height: 180px;background-color:lightgray;position: fixed;left: 40%;top: 200px;border-radius: 10px;border: 1px solid #A52A2A">
 					<p style="width: 25px;height: 25px;border-radius: 50%;float: right;background-color: #696969;text-align: center" id="closehidebox">X</p>

@@ -72,7 +72,7 @@
 		</div>
 		<div class="header-title">欢迎访问Cool-Meeting会议管理系统</div>
 		<div class="header-quicklink">
-			欢迎！<strong>${loginUserName }<span id="roleid" style="display:none">${roleid }</span></strong> <a href="changepassword.jsp">[修改密码]</a>
+			欢迎！<strong><label id="labelusername">${loginUserName }</label><span id="roleid" style="display:none">${roleid }</span></strong> <a href="changepassword.jsp">[修改密码]</a>
 			<a href="loginoff.action">[退出登录]</a>
 		</div>
 	</div>
