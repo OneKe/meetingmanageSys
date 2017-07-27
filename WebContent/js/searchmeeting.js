@@ -180,7 +180,11 @@ $("document").ready(function() {
 	
 	//末页
 	$("#endpage").click(function(){
-		begin=pagesize*(parseInt(count/pagesize));
+		if(count%pagesize==0){
+			begin=pagesize*(parseInt(count/pagesize)-1);
+		}else{
+			begin=pagesize*(parseInt(count/pagesize));
+		}
 		page=parseInt($("#disnum").text());
 		$.ajax({
 			type: "post",

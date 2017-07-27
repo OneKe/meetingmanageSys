@@ -204,13 +204,18 @@ $("document")
 
 					// 会议提交
 					$("#bookingbtn")
-							.click(
-									function() {
-										if ($("#meetingname").trim().val().length > 0
-												&& $("#numofparticipants")
-														.val() > 0
-												&& $("#startdatetime").val() > 0
-												&& $("#enddatetime").val() > 0) {
+							.click(function() {
+//								alert($("#meetingname").val().length > 0);
+//								alert($("#numofparticipants").val() > 0);
+//								alert( $("#startdatetime").val().length > 0);
+//								alert($("#startdatetime").val());
+//								alert($("#enddatetime").val());
+//								alert($("#enddatetime").val().length > 0);
+								
+										if ($("#meetingname").val().length > 0
+												&& $("#numofparticipants").val() > 0
+												&& $("#startdatetime").val().length > 0
+												&& $("#enddatetime").val().length > 0) {
 											var rightOption = $("#selSelectedEmployees option");
 											var roomoption = $("#roomid option:selected");
 											var arr = [];
@@ -219,10 +224,8 @@ $("document")
 													employeeid : rightOption
 															.eq(h).val()
 												});
-											}
-											;
-											$
-													.ajax({
+											};
+											$.ajax({
 														type : "post",
 														url : "bookingmeeting.action",
 														dataType : "json",
