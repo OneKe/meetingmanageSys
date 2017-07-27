@@ -52,6 +52,7 @@ public class LoginController {
 			session.setAttribute("phone", loginEmployee.getPhone());
 			session.setAttribute("email", loginEmployee.getEmail());
 			session.setAttribute("employeestaus", loginEmployee.getEmployeestatus());
+			session.setAttribute("roleid", loginEmployee.getRoleid());
 			request.setAttribute("loginMessage", "登录成功！");
 			return new ModelAndView("forward:notification.action");
 		}else if(loginEmployee != null&&0==loginEmployee.getEmployeestatus()){
