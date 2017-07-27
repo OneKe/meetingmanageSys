@@ -71,7 +71,7 @@ public class MeetingController {
 	// 搜索会议
 	@RequestMapping("/searchmeeting.action")
 	public void selectMeeting(String meetingname, String roomname, String reservername, String reservefromdate,
-			String reservetodate, String meetingfromdate, String meetingtodate, HttpServletRequest request,
+			String reservetodate, String meetingfromdate, String meetingtodate,int pagesize,int begin, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
@@ -83,11 +83,15 @@ public class MeetingController {
 		map.put("reservetodate", reservetodate);
 		map.put("meetingfromdate", meetingfromdate);
 		map.put("meetingtodate", meetingtodate);
+		map.put("pagesize", pagesize);
+		map.put("begin", begin);
 		List<Map<String, Object>> list = mservice.selectMeet(map);
 		JSONObject jsonObject = new JSONObject();
 		JSONArray jsonArray = new JSONArray();
 		jsonObject.put("list", list);
+		jsonObject.put("count", mservice.meetingcount(map));
 		jsonArray.add(jsonObject);
+		System.out.println();
 		// 获得输出流
 		PrintWriter out = response.getWriter();
 		// 通过 out 对象将 jsonArray 传到前端页面

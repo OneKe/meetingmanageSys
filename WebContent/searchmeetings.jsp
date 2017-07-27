@@ -99,16 +99,16 @@
 				<h3 style="text-align: center; color: black">查询结果</h3>
 				<div class="pager-header">
 					<div class="header-info">
-						共<span class="info-number" id="count"></span>条结果， 分成<span
-							class="info-number">6</span>页显示， 当前第<span class="info-number">1</span>页
+						共<span class="info-number" id="count"></span>条结果， 分成<span id="disnum"
+							class="info-number"></span>页显示， 当前第<span id="page" class="info-number">1</span>页
 					</div>
 					<div class="header-nav">
-						<input type="button" class="clickbutton" value="首页" /> <input
-							type="button" class="clickbutton" value="上页" /> <input
-							type="button" class="clickbutton" value="下页" /> <input
-							type="button" class="clickbutton" value="末页" /> 跳到第<input
-							type="text" id="pagenum" class="nav-number" />页 <input
-							type="button" class="clickbutton" value="跳转" />
+						<input type="button" id="homepage" class="clickbutton" value="首页" /> <input
+							type="button" id="lastpage" class="clickbutton" value="上页" /> <input
+							type="button" id="nextpage" class="clickbutton" value="下页" /> <input
+							type="button" id="endpage" class="clickbutton" value="末页" /> 跳到第<input
+							type="number" id="pagenum" class="nav-number" />页 <input
+							type="button" id="skip" class="clickbutton" value="跳转" />
 					</div>
 				</div>
 			</div>
