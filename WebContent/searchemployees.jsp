@@ -143,7 +143,6 @@
 						<th>电子邮件</th>
 						<th>操作</th>
 					</tr>
-			
 					<c:forEach var="employee" items="${list}">
 						<tr id="${employee.employeeid}">
 							<td>${employee.employeename}</td>
@@ -221,7 +220,7 @@
 		});
 		//点击首页
 		$("#headpage").click(function(){
-			window.location.href="searchemployees.action?currentPage=0";
+			window.location.href="searchemployees.action?currentPage=0&status="+status;
 		});
 		//点击上一页
 		//function checkFirst(){
