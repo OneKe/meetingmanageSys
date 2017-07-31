@@ -30,21 +30,26 @@ public class LoginController {
 	public String index(){
 		return "login";
 	}
-	
+	//登录
 	@RequestMapping("login.action")
 	public ModelAndView login(HttpServletRequest request,HttpServletResponse response){
+		//从页面拿到对应输入的用户名和密码
 		String UserName = request.getParameter("username");
 		String UserPwd = request.getParameter("userpwd");
+		//将密码进行MD5加密处理
 		String password = mdu.getMD5(UserPwd);
+		//判断输入的用户名和密码是否为空，将其封装进employee对象
 		Employee employee = null;
 		if(null == UserName ||null == password || "".equals(UserName) || "".equals(password)){
 			return new ModelAndView("login");
 		}else{
 			employee = new Employee(UserName,password);
 		}
-		
+		//根据用户名和密码到数据库查询用户资料
 		Employee loginEmployee = employeeService.login(employee);
 		System.out.println(loginEmployee+"查询后的员工信息");
+		//对输出的用户进行判断，状态为1时，账号正常，可以登录，2已关闭，0等待审核，除了1以外都不能登录成功
+		//将登录成功的用户信息封装进employee对象，方便后面使用
 		if(loginEmployee != null&&1==loginEmployee.getEmployeestatus()){
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUserName", loginEmployee.getUsername());
