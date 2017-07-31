@@ -9,7 +9,7 @@
 		<title>CoolMeeting会议管理系统</title>
 		<link rel="stylesheet" href="styles/common.css" />
 		<script type="text/javascript" src="js/jquery.js"></script>
-		<script type="text/javascript" src="js/searchemployees.js"></script>
+		<!--  <script type="text/javascript" src="js/searchemployees.js"></script>-->
 		<style>
 			#hidebox{
 				display: none;
@@ -120,9 +120,9 @@
 					<h3 style="text-align:center;color:black">查询结果</h3>
 					<div class="pager-header">
 						<div class="header-info">
-							共<span class="info-number">&nbsp; ${list.size()} &nbsp;</span>条结果， 每页显示
-							<input type="text" id="pagesize" name="pagesize" style="width:25px" value="${pagesize}"> 条结果， 当前第
-							<span class="info-number">${pageindex}</span>页
+							共<label class="info-number" id="countnum">&nbsp; ${page.totalRows} &nbsp;</label>条结果， 每页显示
+							<input type="text" id="pagesize" name="pagesize" style="width:25px" value="4"> 条结果， 当前第
+							<span class="info-number">${page.currentPage}</span>页
 						</div>
 						<div class="header-nav">
 							<input type="button" class="clickbutton" value="首页" id="headpage" />
@@ -142,6 +142,7 @@
 						<th>电子邮件</th>
 						<th>操作</th>
 					</tr>
+					<tr class="xxx"></tr>
 					<c:forEach var="employee" items="${list}">
 						<tr id="${employee.employeeid}">
 							<td>${employee.employeename}</td>
@@ -172,11 +173,10 @@
 	</body>
 	<script>
 		var myid;
-
 		function doclick(id){
 			$("#hidebox").show();
 			myid = id;
-		}
+		};
 			
 		$("#closehidebox").click(function() {
 			$("#hidebox").hide();
@@ -201,6 +201,67 @@
 				}
 			});
 		});
+		
+		var count =$("#countnum").text();
+		var employeename = $("#employeename").val();
+		var accountname= $("#accountname").val();
+		var status = $("[checked='checked']").val();
+		var pageindex = 1;
+		var pagesize = $("#pagesize").val();
+		pagesize=5;
+		var pagenum = $("#pagenum").val();
+		var startnum=0;
+		
+		$("#submitbutton").click(function(){
+			employeename = $("#employeename").val();
+			accountname = $("#accountname").val();
+			status = $('input:radio[name="status"]:checked').val();
+			$("#searchform").submit();
+		});
+		//点击首页
+		$("#headpage").click(function(){
+			window.location.href="searchemployees.action?currentPage=0";
+		});
+		//点击上一页
+		//function checkFirst(){
+		$("#pagefront").click(function(){
+			employeename = $("#employeename").val();
+			accountname = $("#accountname").val();
+			status = $('input:radio[name="status"]:checked').val();
+		    // if(${page.currentPage>1}){
+		    window.location.href="searchemployees.action?currentPage=${page.currentPage-1}&status="+status;
+		    //}
+		  //   alert("已到页首,无法加载更多");
+		//};
+		});
+		//点击下一页
+		//function checkNext(){
+			$("#pagenext").click(function(){
+				employeename = $("#employeename").val();
+				accountname = $("#accountname").val();
+				status = $('input:radio[name="status"]:checked').val();
+			//if(${page.currentPage<page.totalPage}){
+				window.location.href="searchemployees.action?currentPage=${page.currentPage+1}&status="+status;
+			//}
+		  //  alert("已到页尾，无法加载更多页");
+			//};
+			});
+		//点击跳转
+		//function startTurn(){
+			$("#goto").click(function(){
+				employeename = $("#employeename").val();
+				accountname = $("#accountname").val();
+				status = $('input:radio[name="status"]:checked').val();
+			
+			var turnPage=$("#pagenum").val();
+			//if(turnPage>(${page.totalPage})){
+			//  alert("对不起已超过最大页数");
+			//  return false;
+			//}
+			var shref="searchemployees.action?currentPage="+turnPage+"&status="+status;
+			window.location.href=shref;
+		//};
+			});
 	</script>
 
 </html>

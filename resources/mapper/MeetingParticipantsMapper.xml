@@ -129,8 +129,7 @@
 	<select id="findEmployee" parameterType="Map" resultType="Employee">
 		select * from Employee
 		where EmployeeName like '%${employeeName}%' and UserName like
-		'%${accountName}%' and EmployeeStatus = #{intStatus} limit #{pstart} ,
-		#{psize}
+		'%${accountName}%' and EmployeeStatus = #{intStatus} limit #{page.startRow},#{page.pageSize}
 	</select>
 
 	<!-- **************人员管理：搜索员工********关闭账号************ -->
@@ -167,4 +166,15 @@
 	update meetingroom set RoomCode=#{roomcode},RoomName=#{roomname},RoomCapacity=#{roomcapacity},RoomStatus=#{roomstatus},Description=#{description}
 	where RoomId =#{roomid}
 	</update>
+	
+	<!-- 根据员工状态查出所有员工的个数，为分页准备 -->
+	<select id="findUserList" resultType="Employee">
+	select * from employee where EmployeeStatus=#{0}
+	
+	</select>
+	<!-- 按照页面的条件不分页，查出符合条件的总条数 -->
+	<select id="searchTotalCount" resultType="java.lang.Integer">
+	select count(*) from employee where EmployeeName like '%${0}%' and UserName like
+		'%${1}%' and EmployeeStatus=#{2}
+	</select>
 </mapper>

@@ -118,4 +118,20 @@ public interface MeetingParticipantsMapper {
 	 */
 	int updateMeetingRoom(MeetingRoom mr);
 
+	/**
+	 * 根据员工状态查出所有员工的个数，为分页准备
+	 * @param startS
+	 * @return
+	 */	
+	List<Employee> findUserList(int startS);
+
+	/**
+	 * 按照页面的条件不分页，查出符合条件的总条数
+	 * @param employeeName
+	 * @param accountName
+	 * @param intStatus
+	 * @return
+	 */
+	Integer searchTotalCount(String employeeName, String accountName, int intStatus);
+
 }
