@@ -56,7 +56,7 @@ public interface MeetingParticipantsMapper {
 	 * @param newpassword
 	 * @return
 	 */
-	boolean updateNewPassword(String loginUserName, String originpassword, String newpassword);
+	int updateNewPassword(String loginUserName, String originpassword, String newpassword);
 	
 	/**
 	 * 通过会议id，查询会议详情

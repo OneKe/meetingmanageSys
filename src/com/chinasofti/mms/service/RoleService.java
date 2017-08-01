@@ -64,7 +64,7 @@ public class RoleService {
 	 * @param newpassword
 	 * @return
 	 */
-	public boolean updateNewPassword(String loginUserName, String originpassword, String newpassword) {
+	public int updateNewPassword(String loginUserName, String originpassword, String newpassword) {
 
 		return dao.updateNewPassword(loginUserName,originpassword,newpassword);
 	}

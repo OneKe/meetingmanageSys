@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.chinasofti.mms.service.RoleService;
+import com.chinasofti.mms.util.TransferUtil;
 
 
 @Controller
@@ -25,6 +26,9 @@ public class NewPasswordController {
 	public void setService(RoleService service) {
 		this.service = service;
 	}
+	
+	TransferUtil mdu = new TransferUtil();
+	
 	@RequestMapping("changepassword.action")
 	public ModelAndView changePassword(HttpServletRequest request,HttpServletResponse response){
 		ModelAndView mv = new ModelAndView();
@@ -46,8 +50,11 @@ public class NewPasswordController {
 		 * 从页面上拿到输入的原始密码，新密码，确认密码
 		 */
 		String originpassword =  request.getParameter("originpassword");
+		String oldpwd = mdu.getMD5(originpassword);
 		String newpassword =  request.getParameter("newpassword");
+		String newpwd = mdu.getMD5(newpassword);
 		String confirmpassword = request.getParameter("confirmpassword");
+		String confirmpwd = mdu.getMD5(confirmpassword);
 		
 		/*
 		 * 原始密码，新密码，确认密码 有一个没有输入刷新页面重新输入
@@ -62,23 +69,23 @@ public class NewPasswordController {
 		/*
 		 * 新密码和确认密码不一致，重新输入。一致的话，将新数据写入到数据库
 		 */
-		if(!newpassword.equals(confirmpassword)){
+		if(!newpwd.equals(confirmpwd)){
 			mv.addObject("message", "两次密码输入不一致！");
 			mv.setViewName("changepassword");
 			return mv;
-		}else if(newpassword.equals(originpassword)){
+		}else if(newpwd.equals(originpassword)){
 			mv.addObject("message", "新密码与原始密码一致，请重新输入！");
 			mv.setViewName("changepassword");
 			return mv;
 		}else{
-			boolean isChanged = service.updateNewPassword(loginUserName,originpassword,newpassword);
-			if(false == isChanged){
+			int isChanged = service.updateNewPassword(loginUserName,oldpwd,newpwd);
+			if(0 == isChanged){
 				mv.addObject("message", "原密码有误，修改失败！");
 				mv.setViewName("changepassword");
 				return mv;
 			}else{
 				mv.addObject("message", "修改成功！");
-				mv.setViewName("login");
+				mv.setViewName("forward:loginoff.action");
 				return mv;
 			}
 		}
